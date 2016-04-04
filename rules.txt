@@ -1,0 +1,60 @@
+1. Resource Naming
+	
+	1.1. Activities
+	
+			The name of the layout files should start with the word 'activity' followed by the activity name (words should be
+		separated by '_'). IDs under an activity should start with the initials of the activity followed by an '_' and 
+		then the name of the ID.
+		
+		Example: For the activity 'Show Profile' the layout file's name would be 'activity_show_profile.xml' and the ID names 
+				would be prefaced by 'sp_'.
+	
+	1.2. Menus
+		
+			Menus should be specific to the activity using them so we can use a similar approach to their naming and that of 
+		their IDs.
+		
+		Example: For the menu of activity 'Show Profile' the layout file's name would be 'menu_show_profile.xml' and the ID 
+				names would be prefaced by 'sp_' (since the same person should be in charge if an activity and its menus
+				it would be reasonable to avoid conflicts between the IDs of these xml files).
+				
+	1.3. Fragments
+			
+			Follow the same rules as for activities replacing the word activity with fragment.
+		
+		Example: For the fragment 'Show Profile' the layout file's name would be 'fragment_show_profile.xml' and the ID names 
+				would be prefaced by 'sp_'.
+	
+	1.4. ListView / RecyclerView Items
+	
+			The name of the items of the layouts of these lists should start with the word 'item' followed by the name of
+		the item (in our application we will need to define such item layouts for reviews, reservations and later restaurants).
+		IDs in these items should be prefaced by the item name followed by an '_'.
+		
+		Example: For the list item 'Review' the layout file's name would be 'item_review.xml' and the IDs prefaced by 'review_'
+
+2. Additional Libraries
+
+		Under this section we should add any new library we need and the corresponding dependency to be added to the Gradle file.
+	
+	2.1. Gson
+	
+		Open source library to serialize/deserialize Java objects to (and from) JSON.
+	
+	2.2. androidplot
+	
+		An open source library to easily create different types of charts.
+		
+		Note: This might be needed for a small part of the application. More on it later.
+
+3. Other
+
+		This section can be used to specify other rules that don't fall under the previous categories and are not very specific.
+	
+	3.1 A Utility Class
+	
+		Since it is likely that some of our classes will share some global constants, we can use a single class as placeholder
+	for them as well as any methods that might needed in more than one class. If you need to add something to this class I suggest
+	you first inform the rest of the team of the change so as to avoid making this class very difficult to manage in the future.
+	Also everything in this class in particular should be well commented so as to avoid confusion.
+	

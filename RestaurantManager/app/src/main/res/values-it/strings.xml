@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+
+
+    <string name="drawer_a">Dettagli</string>
+    <string name="drawer_b">Prenotazioni</string>
+    <string name="drawer_c">Offerte</string>
+    <string name="drawer_d">Menu</string>
+    <string name="drawer_e">Recensioni</string>
+    <string name="drawer_f">Statistiche</string>
+
+    <string name="drawer_personal">Personale</string>
+
+    <string name="drawer_g">Profilo</string>
+    <string name="drawer_h">Impostazioni</string>
+
+
+
+</resources>

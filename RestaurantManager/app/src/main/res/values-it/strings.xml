@@ -13,14 +13,13 @@
 
     <string name="drawer_g">Profilo</string>
     <string name="drawer_h">Impostazioni</string>
-
-
-
-</resources><resources>
     <string name="app_name">RestaurantManager</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="review_info">Le recensioni dei clienti</string>
+    <string name="review_info2">Basato su</string>
+    <string name="review_info3p">valutazioni</string>
+    <string name="review_info3s">valutazione</string>
     <string name="icon_up">Utile</string><!--&#xf087;-->
     <string name="icon_down">Non Utile</string><!--&#xf087;-->
 </resources>

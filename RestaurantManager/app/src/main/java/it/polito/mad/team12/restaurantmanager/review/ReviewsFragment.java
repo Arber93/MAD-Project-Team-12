@@ -57,9 +57,9 @@ public class ReviewsFragment extends Fragment {
         nameRestaurant.setText(restaurantID);
         numberOfReviews.setText(ReviewUtility.numberOfReviews(restaurantID).toString());
         if(numberOfReviews.getText().equals("1"))
-            rating.setText("valutazione");
+            rating.setText(getResources().getText(R.string.review_info3s));
         else
-            rating.setText("valutazioni");
+            rating.setText(getResources().getText(R.string.review_info3p));
         score.setText(ratingBar.getRating()+"");
         String nome = ReviewUtility.getImageName(restaurantID);
          String uri = ":drawable/"+nome;

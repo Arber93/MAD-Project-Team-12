@@ -37,6 +37,13 @@ public class ReviewsFragment extends Fragment {
     private TextView rating;
     private TextView score;
 
+    //********** When it create a ReviewsFragment, it must create a BUndle and it passed by argument
+    //          with the name of the restaurant
+    //This is an example:
+    //Bundle bundle = new Bundle();
+    //bundle.putString("restaurantID","Nome Ristorante1");
+    //reviewsFragment.setArguments(bundle);
+
     public ReviewsFragment() {
     }
 

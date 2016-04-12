@@ -9,9 +9,6 @@
 
     <string name="action_settings">Settings</string>
 
-
-
-
     <string name="drawer_a">Details</string>
     <string name="drawer_b">Reservations</string>
     <string name="drawer_c">Offers</string>
@@ -31,4 +28,19 @@
     <string name="review_info3s">assessment</string>
     <string name="icon_up">Utile</string><!--&#xf087;-->
     <string name="icon_down">Non Utile</string><!--&#xf087;-->
+
+    <string name="pending">PENDING</string>
+    <string name="accepted">ACCEPTED</string>
+    <string name="history">DENIED</string>
+
+    <string name="title_activity_reservations">Reservations</string>
+    <string name="btn_reservations">Reservations</string>
+
+    <string name="reservation_id">"ID: "</string>
+    <string name="customer_name">"Customer Name: "</string>
+    <string name="customer_phone_number">"Customer Phone Number: "</string>
+    <string name="ordered_items">"Ordered items: "</string>
+    <string name="additional_notes">"Additional notes: "</string>
+    <string name="time_date_reservation">Time and Date: </string>
+
 </resources>

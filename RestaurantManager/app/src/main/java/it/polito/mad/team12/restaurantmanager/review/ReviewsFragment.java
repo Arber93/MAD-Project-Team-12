@@ -1,26 +1,17 @@
 package it.polito.mad.team12.restaurantmanager.review;
 
 
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
-import junit.framework.TestCase;
-
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Date;
 
 import it.polito.mad.team12.restaurantmanager.R;
 

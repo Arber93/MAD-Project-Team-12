@@ -17,7 +17,7 @@ import it.polito.mad.team12.restaurantmanager.reservation.ReservationsFragment;
 import it.polito.mad.team12.restaurantmanager.review.ReviewsFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener  {
+        implements NavigationView.OnNavigationItemSelectedListener {
 
 
     /* This activity will house the navigation drawer as well as be in charge of fragment switching. */
@@ -66,12 +66,7 @@ public class MainActivity extends AppCompatActivity
         }
 
 
-
-
-
-
     }
-
 
 
     @Override
@@ -97,7 +92,7 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button,
         int id = item.getItemId();
 
-        Log.i("preeeeeeeeees :(",id+"");
+        Log.i("preeeeeeeeees :(", id + "");
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
@@ -118,12 +113,12 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft;
 
-        Log.i("preeeeeeeeees",id+"");
+        Log.i("preeeeeeeeees", id + "");
 
         if (id == R.id.drawm_details) {  //USER TAPPED ON DETAILS
             DetailsFragment det = new DetailsFragment();
 
-            ft=fm.beginTransaction();
+            ft = fm.beginTransaction();
             ft.replace(R.id.fragment_container, det);   //switch to the DETAILS fragment
             ft.commit();
 
@@ -131,7 +126,7 @@ public class MainActivity extends AppCompatActivity
             ReservationsFragment res = new ReservationsFragment();
 
 
-            ft=fm.beginTransaction();
+            ft = fm.beginTransaction();
             ft.replace(R.id.fragment_container, res);   //switch to the DETAILS fragment
             ft.commit();
 
@@ -139,7 +134,7 @@ public class MainActivity extends AppCompatActivity
             OffersFragment offr = new OffersFragment();
 
 
-            ft=fm.beginTransaction();
+            ft = fm.beginTransaction();
             ft.replace(R.id.fragment_container, offr);   //switch to the DETAILS fragment
             ft.commit();
 
@@ -147,19 +142,19 @@ public class MainActivity extends AppCompatActivity
             MenuFragment menf = new MenuFragment();
 
 
-            ft=fm.beginTransaction();
+            ft = fm.beginTransaction();
             ft.replace(R.id.fragment_container, menf);   //switch to the DETAILS fragment
             ft.commit();
 
         } else if (id == R.id.drawm_reviews) { //REVIEWS
             ReviewsFragment rev = new ReviewsFragment();
-            Log.i("************","reviews");
+            Log.i("************", "reviews");
 
             Bundle bundle = new Bundle();
-            bundle.putString("restaurantID","Nome Ristorante1");
+            bundle.putString("restaurantID", "Nome Ristorante1");
             rev.setArguments(bundle);
 
-            ft=fm.beginTransaction();
+            ft = fm.beginTransaction();
             ft.replace(R.id.fragment_container, rev);   //switch to the DETAILS fragment
             ft.commit();
 

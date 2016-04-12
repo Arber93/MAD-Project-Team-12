@@ -13,19 +13,19 @@ import it.polito.mad.team12.restaurantmanager.R;
 /**
  * Created by Antonio on 10/04/16.
  */
-public class ReviewRecycleAdapter extends RecyclerView.Adapter<MyViewReviewHolder>{
+public class ReviewRecycleAdapter extends RecyclerView.Adapter<MyViewReviewHolder> {
 
     private List<Review> mData;
     private LayoutInflater mInflater;
 
-    public ReviewRecycleAdapter(Context context, List<Review> data){
+    public ReviewRecycleAdapter(Context context, List<Review> data) {
         this.mData = data;
         this.mInflater = LayoutInflater.from(context);
     }
 
     @Override
     public MyViewReviewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.item_review,parent,false);
+        View view = mInflater.inflate(R.layout.item_review, parent, false);
         MyViewReviewHolder holder = new MyViewReviewHolder(view);
         return holder;
     }

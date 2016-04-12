@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/customer_name"
@@ -14,6 +14,7 @@
         android:paddingBottom="5dp"
         android:textColor="#000000"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+
     <TextView
         android:id="@+id/customer_phone_number"
         android:layout_width="fill_parent"
@@ -24,6 +25,7 @@
         android:paddingBottom="5dp"
         android:textColor="#000000"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+
     <TextView
         android:id="@+id/ordered_items"
         android:layout_width="fill_parent"
@@ -34,6 +36,7 @@
         android:paddingBottom="5dp"
         android:textColor="#000000"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+
     <TextView
         android:id="@+id/time_date"
         android:layout_width="fill_parent"
@@ -44,6 +47,7 @@
         android:paddingBottom="5dp"
         android:textColor="#000000"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+
     <TextView
         android:id="@+id/notes"
         android:layout_width="fill_parent"

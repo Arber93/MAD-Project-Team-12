@@ -29,15 +29,15 @@ public class ReviewsFragment extends Fragment {
     private TextView score;
 
 
-
-    /****   Before call the Review fragment, it must call this method
-    *****   try {
-                 ReviewUtility.loadJSONFromAsset(getAssets().open("reviews.json"));
-            } catch (IOException e) {
-                 e.printStackTrace();
-            }
-    *****   For read and load the review by the json file
-    */
+    /****
+     * Before call the Review fragment, it must call this method
+     * ****   try {
+     * ReviewUtility.loadJSONFromAsset(getAssets().open("reviews.json"));
+     * } catch (IOException e) {
+     * e.printStackTrace();
+     * }
+     * ****   For read and load the review by the json file
+     */
 
 
     //********** When it create a ReviewsFragment, it must create a Bundle and it passed by argument
@@ -46,7 +46,6 @@ public class ReviewsFragment extends Fragment {
     //Bundle bundle = new Bundle();
     //bundle.putString("restaurantID","Nome Ristorante1");
     //reviewsFragment.setArguments(bundle);
-
     public ReviewsFragment() {
     }
 
@@ -54,7 +53,7 @@ public class ReviewsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        myFragmentId =  inflater.inflate(R.layout.fragment_reviews, container, false);
+        myFragmentId = inflater.inflate(R.layout.fragment_reviews, container, false);
         ratingBar = (RatingBar) myFragmentId.findViewById(R.id.review_rate);
         numberOfReviews = (TextView) myFragmentId.findViewById(R.id.review_number);
         nameRestaurant = (TextView) myFragmentId.findViewById(R.id.review_nameRestaurant);
@@ -66,13 +65,13 @@ public class ReviewsFragment extends Fragment {
         ratingBar.setRating(ReviewUtility.getStarsRestaurant(restaurantID));
         nameRestaurant.setText(restaurantID);
         numberOfReviews.setText(ReviewUtility.numberOfReviews(restaurantID).toString());
-        if(numberOfReviews.getText().equals("1"))
+        if (numberOfReviews.getText().equals("1"))
             rating.setText(getResources().getText(R.string.review_info3s));
         else
             rating.setText(getResources().getText(R.string.review_info3p));
-        score.setText(ratingBar.getRating()+"");
+        score.setText(ratingBar.getRating() + "");
         String nome = ReviewUtility.getImageName(restaurantID);
-         String uri = ":drawable/"+nome;
+        String uri = ":drawable/" + nome;
 
         int imageResource = getResources().getIdentifier(getActivity().getPackageName() + uri, null, null);
         restaurantImage.setImageResource(imageResource);
@@ -87,10 +86,10 @@ public class ReviewsFragment extends Fragment {
 
     }
 
-    private void setUpRecyclerView(String retaurantID){
+    private void setUpRecyclerView(String retaurantID) {
         RecyclerView recyclerView = (RecyclerView) myFragmentId.findViewById(R.id.review_recyclerViewMain);
         recyclerView.setHasFixedSize(true);
-        ReviewRecycleAdapter adapter = new ReviewRecycleAdapter(getContext(),ReviewUtility.getReviews(retaurantID));
+        ReviewRecycleAdapter adapter = new ReviewRecycleAdapter(getContext(), ReviewUtility.getReviews(retaurantID));
         recyclerView.setAdapter(adapter);
         LinearLayoutManager mLinearLayoutManagerVertical = new LinearLayoutManager(getContext());
         mLinearLayoutManagerVertical.setOrientation(LinearLayoutManager.VERTICAL);

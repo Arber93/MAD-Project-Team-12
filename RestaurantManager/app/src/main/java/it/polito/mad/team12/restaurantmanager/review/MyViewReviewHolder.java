@@ -33,12 +33,12 @@ public class MyViewReviewHolder extends RecyclerView.ViewHolder {
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("Click on -> ",title.getText().toString());
+                Log.i("Click on -> ", title.getText().toString());
             }
         });
     }
 
-    public void setData(Review current){
+    public void setData(Review current) {
         this.title.setText(current.getTitle());
         this.ratingBar.setRating(current.getStars());
         this.user.setText(current.getUserID());

@@ -18,27 +18,27 @@ import it.polito.mad.team12.restaurantmanager.Restaurant;
  */
 public class ReviewUtility {
 
-    private static TreeMap<String,ArrayList<Review>> reviewForRestaurant = new TreeMap<>();
+    private static TreeMap<String, ArrayList<Review>> reviewForRestaurant = new TreeMap<>();
     private static TreeMap<String, Restaurant> restaurant = new TreeMap<>();
 
-    public static ArrayList<Review> getReviews(String restaurantID){
+    public static ArrayList<Review> getReviews(String restaurantID) {
         return reviewForRestaurant.get(restaurantID);
     }
 
-    public static Float getStarsRestaurant(String restaurantID){
+    public static Float getStarsRestaurant(String restaurantID) {
         return restaurant.get(restaurantID).getStars();
     }
 
-    public static Integer numberOfReviews(String restaurantID){
+    public static Integer numberOfReviews(String restaurantID) {
         return reviewForRestaurant.get(restaurantID).size();
     }
 
-    public static String getImageName(String restaurantID){
-        Log.i("",restaurantID);
-        return  restaurant.get(restaurantID).getimageName();
+    public static String getImageName(String restaurantID) {
+        Log.i("", restaurantID);
+        return restaurant.get(restaurantID).getimageName();
     }
 
-    public static void loadJSONFromAsset(InputStream is){
+    public static void loadJSONFromAsset(InputStream is) {
 
         String sJson = "";
 
@@ -63,7 +63,7 @@ public class ReviewUtility {
 
             JSONArray jsonArray = jsonRootObject.optJSONArray("reviews");
 
-            for(int i=0; i < jsonArray.length(); i++){
+            for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                 String restaurantID = jsonObject.optString("restaurantID").toString();
@@ -86,15 +86,15 @@ public class ReviewUtility {
                 r.setNonUtili(numNonUtile);
 
                 ArrayList<Review> mReviews = reviewForRestaurant.get(restaurantID);
-                if(mReviews==null)
+                if (mReviews == null)
                     mReviews = new ArrayList<>();
                 mReviews.add(r);
-                reviewForRestaurant.put(restaurantID,mReviews);
+                reviewForRestaurant.put(restaurantID, mReviews);
             }
 
             jsonArray = jsonRootObject.optJSONArray("Restaurant");
 
-            for(int i=0; i < jsonArray.length(); i++) {
+            for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String restaurantID = jsonObject.optString("restaurantID").toString();
                 Float stars = Float.parseFloat(jsonObject.optString("stars").toString());
@@ -106,10 +106,10 @@ public class ReviewUtility {
                 rest.setimageName(imageName);
 
                 restaurant.put(restaurantID, rest);
-                Log.i("*********"+restaurantID,imageName);
+                Log.i("*********" + restaurantID, imageName);
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
     }

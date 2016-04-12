@@ -20,8 +20,10 @@
     <string name="review_info2">Basato su</string>
     <string name="review_info3p">valutazioni</string>
     <string name="review_info3s">valutazione</string>
-    <string name="icon_up">Utile</string><!--&#xf087;-->
-    <string name="icon_down">Non Utile</string><!--&#xf087;-->
+    <string name="icon_up">Utile</string>
+    <!--&#xf087;-->
+    <string name="icon_down">Non Utile</string>
+    <!--&#xf087;-->
 
     <string name="pending">PENDING</string>
     <string name="accepted">ACCEPTED</string>

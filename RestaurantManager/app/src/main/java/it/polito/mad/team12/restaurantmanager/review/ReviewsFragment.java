@@ -37,7 +37,19 @@ public class ReviewsFragment extends Fragment {
     private TextView rating;
     private TextView score;
 
-    //********** When it create a ReviewsFragment, it must create a BUndle and it passed by argument
+
+
+    /****   Before call the Review fragment, it must call this method
+    *****   try {
+                 ReviewUtility.loadJSONFromAsset(getAssets().open("reviews.json"));
+            } catch (IOException e) {
+                 e.printStackTrace();
+            }
+    *****   For read and load the review by the json file
+    */
+
+
+    //********** When it create a ReviewsFragment, it must create a Bundle and it passed by argument
     //          with the name of the restaurant
     //This is an example:
     //Bundle bundle = new Bundle();

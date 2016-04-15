@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="it.polito.mad.team12.restaurantmanager.AddMenuItemActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/ami_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:popupTheme="@style/PopupTheme"
+        />
+
+    <LinearLayout
+        android:id="@+id/ami_buttons"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:id="@+id/ami_cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="@string/button_text_cancel"
+            android:textSize="@dimen/title_font_size"/>
+        <Button
+            android:id="@+id/ami_save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="@string/button_text_save"
+            android:textSize="@dimen/title_font_size"
+            />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/ami_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ami_toolbar"
+        android:layout_above="@id/ami_buttons"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!-- Used to house the image of the item -->
+            <ImageView
+                android:id="@+id/ami_item_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <!-- Name Field -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    style="@style/TitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ami_name_field_title"/>
+                <EditText
+                    android:id="@+id/ami_name_field"
+                    style="@style/FieldStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/ami_name_field_hint"/>
+            </LinearLayout>
+            <!-- Description Field-->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    style="@style/TitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ami_description_field_title"/>
+                <EditText
+                    android:id="@+id/ami_description_field"
+                    style="@style/FieldStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/ami_description_field_hint"
+                    android:lines="3"
+                    android:background="@null"/>
+            </LinearLayout>
+            <!-- Price Field -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    style="@style/TitleStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ami_price_field_title"/>
+                <EditText
+                    android:id="@+id/ami_price_field"
+                    style="@style/FieldStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/ami_price_field_hint"/>
+                <TextView
+                    android:id="@+id/ami_currency_symbol"
+                    style="@style/FieldStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/ami_checkbox_gluten_free"
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ami_gluten_free_title"
+                android:button="@null"
+                android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+                android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
+                android:onClick="onCheckboxClicked"
+                />
+            <CheckBox
+                android:id="@+id/ami_checkbox_vegan"
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ami_vegan_title"
+                android:button="@null"
+                android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+                android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
+                android:onClick="onCheckboxClicked"
+                />
+            <CheckBox
+                android:id="@+id/ami_checkbox_vegetarian"
+                style="@style/TitleStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ami_vegetarian_title"
+                android:button="@null"
+                android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+                android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
+                android:onClick="onCheckboxClicked"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

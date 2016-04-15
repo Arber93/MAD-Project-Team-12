@@ -9,9 +9,6 @@
 
     <string name="action_settings">Settings</string>
 
-
-
-
     <string name="drawer_a">Details</string>
     <string name="drawer_b">Reservations</string>
     <string name="drawer_c">Offers</string>
@@ -24,7 +21,29 @@
     <string name="drawer_g">Profile</string>
     <string name="drawer_h">Settings</string>
 
-
+    <string name="menu_available_tab_title">Available</string>
+    <string name="menu_unavailable_tab_title">Unavailable</string>
+    <string name="menu_item_image_description">Image of menu item</string>
+    <string name="overflow_menu_image_description">Icon used to show more options</string>
+    <string name="mcat_move_title">Move to Unavailable</string>
+    <string name="mct_delete">Delete</string>
+    <string name="mcut_move_title">Move to Available</string>
+    <string name="restaurant_menu_title">Restaurant Menu</string>
+    <string name="mt_add_new_item_string">Add New Item</string>
+    <string name="ami_name_field_title">Name</string>
+    <string name="ami_name_field_hint">Enter your item\'s name here</string>
+    <string name="ami_description_field_title">Description</string>
+    <string name="ami_description_field_hint">Describe your item here</string>
+    <string name="ami_price_field_title">Price</string>
+    <string name="ami_price_field_hint">Enter the item\'s price here</string>
+    <string name="ami_gluten_free_title">Gluten Free</string>
+    <string name="ami_vegan_title">Vegan</string>
+    <string name="ami_vegetarian_title">Vegetarian</string>
+    <string name="ami_menu_new_item_title">New Menu Item</string>
+    <string name="ami_menu_edit_item_title">Edit Menu Item</string>
+    <string name="button_text_cancel">CANCEL</string>
+    <string name="button_text_save">SAVE</string>
+    <string name="mct_edit_title">Edit</string>
 
 
 </resources>

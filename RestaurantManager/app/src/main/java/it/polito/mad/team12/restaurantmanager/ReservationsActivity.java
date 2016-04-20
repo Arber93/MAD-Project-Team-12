@@ -1,0 +1,124 @@
+package it.polito.mad.team12.restaurantmanager;
+
+import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReservationsActivity extends AppCompatActivity {
+
+    private String PENDING;
+    private String ACCEPTED;
+    private String DENIED;
+    Toolbar toolbar;
+    TabLayout tabLayout;
+    private ViewPager viewPager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_reservations);
+
+        PENDING = getResources().getString(R.string.pending);
+        ACCEPTED = getResources().getString(R.string.accepted);
+        DENIED = getResources().getString(R.string.denied);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+
+        OnPageChangeListener myOnPageChangeListener =
+                new OnPageChangeListener(){
+
+                    @Override
+                    public void onPageScrollStateChanged(int state) {
+                        //Called when the scroll state changes.
+                    }
+
+                    @Override
+                    public void onPageScrolled(int position,
+                                               float positionOffset, int positionOffsetPixels) {
+                        //This method will be invoked when the current page is scrolled,
+                        //either as part of a programmatically initiated smooth scroll
+                        //or a user initiated touch scroll.
+                    }
+
+                    @Override
+                    public void onPageSelected(int position) {
+                        //This method will be invoked when a new page becomes selected.
+                        //this should refresh the list of reservations
+                        viewPager.getAdapter().notifyDataSetChanged();
+                        Log.d("ADebugTag", "***************notifyDataSetChanged*************** ");
+
+                    }};
+        viewPager.addOnPageChangeListener(myOnPageChangeListener);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(PendingReservationsFragment.class, PENDING);
+        adapter.addFragment(AcceptedReservationsFragment.class, ACCEPTED);
+        adapter.addFragment(DeniedReservationsFragment.class, DENIED);
+        viewPager.setAdapter(adapter);
+    }
+
+    class ViewPagerAdapter extends FragmentStatePagerAdapter {
+
+        private List<Class<? extends Fragment>> mFragmentList = new ArrayList<>();
+        private List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            try {
+                Fragment instance = mFragmentList.get(position).newInstance();
+                return instance;
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        @Override
+        public int getItemPosition(Object object){
+            return POSITION_NONE;
+        }
+
+        public void addFragment(Class<? extends Fragment> fragmentClass, String title) {
+            mFragmentList.add(fragmentClass);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+    }
+}

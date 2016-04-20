@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/customer_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSize_list_details"
+        android:text="@string/customer_name"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textColor="#000000"
+        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+    <TextView
+        android:id="@+id/customer_phone_number"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSize_list_details"
+        android:text="@string/customer_phone_number"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textColor="#000000"
+        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+    <TextView
+        android:id="@+id/ordered_items"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSize_list_details"
+        android:text="@string/ordered_items"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textColor="#000000"
+        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+    <TextView
+        android:id="@+id/time_date"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSize_list_details"
+        android:text="@string/time_date_reservation"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textColor="#000000"
+        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+    <TextView
+        android:id="@+id/notes"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSize_list_details"
+        android:text="@string/additional_notes"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textColor="#000000"
+        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+
+</LinearLayout>

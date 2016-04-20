@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="tab_text_color">@color/android:white</color>
+    <color name="selected_tab_text_color">@android:color/white</color>
+    <color name="divider_color">@android:color/black</color>
+</resources>

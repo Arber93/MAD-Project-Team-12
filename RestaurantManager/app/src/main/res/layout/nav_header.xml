@@ -7,6 +7,13 @@
     android:orientation="vertical"
     android:gravity="bottom">
 
+    <ImageView
+        android:id="@+id/ic_drawer_profile"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_manager_photo"
+        />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -66,17 +66,22 @@
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
     <string name="wednesday">Wednesday</string>
-    <string name="thurdsay">Thurday</string>
+    <string name="thurdsay">Thursday</string>
     <string name="friday">Friday</string>
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
     <string name="day">Day</string>
     <string name="hours">Time</string>
     <string name="closed">Closed</string>
-
+    <string name="from">From</string>
+    <string name="to">To</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
     <string name="prev">Prev.</string>
     <string name="next">Next</string>
+
+    <string name="vegan">Vegan</string>
+    <string name="vegetarian">Vegetarian</string>
+    <string name="gluten">Gluten-Free</string>
 
 </resources>

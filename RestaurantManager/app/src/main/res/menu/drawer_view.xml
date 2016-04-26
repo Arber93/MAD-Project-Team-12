@@ -3,19 +3,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_reservations_activity"
-            android:icon="@drawable/icon1"
+            android:icon="@drawable/ic_drawer_reservations"
             android:title="@string/reservations" />
         <item
             android:id="@+id/nav_details_fragment"
-            android:icon="@drawable/icon2"
+            android:icon="@drawable/ic_drawer_details"
             android:title="@string/details" />
         <item
             android:id="@+id/nav_menu_fragment"
-            android:icon="@drawable/icon3"
+            android:icon="@drawable/ic_drawer_menud"
             android:title="@string/menu" />
         <item
             android:id="@+id/nav_review_fragment"
-            android:icon="@drawable/icon3"
+            android:icon="@drawable/ic_drawer_reviews"
             android:title="@string/reviews" />
     </group>
 </menu>

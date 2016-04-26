@@ -6,23 +6,26 @@
 
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
         android:id="@+id/mapPhotoHolder"
-        android:layout_gravity="center_horizontal|top"
-        android:src="@drawable/maph"/>
+        android:src="@drawable/maph"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/phone"
         android:id="@+id/textView"
-        android:paddingTop="15dp"
-        android:layout_below="@+id/mapPhotoHolder"
+        android:paddingTop="5dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="26dp"
-        android:textStyle="bold" />
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,27 +35,30 @@
         android:layout_below="@+id/textView"
         android:layout_alignLeft="@+id/textView"
         android:layout_alignStart="@+id/textView"
-        android:paddingTop="15dp"
-        android:textStyle="bold" />
+        android:paddingTop="5dp"
+        android:textStyle="bold"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" />
 
     <TableLayout
         android:id="@+id/frag_details_tablel_openings"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView2"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="5dp"
         >
 
         <TableRow>
 
             <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/monday"
-            android:id="@+id/textView3"
-            android:padding="0.5dp"
-            android:layout_weight="16"
-            />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/monday"
+                android:id="@+id/textView3"
+                android:padding="0.5dp"
+                android:layout_weight="16"
+                android:layout_marginRight="80dp"
+                />
 
 
             <TextView
@@ -248,13 +254,14 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:id="@+id/phoneNumber"
-        android:layout_alignBottom="@+id/textView"
-        android:layout_toRightOf="@+id/textView2" />
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/changePhone"
+        android:paddingTop="5dp" />
 
 
     <ViewFlipper
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="100dp"
         android:id="@+id/viewFlip"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
@@ -282,10 +289,8 @@
             android:id="@+id/imageRes3"/>
 
 
+
     </ViewFlipper>
-
-
-
 
     <Button
         android:layout_width="wrap_content"
@@ -310,12 +315,10 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:id="@+id/changeOpenings"
+        android:background="@drawable/ic_edit_pen"
         android:layout_above="@+id/frag_details_tablel_openings"
         android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2"
-        android:background="@drawable/ic_edit_pen"
-        android:layout_marginLeft="5dp"
-        />
+        android:layout_toEndOf="@+id/textView2" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -323,46 +326,47 @@
         android:layout_height="25dp"
         android:id="@+id/changePhone"
         android:background="@drawable/ic_edit_pen"
+        android:layout_above="@+id/textView2"
         android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@id/textView"
-        android:layout_alignBottom="@id/textView"
-        android:layout_marginLeft="5dp"
-        />
+        android:layout_toEndOf="@+id/textView"
+        android:paddingRight="50dp" />
+
+
 
     <LinearLayout
         android:id="@+id/fragment_details_checkboxes_layout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/frag_details_tablel_openings"
-        >
-    <CheckBox
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="10dp"
-        android:id="@+id/fragment_details_checkbox_vegan"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/vegan"
-        android:button="@drawable/checkbox_selector"/>
+        android:layout_alignBottom="@+id/frag_details_tablel_openings"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+        <CheckBox
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/fragment_details_checkbox_vegan"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/vegan"
+            android:button="@drawable/checkbox_selector"/>
 
-    <CheckBox
-        android:layout_marginRight="10dp"
-        android:id="@+id/fragment_details_checkbox_vegetarian"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/vegetarian"
-        android:button="@drawable/checkbox_selector"/>
+        <CheckBox
+            android:layout_marginRight="10dp"
+            android:id="@+id/fragment_details_checkbox_vegetarian"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/vegetarian"
+            android:button="@drawable/checkbox_selector"/>
 
-    <CheckBox
-        android:id="@+id/fragment_details_checkbox_gluten"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-
-        android:layout_weight="1"
-        android:text="@string/gluten"
-        android:button="@drawable/gluten_checkbox_selector"
-        android:textSize="12dp"/>
+        <CheckBox
+            android:id="@+id/fragment_details_checkbox_gluten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/gluten"
+            android:button="@drawable/gluten_checkbox_selector"
+            android:textSize="12dp"/>
 
     </LinearLayout>
 

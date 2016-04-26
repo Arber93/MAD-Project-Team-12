@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Restaurant Manager</string>
+    <string name="accept">ACCETTA</string>
+    <string name="accepted">ACCETTATO</string>
+    <string name="action_settings">Impostazioni</string>
+    <string name="additional_notes"></string>
+    <string name="ami_description_field_hint">Descrivi il prodotto qui</string>
+    <string name="ami_description_field_title">Descrizione</string>
+    <string name="ami_gluten_free_title"></string>
+    <string name="to">Alle</string>
+    <string name="from">Dalle</string>
+    <string name="btn_reservations">Prenotazioni</string>
+    <string name="button_text_cancel">CANCELLA</string>
+    <string name="button_text_save">SALVA</string>
+    <string name="cancel">Cancella</string>
+    <string name="closed">Chiuso</string>
+    <string name="confirm">Conferma</string>
+    <string name="day">Giorno</string>
+    <string name="details">Dettagli</string>
+    <string name="friday">Venerdì</string>
+    <string name="hours">Ora</string>
+    <string name="hours_open">Orari di Apertura:</string>
+    <string name="menu">Menù</string>
+    <string name="monday">Lunedì</string>
+    <string name="phone">Telefono:</string>
+    <string name="saturday">Sabato</string>
+    <string name="sunday">Domenica</string>
+    <string name="thurdsay">Giovedì</string>
+    <string name="tuesday">Martedì</string>
+    <string name="wednesday">Mercoledì</string>
+    <string name="vegan">Vegano</string>
+    <string name="vegetarian">Vegetariano</string>
+    <string name="gluten">Senza Glutine</string>
+</resources>

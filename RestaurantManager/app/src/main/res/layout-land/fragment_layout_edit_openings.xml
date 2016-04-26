@@ -51,33 +51,33 @@
 
             <TextView
                 android:text="@string/monday"
-                android:layout_weight="1"
+                android:layout_weight="0.75"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:textSize="12dp" />
 
             <EditText
-                android:layout_weight="1.25"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:inputType="time"
                 android:hint="@string/from"
                 android:id="@+id/monday_from"
                 android:textSize="12dp" />
 
             <EditText
-                android:layout_weight="1.25"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:inputType="time"
                 android:hint="@string/to"
                 android:id="@+id/monday_to"
                 android:textSize="12dp" />
 
             <CheckBox
-                android:layout_weight="-0.5"
+                android:layout_weight="0"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:id="@+id/monday_closed"
                 android:checked="false" />
 
@@ -95,32 +95,32 @@
             <TextView
                 android:text="@string/tuesday"
 
-                android:layout_weight="1"
+                android:layout_weight="0.75"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:textSize="12dp" />
 
             <EditText
-                android:layout_weight="1.25"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:inputType="time"
                 android:hint="@string/from"
                 android:id="@+id/tuesday_from"
                 android:textSize="12dp" />
 
             <EditText
-                android:layout_weight="1.25"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:inputType="time"
                 android:hint="@string/to"
                 android:id="@+id/tuesday_to"
                 android:textSize="12dp" />
             <CheckBox
-                android:layout_weight="-0.5"
+                android:layout_weight="0"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:id="@+id/tuesday_closed"
                 />
 
@@ -137,33 +137,33 @@
             <TextView
                 android:text="@string/wednesday"
 
-                android:layout_weight="1"
+                android:layout_weight="0.75"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:textSize="12dp" />
 
             <EditText
-                android:layout_weight="1.25"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:inputType="time"
                 android:hint="@string/from"
                 android:id="@+id/wednesday_from"
                 android:textSize="12dp" />
 
             <EditText
-                android:layout_weight="1.25"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:inputType="time"
                 android:hint="@string/to"
                 android:id="@+id/wednesday_to"
                 android:textSize="12dp" />
 
             <CheckBox
-                android:layout_weight="-0.5"
+                android:layout_weight="0"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:id="@+id/wednesday_closed"
                 />
 
@@ -179,33 +179,33 @@
             <TextView
                 android:text="@string/thurdsay"
 
-                android:layout_weight="1"
+                android:layout_weight="0.75"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:textSize="12dp" />
 
             <EditText
-                android:layout_weight="1.25"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:inputType="time"
                 android:hint="@string/from"
                 android:id="@+id/thursday_from"
                 android:textSize="12dp" />
 
             <EditText
-                android:layout_weight="1.25"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:inputType="time"
                 android:hint="@string/to"
                 android:id="@+id/thursday_to"
                 android:textSize="12dp" />
 
             <CheckBox
-                android:layout_weight="-0.5"
+                android:layout_weight="0"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:id="@+id/thursday_closed"
                 />
 
@@ -221,33 +221,33 @@
             <TextView
                 android:text="@string/friday"
 
-                android:layout_weight="1"
+                android:layout_weight="0.75"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:textSize="12dp" />
 
             <EditText
-                android:layout_weight="1.25"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:inputType="time"
                 android:hint="@string/from"
                 android:id="@+id/friday_from"
                 android:textSize="12dp" />
 
             <EditText
-                android:layout_weight="1.25"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:inputType="time"
                 android:hint="@string/to"
                 android:id="@+id/friday_to"
                 android:textSize="12dp" />
 
             <CheckBox
-                android:layout_weight="-0.5"
+                android:layout_weight="0"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:id="@+id/friday_closed"
                 />
 
@@ -263,33 +263,33 @@
             <TextView
                 android:text="@string/saturday"
 
-                android:layout_weight="1"
+                android:layout_weight="0.75"
                 android:gravity="center"
-                android:padding="15dp"
-                android:textSize="12dp" />
+                android:padding="7dp"
+                android:textSize="12dp"  />
 
             <EditText
-                android:layout_weight="1.25"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:inputType="time"
                 android:hint="@string/from"
                 android:id="@+id/saturday_from"
                 android:textSize="12dp" />
 
             <EditText
-                android:layout_weight="1.25"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:inputType="time"
                 android:hint="@string/to"
                 android:id="@+id/saturday_to"
                 android:textSize="12dp" />
 
             <CheckBox
-                android:layout_weight="-0.5"
+                android:layout_weight="0"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:id="@+id/saturday_closed"
                 />
 
@@ -305,33 +305,33 @@
             <TextView
                 android:text="@string/sunday"
 
-                android:layout_weight="1"
+                android:layout_weight="0.75"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:textSize="12dp" />
 
             <EditText
-                android:layout_weight="1.25"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:inputType="time"
                 android:hint="@string/from"
                 android:id="@+id/sunday_from"
                 android:textSize="12dp" />
 
             <EditText
-                android:layout_weight="1.25"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="7dp"
                 android:inputType="time"
                 android:hint="@string/to"
                 android:id="@+id/sunday_to"
                 android:textSize="12dp" />
 
             <CheckBox
-                android:layout_weight="-0.5"
-                android:padding="15dp"
+                android:layout_weight="0"
                 android:gravity="center"
+                android:padding="7dp"
                 android:id="@+id/sunday_closed"
                 />
 

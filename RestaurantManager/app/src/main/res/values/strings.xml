@@ -55,10 +55,9 @@
     <string name="review_info2">Based on</string>
     <string name="review_info3p">assessments</string>
     <string name="review_info3s">assessment</string>
-    <string name="icon_up">Useful</string>
-    <!--&#xf087;-->
-    <string name="icon_down">Useless</string>
-    <!--&#xf087;-->
+    <string name="review_hint_reply">Insert your reply</string>
+    <string name="review_info4">By</string>
+    <string name="review_info5">on</string>
 
     <string name="phone">Phone:</string>
     <string name="editphone">Type you new number:</string>
@@ -83,5 +82,7 @@
     <string name="vegan">Vegan</string>
     <string name="vegetarian">Vegetarian</string>
     <string name="gluten">Gluten-Free</string>
+
+    <string name="paper_plane">&#xf1d8;</string>
 
 </resources>

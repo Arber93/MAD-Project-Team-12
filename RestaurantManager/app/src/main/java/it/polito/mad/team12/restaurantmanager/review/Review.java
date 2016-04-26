@@ -13,8 +13,7 @@ public class Review {
     String userID;
     String RestaurantID;
     Date dataReview;
-    Integer utili;
-    Integer nonUtili;
+    String reply;
 
     public String getTitle() {
         return Title;
@@ -65,19 +64,11 @@ public class Review {
         this.dataReview = dataReview;
     }
 
-    public Integer getUtili() {
-        return utili;
+    public String getReply() {
+        return this.reply;
     }
 
-    public void setUtili(Integer utili) {
-        this.utili = utili;
-    }
-
-    public Integer getNonUtili() {
-        return nonUtili;
-    }
-
-    public void setNonUtili(Integer nonUtili) {
-        this.nonUtili = nonUtili;
+    public void setReply(String reply) {
+        this.reply = reply;
     }
 }

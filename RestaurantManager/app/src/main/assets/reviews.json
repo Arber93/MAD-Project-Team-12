@@ -7,8 +7,7 @@
       "title": "Titolo Recensione1",
       "text": "Questa è una prova. Questa è una prova. Questa è una prova. Questa è una prova. Questa è una prova. Questa è una prova. Questa è una prova. ",
       "stars": "3.5",
-      "utile": "1",
-      "nonutile": "0"
+      "reply": ""
     },
     {
       "restaurantID": "Nome Ristorante1",
@@ -17,8 +16,7 @@
       "title": "Titolo Recensione2",
       "text": "Questa è una prova. Questa è una prova. Questa è una prova. Questa è una prova. Questa è una prova. ",
       "stars": "3.5",
-      "utile": "1",
-      "nonutile": "0"
+      "reply": ""
     },
     {
       "restaurantID": "Nome Ristorante2",
@@ -27,8 +25,7 @@
       "title": "Titolo Recensione3",
       "text": "Questa è una prova. Questa è una prova. Questa è una prova. Questa è una prova. Questa è una prova. Questa è una prova. Questa è una prova. ",
       "stars": "3",
-      "utile": "1",
-      "nonutile": "0"
+      "reply": "Grazie per la recensione"
     },
     {
       "restaurantID": "Nome Ristorante1",
@@ -37,20 +34,19 @@
       "title": "Titolo Recensione4",
       "text": "Ciao mamma guarda come mi diverto",
       "stars": "0.5",
-      "utile": "1",
-      "nonutile": "0"
+      "reply": ""
     }
   ],
   "Restaurant": [
     {
       "restaurantID": "Nome Ristorante2",
       "stars": "3",
-      "imageName": "restaurantimage"
+      "imageName": "restaurant2"
     },
     {
       "restaurantID": "Nome Ristorante1",
       "stars": "2.4",
-      "imageName": "restaurantimage2"
+      "imageName": "restaurant1"
     }
   ]
 }

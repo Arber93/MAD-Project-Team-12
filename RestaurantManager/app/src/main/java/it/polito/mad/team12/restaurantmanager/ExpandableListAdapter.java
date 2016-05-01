@@ -118,13 +118,17 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         Button btn_deny = (Button) convertView.findViewById(R.id.btn_deny);
         Button btn_accept = (Button) convertView.findViewById(R.id.btn_accept);
         if (currentFragmentInt == acceptedFragmentInt){
+            // you can't accept something already accepted
             btn_accept.setVisibility(View.GONE);
+            // move the other button on the right
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)btn_deny.getLayoutParams();
             params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
             params.addRule(RelativeLayout.ALIGN_PARENT_END);
             btn_deny.setLayoutParams(params);
         }
         if (currentFragmentInt == deniedFragmentInt){
+            // once denied, a reservation cannot be re-accepted, nor re-denied
+            btn_accept.setVisibility(View.GONE);
             btn_deny.setVisibility(View.GONE);
         }
 
@@ -135,11 +139,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     getAndRemove(groupPosition, currentFragmentInt, jsonPending); // it also updates sharedPreferences
                     putReservation(BTN_ACCEPT_REQUEST); // it also updates sharedPreferences
                 }
-                if (currentFragmentInt == deniedFragmentInt){
-                    getAndRemove(groupPosition, currentFragmentInt, jsonDenied); // it also updates sharedPreferences
-                    putReservation(BTN_ACCEPT_REQUEST); // it also updates sharedPreferences
-                }
-
                 //remove header from list and add it to the accepted headers
                 reservationHeaders.remove(getGroup(groupPosition));
                 notifyDataSetChanged();
@@ -159,7 +158,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     putReservation(BTN_DENY_REQUEST); // it also updates sharedPreferences
                 }
 
-                //remove header from list and add it to the accepted headers
+                //remove header from list and add it to the denied headers
                 reservationHeaders.remove(getGroup(groupPosition));
                 notifyDataSetChanged();
             }

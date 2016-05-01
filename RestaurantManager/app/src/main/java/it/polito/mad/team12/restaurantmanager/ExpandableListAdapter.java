@@ -1,6 +1,4 @@
-package info.androidhive.materialtabs.classes;
-
-import java.util.ArrayList;
+package it.polito.mad.team12.restaurantmanager;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,7 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import info.androidhive.materialtabs.R;
+import java.util.ArrayList;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 

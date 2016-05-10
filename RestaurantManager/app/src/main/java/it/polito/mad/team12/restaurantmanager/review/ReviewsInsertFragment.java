@@ -1,14 +1,13 @@
 package it.polito.mad.team12.restaurantmanager.review;
 
 
+import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,15 +15,12 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-
 import it.polito.mad.team12.restaurantmanager.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ReviewsFragment extends Fragment {
+public class ReviewsInsertFragment extends Fragment {
     /* This fragment will host all reviews allowing the manager to reply if he wants to. */
     private View myFragmentId;
     private RatingBar ratingBar;
@@ -34,6 +30,7 @@ public class ReviewsFragment extends Fragment {
     private TextView rating;
     private TextView score;
     String restaurantID = "Nome Ristorante1";
+    String userID = "Antonio";
 
 
     /****
@@ -53,14 +50,14 @@ public class ReviewsFragment extends Fragment {
     //Bundle bundle = new Bundle();
     //bundle.putString("restaurantID","Nome Ristorante1");
     //reviewsFragment.setArguments(bundle);
-    public ReviewsFragment() {
+    public ReviewsInsertFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        myFragmentId = inflater.inflate(R.layout.fragment_reviews, container, false);
+        myFragmentId = inflater.inflate(R.layout.fragment_reviews_insert, container, false);
         ratingBar = (RatingBar) myFragmentId.findViewById(R.id.review_rate);
         numberOfReviews = (TextView) myFragmentId.findViewById(R.id.review_number);
         nameRestaurant = (TextView) myFragmentId.findViewById(R.id.review_nameRestaurant);
@@ -85,6 +82,24 @@ public class ReviewsFragment extends Fragment {
         int imageResource = getResources().getIdentifier(getActivity().getPackageName() + uri, null, null);
         restaurantImage.setImageResource(imageResource);
 
+        Typeface font = Typeface.createFromAsset(getActivity().getAssets(),"fontawesome-webfont.ttf");
+        ((TextView) myFragmentId.findViewById(R.id.review_write_icon)).setTypeface(font);
+
+        ((TextView) myFragmentId.findViewById(R.id.review_write)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment newFragment = ReviewDialogInsert.newInstance(userID, restaurantID);
+                newFragment.show(getFragmentManager(), "dialog");
+            }
+        });
+        ((TextView) myFragmentId.findViewById(R.id.review_write_icon)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment newFragment = ReviewDialogInsert.newInstance(userID,restaurantID);
+                newFragment.show(getFragmentManager(),"dialog");
+            }
+        });
+
         return myFragmentId;
     }
 
@@ -108,7 +123,7 @@ public class ReviewsFragment extends Fragment {
 
             @Override
             public void onItemClick(View v) {
-                DialogFragment newFragment = ReviewDialogFragment.newInstance(v,restaurantID);
+                DialogFragment newFragment = ReviewDialogIFragment.newInstance(v,restaurantID);
                 newFragment.show(getFragmentManager(),"dialog");
             }
         });

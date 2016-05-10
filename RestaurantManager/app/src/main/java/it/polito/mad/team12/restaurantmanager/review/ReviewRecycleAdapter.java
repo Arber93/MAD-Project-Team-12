@@ -27,6 +27,17 @@ public class ReviewRecycleAdapter extends RecyclerView.Adapter<ReviewRecycleAdap
         this.mInflater = LayoutInflater.from(context);
     }
 
+    public void add(Review item, int position) {
+        mData.add(position, item);
+        notifyItemInserted(position);
+    }
+
+    public void remove(Review item) {
+        int position = mData.indexOf(item);
+        mData.remove(position);
+        notifyItemRemoved(position);
+    }
+
     @Override
     public MyViewReviewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.item_review, parent, false);
@@ -53,6 +64,7 @@ public class ReviewRecycleAdapter extends RecyclerView.Adapter<ReviewRecycleAdap
         TextView text;
         TextView data;
         TextView link;
+        TextView reviewID;
 
         public MyViewReviewHolder(View itemView) {
             super(itemView);
@@ -62,22 +74,23 @@ public class ReviewRecycleAdapter extends RecyclerView.Adapter<ReviewRecycleAdap
             data = (TextView) itemView.findViewById(R.id.review_date);
             text = (TextView) itemView.findViewById(R.id.review_text);
             link = (TextView) itemView.findViewById(R.id.review_link);
+            reviewID = (TextView) itemView.findViewById(R.id.review_id);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(mItemClickListener != null)
                         mItemClickListener.onItemClick(v);
-                    Log.d("Premuto",((TextView)v.findViewById(R.id.review_title)).getText().toString());
                 }
             });
         }
 
         public void setData(Review current) {
             this.title.setText(current.getTitle());
-            this.ratingBar.setRating(current.getStars());
+            this.ratingBar.setRating(Float.parseFloat(current.getStars()));
             this.user.setText(current.getUserID());
             this.text.setText(current.getText());
             this.data.setText(current.getDataReview());
+            this.reviewID.setText(current.getReviewID());
         }
     }
 

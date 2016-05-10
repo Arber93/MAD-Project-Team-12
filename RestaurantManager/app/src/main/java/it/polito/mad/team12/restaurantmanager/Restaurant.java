@@ -6,8 +6,10 @@ package it.polito.mad.team12.restaurantmanager;
 public class Restaurant {
 
     String restaurantID;
-    Float stars;
+    String stars;
     String imageName;
+
+    public Restaurant(){}
 
     public String getRestaurantID() {
         return restaurantID;
@@ -17,11 +19,11 @@ public class Restaurant {
         this.restaurantID = restaurantID;
     }
 
-    public Float getStars() {
+    public String getStars() {
         return stars;
     }
 
-    public void setStars(Float stars) {
+    public void setStars(String stars) {
         this.stars = stars;
     }
 

@@ -14,20 +14,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.firebase.client.Firebase;
+
 import java.io.IOException;
 
+import it.polito.mad.team12.restaurantmanager.review.ReviewUtility;
 import it.polito.mad.team12.restaurantmanager.review.ReviewsFragment;
+import it.polito.mad.team12.restaurantmanager.review.ReviewsInsertFragment;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;
     private NavigationView nvDrawer;
     private ActionBarDrawerToggle drawerToggle;
     private Toolbar toolbar;
+    String restaurantID = "Nome Ristorante1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //setup Firebase
+        Firebase.setAndroidContext(this);
+        ReviewUtility.loadReviews(restaurantID);
+        ReviewUtility.loadRestaurant(restaurantID);
 
         // Set a Toolbar to replace the ActionBar.
         toolbar = (Toolbar) findViewById(R.id.toolbar);

@@ -59,6 +59,9 @@
     <string name="review_info4">By</string>
     <string name="review_info5">on</string>
 
+    <string name="review_hint_insert_title">Insert your review\'s Title</string>
+    <string name="review_hint_insert">Insert review</string>
+
     <string name="phone">Phone:</string>
     <string name="editphone">Type you new number:</string>
     <string name="hours_open">Opening Hours:</string>
@@ -91,5 +94,13 @@
     <string name="back">BACK</string>
 
     <string name="paper_plane">&#xf1d8;</string>
+    <string name="delete_reply">&#xf014;</string>
+    <string name="close_icon">&#xf00d;</string>
+    <string name="save_icon">&#xf0c7;</string>
+    <string name="pencil_icon">&#xf040;</string>
+    <string name="review_write">Write Review</string>
+    <string name="delete_reply_text">Delete Reply</string>
+
+    <string name="mandatory">Mandatory</string>
 
 </resources>

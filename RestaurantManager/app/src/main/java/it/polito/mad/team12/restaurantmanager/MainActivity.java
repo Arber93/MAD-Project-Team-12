@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.firebase.client.Firebase;
+
 import java.io.IOException;
 
 import it.polito.mad.team12.restaurantmanager.review.ReviewUtility;
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Firebase.setAndroidContext(this);
+
         setContentView(R.layout.activity_main);
 
         // Set a Toolbar to replace the ActionBar.

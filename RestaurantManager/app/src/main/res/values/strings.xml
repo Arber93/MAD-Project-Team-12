@@ -79,9 +79,41 @@
     <string name="cancel">Cancel</string>
     <string name="prev">Prev.</string>
     <string name="next">Next</string>
-
+    <string name="editFlipper">Edit</string>
     <string name="vegan">Vegan</string>
     <string name="vegetarian">Vegetarian</string>
     <string name="gluten">Gluten-Free</string>
+    <string name="fromcamera">New Photo</string>
+    <string name="fromroll">From Gallery</string>
+    <string name="deletephoto">Delete</string>
+    <string name="category">Food Categories</string>
+
+
+    <string-array name="foodcategories">
+        <item>All Categories</item>
+        <item>American</item>
+        <item>Asian</item>
+        <item>Beverages</item>
+        <item>Hamburgers</item>
+        <item>Indian</item>
+        <item>Italian</item>
+        <item>Greek</item>
+        <item>Japanese</item>
+        <item>Mexican</item>
+        <item>Pizza</item>
+        <item>Thai</item>
+
+    </string-array>
+
+
+    <string-array name="sortingfilters">
+        <item>No Filters</item>
+        <item>A-Z</item>
+        <item>Closest First</item>
+        <item>Best Reviews</item>
+
+
+    </string-array>
+
 
 </resources>

@@ -18,6 +18,10 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -47,7 +51,7 @@ public class EditOpenings extends DialogFragment implements View.OnClickListener
     EditText frTo,frFro;
     EditText saTo,saFro;
     EditText suTo,suFro;
-
+    Firebase mRootRef,restaurant;
     Button confirm, cancel;
 
     CheckBox monC,tueC,wedC,thuC,friC,satC,sunC;
@@ -191,11 +195,30 @@ public class EditOpenings extends DialogFragment implements View.OnClickListener
         confirm.setOnClickListener(this);
         cancel.setOnClickListener(this);
 
+        restaurant.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                desR = dataSnapshot.getValue(RestaurantDetails.class);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
 
 
         return myFragment;
     }
 
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Firebase.setAndroidContext(getContext());
+
+        String restaurant11= "Tutto PizzaCorso Duca Degli Abruzzi 19";
+        mRootRef = new Firebase("https://popping-inferno-6667.firebaseio.com/restaurants");   //ROOT of Firebase Restaurants
+        restaurant = mRootRef.child(restaurant11);      //access the specified restaurant
+    }
 
     @Override
     public void onStart() {
@@ -205,8 +228,6 @@ public class EditOpenings extends DialogFragment implements View.OnClickListener
         if (dialog != null) {
             dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         }
-
-        loadDataFromJsonFile();
 
     }
 
@@ -299,7 +320,7 @@ public class EditOpenings extends DialogFragment implements View.OnClickListener
             if (desR.isSatclosed() && saFro.getText().length() == 0 && saTo.getText().length() ==0){
 
             }else {
-                desR.setFriclosed(false);
+                desR.setSatclosed(false);
                 if (saFro.getText().length() > 0) desR.setSaturdayFrom(saFro.getText().toString());
                 if (saTo.getText().length() > 0) desR.setSaturdayTo(saTo.getText().toString());
             }
@@ -317,7 +338,7 @@ public class EditOpenings extends DialogFragment implements View.OnClickListener
             }
         }
 
-        saveDataToJsonFile();
+        restaurant.setValue(desR);
 
             FragmentManager manager = getFragmentManager();
             FragmentTransaction transaction;

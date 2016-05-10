@@ -1,7 +1,9 @@
 package it.polito.mad.team12.restaurantmanager;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,6 +110,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(final int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         final ReservationHeader header = (ReservationHeader) getGroup(groupPosition);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
         if (convertView == null) {
             LayoutInflater li = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -118,31 +122,45 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         Button btn_deny = (Button) convertView.findViewById(R.id.btn_deny);
         Button btn_accept = (Button) convertView.findViewById(R.id.btn_accept);
         if (currentFragmentInt == acceptedFragmentInt){
+            // you can't accept something already accepted
             btn_accept.setVisibility(View.GONE);
+            // move the other button on the right
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)btn_deny.getLayoutParams();
             params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
             params.addRule(RelativeLayout.ALIGN_PARENT_END);
             btn_deny.setLayoutParams(params);
         }
         if (currentFragmentInt == deniedFragmentInt){
+            // once denied, a reservation cannot be re-accepted, nor re-denied
+            btn_accept.setVisibility(View.GONE);
             btn_deny.setVisibility(View.GONE);
         }
 
         btn_accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (currentFragmentInt == pendingFragmentInt){
-                    getAndRemove(groupPosition, currentFragmentInt, jsonPending); // it also updates sharedPreferences
-                    putReservation(BTN_ACCEPT_REQUEST); // it also updates sharedPreferences
-                }
-                if (currentFragmentInt == deniedFragmentInt){
-                    getAndRemove(groupPosition, currentFragmentInt, jsonDenied); // it also updates sharedPreferences
-                    putReservation(BTN_ACCEPT_REQUEST); // it also updates sharedPreferences
-                }
-
-                //remove header from list and add it to the accepted headers
-                reservationHeaders.remove(getGroup(groupPosition));
-                notifyDataSetChanged();
+                builder.setMessage(R.string.dialog_message_accept).setTitle(R.string.dialog_title_accept);
+                // Add the buttons
+                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User clicked OK button
+                        if (currentFragmentInt == pendingFragmentInt){
+                            getAndRemove(groupPosition, currentFragmentInt, jsonPending); // it also updates sharedPreferences
+                            putReservation(BTN_ACCEPT_REQUEST); // it also updates sharedPreferences
+                        }
+                        //remove header from list and add it to the accepted headers
+                        reservationHeaders.remove(getGroup(groupPosition));
+                        notifyDataSetChanged();
+                    }
+                });
+                builder.setNegativeButton(R.string.back, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
@@ -150,18 +168,32 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         btn_deny.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (currentFragmentInt == pendingFragmentInt){
-                    getAndRemove(groupPosition, currentFragmentInt, jsonPending); // it also updates sharedPreferences
-                    putReservation(BTN_DENY_REQUEST); // it also updates sharedPreferences
-                }
-                if (currentFragmentInt == acceptedFragmentInt){
-                    getAndRemove(groupPosition, currentFragmentInt, jsonAccepted); // it also updates sharedPreferences
-                    putReservation(BTN_DENY_REQUEST); // it also updates sharedPreferences
-                }
-
-                //remove header from list and add it to the accepted headers
-                reservationHeaders.remove(getGroup(groupPosition));
-                notifyDataSetChanged();
+                builder.setMessage(R.string.dialog_message_deny).setTitle(R.string.dialog_title_deny);
+                // Add the buttons
+                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User clicked OK button
+                        if (currentFragmentInt == pendingFragmentInt){
+                            getAndRemove(groupPosition, currentFragmentInt, jsonPending); // it also updates sharedPreferences
+                            putReservation(BTN_DENY_REQUEST); // it also updates sharedPreferences
+                        }
+                        if (currentFragmentInt == acceptedFragmentInt){
+                            getAndRemove(groupPosition, currentFragmentInt, jsonAccepted); // it also updates sharedPreferences
+                            putReservation(BTN_DENY_REQUEST); // it also updates sharedPreferences
+                        }
+                        //remove header from list and add it to the denied headers
+                        reservationHeaders.remove(getGroup(groupPosition));
+                        notifyDataSetChanged();
+                    }
+                });
+                builder.setNegativeButton(R.string.back, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 

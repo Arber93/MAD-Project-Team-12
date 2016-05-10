@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
+    <string name="review_hint_reply">Inserisci la tua risposta</string>
+    <string name="review_info">Le recensioni dei clienti</string>
+    <string name="review_info2">Basato su</string>
+    <string name="review_info3p">valutazioni</string>
+    <string name="review_info3s">valutazione</string>
+    <string name="review_info4">Da</string>
+    <string name="review_info5">il</string>
+
+    <string name="paper_plane">&#xf1d8;</string>
+
     <string name="app_name">Restaurant Manager</string>
     <string name="accept">ACCETTA</string>
     <string name="accepted">ACCETTATO</string>

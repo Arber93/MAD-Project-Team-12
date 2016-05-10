@@ -18,7 +18,6 @@ import com.firebase.client.Firebase;
 
 import java.io.IOException;
 
-import it.polito.mad.team12.restaurantmanager.review.ReviewUtility;
 import it.polito.mad.team12.restaurantmanager.review.ReviewsFragment;
 
 public class MainActivity extends AppCompatActivity {

@@ -2,12 +2,15 @@ package it.polito.mad.team12.restaurantmanager.review;
 
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.TreeMap;
 
 import it.polito.mad.team12.restaurantmanager.Restaurant;
@@ -17,8 +20,8 @@ import it.polito.mad.team12.restaurantmanager.Restaurant;
  */
 public class ReviewUtility {
 
-    private static TreeMap<String, ArrayList<Review>> reviewForRestaurant = new TreeMap<>();
-    private static TreeMap<String, Restaurant> restaurant = new TreeMap<>();
+    public static TreeMap<String, ArrayList<Review>> reviewForRestaurant = new TreeMap<>();
+    public static TreeMap<String, Restaurant> restaurant = new TreeMap<>();
 
     public static ArrayList<Review> getReviews(String restaurantID) {
         return reviewForRestaurant.get(restaurantID);
@@ -36,13 +39,18 @@ public class ReviewUtility {
         return restaurant.get(restaurantID).getimageName();
     }
 
+    public static void clear(){
+        reviewForRestaurant = new TreeMap<>();
+        restaurant = new TreeMap<>();
+    }
+
     public static void loadJSONFromAsset(InputStream is) {
 
         String sJson = "";
 
         try {
 
-            SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy",Locale.ITALIAN);
 
             int size = is.available();
 
@@ -70,8 +78,7 @@ public class ReviewUtility {
                 String title = jsonObject.optString("title").toString();
                 String text = jsonObject.optString("text").toString();
                 Float stars = Float.parseFloat(jsonObject.optString("stars").toString());
-                int numUtile = Integer.parseInt(jsonObject.optString("utile").toString());
-                int numNonUtile = Integer.parseInt(jsonObject.optString("nonutile").toString());
+                String reply = jsonObject.optString("reply").toString();
 
                 Review r = new Review();
                 r.setTitle(title);
@@ -80,14 +87,13 @@ public class ReviewUtility {
                 r.setUserID(userID);
                 r.setRestaurantID(restaurantID);
                 r.setStars(stars);
-                r.setUtili(numUtile);
-                r.setNonUtili(numNonUtile);
-
+                r.setReply(reply);
                 ArrayList<Review> mReviews = reviewForRestaurant.get(restaurantID);
                 if (mReviews == null)
                     mReviews = new ArrayList<>();
                 mReviews.add(r);
                 reviewForRestaurant.put(restaurantID, mReviews);
+                Log.d("***", r.getReply());
             }
 
             jsonArray = jsonRootObject.optJSONArray("Restaurant");

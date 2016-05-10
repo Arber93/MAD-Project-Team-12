@@ -1,11 +1,14 @@
 package it.polito.mad.team12.restaurantmanager.review;
 
 
-import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +33,7 @@ public class ReviewsFragment extends Fragment {
     private ImageView restaurantImage;
     private TextView rating;
     private TextView score;
+    String restaurantID = "Nome Ristorante1";
 
 
     /****
@@ -64,7 +68,6 @@ public class ReviewsFragment extends Fragment {
         score = (TextView) myFragmentId.findViewById(R.id.review_score);
         rating = (TextView) myFragmentId.findViewById(R.id.review_info2);
 
-        String restaurantID = "Nome Ristorante1";
         ratingBar.setRating(ReviewUtility.getStarsRestaurant(restaurantID));
         nameRestaurant.setText(restaurantID);
         numberOfReviews.setText(ReviewUtility.numberOfReviews(restaurantID).toString());
@@ -74,7 +77,7 @@ public class ReviewsFragment extends Fragment {
             rating.setText(getResources().getText(R.string.review_info3p));
         score.setText(ratingBar.getRating() + "");
         String nome = ReviewUtility.getImageName(restaurantID);
-        String uri = ":drawable/" + nome;
+        String uri = ":mipmap/" + nome;
 
         int imageResource = getResources().getIdentifier(getActivity().getPackageName() + uri, null, null);
         restaurantImage.setImageResource(imageResource);
@@ -88,7 +91,8 @@ public class ReviewsFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         try {
-            ReviewUtility.loadJSONFromAsset(getActivity().getAssets().open("reviews.json"));
+            if(ReviewUtility.reviewForRestaurant.size()==0)
+                ReviewUtility.loadJSONFromAsset(getActivity().getAssets().open("reviews.json"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -99,6 +103,14 @@ public class ReviewsFragment extends Fragment {
         RecyclerView recyclerView = (RecyclerView) myFragmentId.findViewById(R.id.review_recyclerViewMain);
         recyclerView.setHasFixedSize(true);
         ReviewRecycleAdapter adapter = new ReviewRecycleAdapter(getContext(), ReviewUtility.getReviews(retaurantID));
+        adapter.SetOnItemClickListener(new ReviewRecycleAdapter.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(View v) {
+                DialogFragment newFragment = ReviewDialogFragment.newInstance(v,restaurantID);
+                newFragment.show(getFragmentManager(),"dialog");
+            }
+        });
         recyclerView.setAdapter(adapter);
         LinearLayoutManager mLinearLayoutManagerVertical = new LinearLayoutManager(getContext());
         mLinearLayoutManagerVertical.setOrientation(LinearLayoutManager.VERTICAL);

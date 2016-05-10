@@ -6,6 +6,8 @@ package it.polito.mad.team12.restaurantmanager;
 
 public class RestaurantDetails {
 
+    private String restaurantName;
+    private String restaurantAddress;
     private String telephone;
     private String mondayFrom, mondayTo;
     private String tuesdayFrom, tuesdayTo;
@@ -14,7 +16,9 @@ public class RestaurantDetails {
     private String fridayFrom, fridayTo;
     private String saturdayFrom, saturdayTo;
     private String sundayFrom, sundayTo;
-
+    private String categoryFood, categoryFoodIT;
+    private String restaurantLogo;
+    private Double[] location;
     private boolean monclosed, tueclosed, wedclosed, thurclosed, friclosed, satclosed, sunclosed;
 
     private boolean vegetarian;
@@ -23,12 +27,13 @@ public class RestaurantDetails {
 
 
     public RestaurantDetails(){
-        vegan=false;
+       /* vegan=false;
         vegetarian=false;
         glutenFree=false;
         monclosed=tueclosed=wedclosed= thurclosed=friclosed=satclosed=sunclosed = false;
-        mondayFrom=mondayTo=tuesdayTo=tuesdayFrom=wednesdayFrom=wednesdayTo=thursdayTo=thursdayFrom=fridayFrom=fridayTo=saturdayTo=saturdayFrom=sundayFrom=sundayTo=null;
+        mondayFrom=mondayTo=photo1=photo2=photo3=photo4=tuesdayTo=tuesdayFrom=wednesdayFrom=wednesdayTo=thursdayTo=thursdayFrom=fridayFrom=fridayTo=saturdayTo=saturdayFrom=sundayFrom=sundayTo=null;
 
+   */
     }
 
 
@@ -230,6 +235,55 @@ public class RestaurantDetails {
 
     public boolean isWedclosed() {
         return wedclosed;
+    }
+
+
+    public String getRestaurantAddress() {
+        return restaurantAddress;
+    }
+
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public void setRestaurantAddress(String restaurantAddress) {
+        this.restaurantAddress = restaurantAddress;
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
+    }
+
+    public String getCategoryFood() {
+        return categoryFood;
+    }
+
+    public void setCategoryFood(String categoryFood) {
+        this.categoryFood = categoryFood;
+    }
+
+    public String getRestaurantLogo() {
+        return restaurantLogo;
+    }
+
+    public void setRestaurantLogo(String restaurantLogo) {
+        this.restaurantLogo = restaurantLogo;
+    }
+
+    public String getCategoryFoodIT() {
+        return categoryFoodIT;
+    }
+
+    public void setCategoryFoodIT(String categoryFoodIT) {
+        this.categoryFoodIT = categoryFoodIT;
+    }
+
+    public Double[] getLocation() {
+        return location;
+    }
+
+    public void setLocation(Double[] location) {
+        this.location = location;
     }
 
 }

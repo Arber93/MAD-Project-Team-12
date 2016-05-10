@@ -16,6 +16,10 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -38,6 +42,7 @@ public class EditPhoneDetails extends DialogFragment implements View.OnClickList
     private View myFragment;
     EditText newPhone;
     Button confirm, cancel;
+    Firebase mRootRef,restaurant;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,7 +59,31 @@ public class EditPhoneDetails extends DialogFragment implements View.OnClickList
         confirm.setOnClickListener(this);
         cancel.setOnClickListener(this);
 
+
+        restaurant.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                desR = dataSnapshot.getValue(RestaurantDetails.class);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+
         return myFragment;
+    }
+
+
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Firebase.setAndroidContext(getContext());
+
+        String restaurant11= "Tutto PizzaCorso Duca Degli Abruzzi 19";
+        mRootRef = new Firebase("https://popping-inferno-6667.firebaseio.com/restaurants");   //ROOT of Firebase Restaurants
+        restaurant = mRootRef.child(restaurant11);      //access the specified restaurant
     }
 
     @Override
@@ -80,9 +109,10 @@ public class EditPhoneDetails extends DialogFragment implements View.OnClickList
         }
         if (v == confirm){
             // save things into JSON updating it
-            loadDataFromJsonFile();
            if (newPhone.getText().length() > 0 ) desR.setTelephone(newPhone.getText().toString());
-            saveDataToJsonFile();
+
+            restaurant.setValue(desR);
+
             //exit from dialog fragment
             FragmentManager manager = getFragmentManager();
             FragmentTransaction transaction;

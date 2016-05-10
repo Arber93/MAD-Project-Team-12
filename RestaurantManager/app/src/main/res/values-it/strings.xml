@@ -52,6 +52,40 @@
     <string name="vegan">Vegano</string>
     <string name="vegetarian">Vegetariano</string>
     <string name="gluten">Senza Glutine</string>
+    <string name="editFlipper">Modifica</string>
+    <string name="fromcamera">Scatta Foto</string>
+    <string name="fromroll">Da Rullino</string>
+    <string name="deletephoto">Elimina</string>
+    <string name="category">Tipi di Cucina</string>
+
+    <string-array name="foodcategories">
+
+        <item>Tutte le Categorie</item>
+        <item>Americano</item>
+        <item>Asiatico</item>
+        <item>Bevande</item>
+        <item>Hamburgers</item>
+        <item>Indiano</item>
+        <item>Italiano</item>
+        <item>Greco</item>
+        <item>Giapponese</item>
+        <item>Messicano</item>
+        <item>Pizza</item>
+        <item>Tailandese</item>
+
+    </string-array>
+
+
+    <string-array name="sortingfilters">
+        <item>No Filtri</item>
+        <item>A-Z</item>
+        <item>Più Vicini</item>
+        <item>Più Recensioni</item>
+
+
+    </string-array>
+
+
 
     <string name="mandatory">Obbligatorio</string>
 </resources>

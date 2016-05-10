@@ -17,5 +17,9 @@
             android:id="@+id/nav_review_fragment"
             android:icon="@drawable/ic_drawer_reviews"
             android:title="@string/reviews" />
+        <item
+            android:id="@+id/nav_review_fragment_insert"
+            android:icon="@drawable/ic_drawer_reviews"
+            android:title="@string/reviews_insert" />
     </group>
 </menu>

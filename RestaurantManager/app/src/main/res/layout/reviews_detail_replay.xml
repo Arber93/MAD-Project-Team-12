@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/default_top_padding">
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/scrollView" >
 
@@ -120,7 +120,7 @@
             <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Questo è un testo di prova. Questo è un testo di prova. Questo è un testo di prova. Questo è un testo di prova. Questo è un testo di prova. Questo è un testo di prova. Questo è un testo di prova. Questo è un testo di prova. Questo è un testo di prova. Questo è un testo di prova. Questo è un testo di prova. Questo è un testo di prova. Questo è un testo di prova. Questo è un testo di prova. Questo è un testo di prova. Questo è un testo di prova. "
+                        android:text="ciao"
                         android:id="@+id/review_text"
                         android:paddingTop="4dp"
                         android:textColor="#292929"
@@ -133,7 +133,9 @@
                         android:linksClickable="false"
                         android:paddingLeft="5dp"
                         android:background="#ffffef"
-                        android:layout_marginRight="40dp" />
+                        android:layout_marginRight="40dp"
+                android:paddingRight="4dp"
+                android:padding="4dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -156,9 +158,10 @@
                 android:layout_alignParentEnd="true"
                 android:background="#e5fefd"
                 android:textSize="15sp"
-                android:text="ciao ciao ciao"
                 android:layout_gravity="right"
-                android:layout_marginTop="2dp" />
+                android:layout_marginTop="2dp"
+                android:padding="4dp"
+                android:visibility="invisible"/>
 
             <LinearLayout
                 android:orientation="vertical"

@@ -27,17 +27,6 @@ public class ReviewRecycleAdapter extends RecyclerView.Adapter<ReviewRecycleAdap
         this.mInflater = LayoutInflater.from(context);
     }
 
-    public void add(Review item, int position) {
-        mData.add(position, item);
-        notifyItemInserted(position);
-    }
-
-    public void remove(Review item) {
-        int position = mData.indexOf(item);
-        mData.remove(position);
-        notifyItemRemoved(position);
-    }
-
     @Override
     public MyViewReviewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.item_review, parent, false);

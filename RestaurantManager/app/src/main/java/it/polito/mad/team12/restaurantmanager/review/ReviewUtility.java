@@ -61,37 +61,6 @@ public class ReviewUtility {
     public static void loadReviews(final String restaurantID){
 
         Firebase myFirebaseRef = new Firebase("https://restaurantaf.firebaseio.com/");
-        /*myFirebaseRef.child("reviews/0/NomeRistorante1").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println(dataSnapshot.getValue());
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });*/
-
-        /*myFirebaseRef.child("reviews").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                System.out.println("There are " + snapshot.getChildrenCount() + " Reviews");
-                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    Review r = postSnapshot.getValue(Review.class);
-                    if(r.getRestaurantID().equals(restaurantID)) {
-                        System.out.println(r.getRestaurantID() + " - " + r.getTitle());
-                        r.setReviewID(postSnapshot.getKey());
-                        reviewForRestaurant.put(postSnapshot.getKey(), r);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });*/
 
         myFirebaseRef.child("reviews").addChildEventListener(new ChildEventListener() {
             @Override

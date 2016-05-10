@@ -71,12 +71,16 @@ public class ReviewDialogIFragment extends DialogFragment {
         if(ReviewUtility.getReview(reviewID).getReply().trim().length()>0) {
             ((TextView) myFragmentId.findViewById(R.id.review_reply)).setText(ReviewUtility.getReview(reviewID).getReply());
             ((TextView) myFragmentId.findViewById(R.id.review_dataReply)).setText(ReviewUtility.getReview(reviewID).getDataReply());
+            (myFragmentId.findViewById(R.id.review_reply)).setVisibility(View.VISIBLE);
+            (myFragmentId.findViewById(R.id.review_dataReply)).setVisibility(View.VISIBLE);
         }else{
             ((TextView) myFragmentId.findViewById(R.id.review_reply)).setText("");
             ((TextView) myFragmentId.findViewById(R.id.review_dataReply)).setText("");
+            (myFragmentId.findViewById(R.id.review_reply)).setVisibility(View.INVISIBLE);
+            (myFragmentId.findViewById(R.id.review_dataReply)).setVisibility(View.INVISIBLE);
         }
 
-        ((TextView) myFragmentId.findViewById(R.id.review_close_dialog)).setOnClickListener(new View.OnClickListener() {
+        ( myFragmentId.findViewById(R.id.review_close_dialog)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 oReviewDialogFragment.dismiss();

@@ -10,6 +10,7 @@
     <string name="review_info4">Da</string>
     <string name="review_info5">il</string>
     <string name="delete_reply_text">Cancella Risposta</string>
+    <string name="review_write">Scrivi Recensione</string>
 
     <string name="review_hint_insert_title">Inserisci il Titolo della Recensione</string>
     <string name="review_hint_insert">Inserisci Recensione</string>

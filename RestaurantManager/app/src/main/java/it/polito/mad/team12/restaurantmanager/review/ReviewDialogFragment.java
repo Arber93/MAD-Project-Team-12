@@ -113,6 +113,8 @@ public class ReviewDialogFragment extends DialogFragment {
                     button.setVisibility(View.INVISIBLE);
                     (myFragmentId.findViewById(R.id.review_delete_button)).setVisibility(View.VISIBLE);
                     (myFragmentId.findViewById(R.id.review_delete_text)).setVisibility(View.VISIBLE);
+                    (myFragmentId.findViewById(R.id.review_reply)).setVisibility(View.VISIBLE);
+                    (myFragmentId.findViewById(R.id.review_dataReply)).setVisibility(View.VISIBLE);
                     ReviewUtility.getReview(reviewID).setReply(((TextView) myFragmentId.findViewById(R.id.review_reply)).getText().toString());
                     ReviewUtility.getReview(reviewID).setDataReply(((TextView) myFragmentId.findViewById(R.id.review_dataReply)).getText().toString());
                     Firebase myFirebaseRef = new Firebase("https://restaurantaf.firebaseio.com/");
@@ -132,6 +134,8 @@ public class ReviewDialogFragment extends DialogFragment {
                 button.setVisibility(View.VISIBLE);//.setEnabled(false);
                 (myFragmentId.findViewById(R.id.review_delete_button)).setVisibility(View.INVISIBLE);
                 (myFragmentId.findViewById(R.id.review_delete_text)).setVisibility(View.INVISIBLE);
+                (myFragmentId.findViewById(R.id.review_reply)).setVisibility(View.INVISIBLE);
+                (myFragmentId.findViewById(R.id.review_dataReply)).setVisibility(View.INVISIBLE);
                 Firebase myFirebaseRef = new Firebase("https://restaurantaf.firebaseio.com/");
                 myFirebaseRef.child("reviews/" + reviewID + "/reply").setValue("");
                 myFirebaseRef.child("reviews/" + reviewID + "/dataReply").setValue("");

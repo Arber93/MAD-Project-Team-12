@@ -109,6 +109,13 @@ public class MainActivity extends AppCompatActivity {
                 transaction.replace(R.id.flContent, reviewsFragment);
                 transaction.commit();
                 break;
+            case R.id.nav_review_fragment_insert:
+                Fragment reviewsFragmentInsert = new ReviewsInsertFragment();
+
+                transaction = manager.beginTransaction();
+                transaction.replace(R.id.flContent, reviewsFragmentInsert);
+                transaction.commit();
+                break;
             default:
                 //fragmentClass = DefaultFragment.class;
         }

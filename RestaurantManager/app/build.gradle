@@ -6,10 +6,12 @@ android {
 
     defaultConfig {
         applicationId "it.polito.mad.team12.restaurantmanager"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        // Enabling multidex support.
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -20,11 +22,6 @@ android {
         debug {
             debuggable true
         }
-    }
-    packagingOptions {
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/LICENSE-FIREBASE.txt'
-        exclude 'META-INF/NOTICE'
     }
 }
 
@@ -41,4 +38,5 @@ dependencies {
     compile 'com.firebaseui:firebase-ui:0.3.1'
     compile 'com.firebase:geofire:1.1.0+'
     compile 'com.google.android.gms:play-services:8.4.0'
+    compile 'com.android.support:multidex:1.0.0'
 }

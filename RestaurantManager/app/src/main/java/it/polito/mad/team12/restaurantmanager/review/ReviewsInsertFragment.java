@@ -58,6 +58,7 @@ public class ReviewsInsertFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         myFragmentId = inflater.inflate(R.layout.fragment_reviews_insert, container, false);
+
         ratingBar = (RatingBar) myFragmentId.findViewById(R.id.review_rate);
         numberOfReviews = (TextView) myFragmentId.findViewById(R.id.review_number);
         nameRestaurant = (TextView) myFragmentId.findViewById(R.id.review_nameRestaurant);
@@ -101,18 +102,6 @@ public class ReviewsInsertFragment extends Fragment {
         });
 
         return myFragmentId;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-            if(ReviewUtility.reviewForRestaurant.size()==0) {
-                //ReviewUtility.loadJSONFromAsset(getActivity().getAssets().open("reviews.json"));
-                //ReviewUtility.loadReviews(restaurantID);
-                //ReviewUtility.loadRestaurant(restaurantID);
-
-            }
     }
 
     private void setUpRecyclerView(String retaurantID) {

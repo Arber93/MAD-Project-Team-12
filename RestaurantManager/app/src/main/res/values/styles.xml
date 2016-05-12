@@ -7,8 +7,6 @@
     </style>
 
 
-
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
@@ -26,7 +24,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name ="CardViewText">
+    <style name="CardViewText">
         <item name="android:paddingLeft">@dimen/default_left_padding</item>
         <item name="android:paddingRight">@dimen/default_right_padding</item>
         <item name="android:paddingTop">@dimen/card_view_top_padding</item>
@@ -37,20 +35,44 @@
         <item name="android:padding">@dimen/default_icon_padding</item>
     </style>
 
-    <style name="TitleStyle">
+    <style name="TextViewTitleStylePadded" parent="TextViewTitleStyle">
         <item name="android:paddingTop">@dimen/default_top_padding</item>
         <item name="android:paddingBottom">@dimen/default_bottom_padding</item>
+    </style>
+
+    <style name="TextViewTitleStyle">
         <item name="android:textSize">@dimen/title_font_size</item>
         <item name="android:textColor">@color/title_text_color</item>
     </style>
 
-    <style name="FieldStyle">
+    <style name="TextViewSubtitleStylePadded" parent="TextViewSubtitleStyle">
         <item name="android:paddingTop">@dimen/default_top_padding</item>
         <item name="android:paddingBottom">@dimen/default_bottom_padding</item>
-        <item name="android:textSize">@dimen/field_font_size</item>
-        <item name="android:paddingRight">@dimen/default_right_padding</item>
         <item name="android:paddingLeft">@dimen/default_left_padding</item>
-        <item name="android:textColor">@color/field_text_color</item>
+        <item name="android:paddingRight">@dimen/default_right_padding</item>
+    </style>
+
+    <style name="TextViewSubtitleStyle">
+        <item name="android:textSize">@dimen/subtitle_font_size</item>
+        <item name="android:textColor">@color/subtitle_text_color</item>
+    </style>
+
+    <style name="DialogTitleStyle">
+        <item name="android:textSize">@dimen/dialog_title_text_size</item>
+        <item name="android:textColor">@color/dialog_text_color</item>
+    </style>
+
+    <style name="DialogItemStyle">
+        <item name="android:textSize">@dimen/dialog_item_text_size</item>
+        <item name="android:textColor">@color/dialog_text_color</item>
+    </style>
+
+    <style name="HorizontalDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/horizontal_divider_height</item>
+        <item name="android:background">@color/horizontal_divider_color</item>
+        <item name="android:paddingTop">@dimen/horizontal_divider_top_padding</item>
+        <item name="android:paddingBottom">@dimen/horizontal_divider_bottom_padding</item>
     </style>
 
     <style name="FoodRatingBar" parent="Widget.AppCompat.RatingBar">
@@ -65,7 +87,5 @@
         <item name="android:maxHeight">12dip</item>
     </style>
 
-
-    <color name="title_text_color">@android:color/black</color>
-    <color name="field_text_color">@android:color/black</color>
+    <style name="ToolbarStyle"></style>
 </resources>

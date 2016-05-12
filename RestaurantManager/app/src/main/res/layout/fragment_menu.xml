@@ -21,6 +21,7 @@
         app:tabGravity="fill"
         app:tabMaxWidth="1000dp"
         app:tabBackground="@color/colorPrimary"
+        app:tabIndicatorColor="@color/tab_indicator_color"
         app:tabTextColor="@color/tab_text_color"
         app:tabSelectedTextColor="@color/selected_tab_text_color"
         />

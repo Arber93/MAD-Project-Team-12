@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="it.polito.mad.team12.restaurantmanager">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="false" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,10 +26,13 @@
         <activity
             android:name=".ReservationsActivity"
             android:label="@string/title_activity_reservations"
-            android:parentActivityName=".MainActivity" >
-        </activity>
-        <activity android:name=".AddMenuItemActivity"/>
-
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".AddMenuItemActivity" />
+        <activity
+            android:name=".ShowItemDetailsActivity"
+            android:label="@string/title_activity_show_item_details"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ShowOfferDetailsActivity"></activity>
     </application>
 
 </manifest>

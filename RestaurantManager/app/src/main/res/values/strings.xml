@@ -32,7 +32,7 @@
     <string name="menu_item_image_description">Image of menu item</string>
     <string name="overflow_menu_image_description">Icon used to show more options</string>
     <string name="mcat_move_title">Move to Unavailable</string>
-    <string name="mct_delete">Delete</string>
+    <string name="mct_delete_title">Delete</string>
     <string name="mcut_move_title">Move to Available</string>
     <string name="restaurant_menu_title">Restaurant Menu</string>
     <string name="mt_add_new_item_string">Add New Item</string>
@@ -47,6 +47,9 @@
     <string name="ami_vegetarian_title">Vegetarian</string>
     <string name="ami_menu_new_item_title">New Menu Item</string>
     <string name="ami_menu_edit_item_title">Edit Menu Item</string>
+    <string name="ami_name_warning">The name field cannot be empty</string>
+    <string name="ami_description_warning">The description field cannot be empty</string>
+    <string name="ami_price_warning">That is not a valid price</string>
     <string name="button_text_cancel">CANCEL</string>
     <string name="button_text_save">SAVE</string>
     <string name="mct_edit_title">Edit</string>
@@ -78,5 +81,15 @@
     <string name="cancel">Cancel</string>
     <string name="prev">Prev.</string>
     <string name="next">Next</string>
+    <string name="dialog_fragment_menu_title">Choose an option</string>
+    <string name="ami_browse_gallery_string">Browse Gallery</string>
+    <string name="ami_take_photo_string">Take Photo</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_show_item_details">ShowItemDetailsActivity</string>
+    <string name="characteristics_title">Characteristics:</string>
+    <string name="characteristics_default_text">None</string>
+    <string name="sod_includes_title">Inlcudes:</string>
 
 </resources>

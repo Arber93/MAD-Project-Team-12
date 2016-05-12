@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <ScrollView
+        android:id="@+id/fleo_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+    <TableLayout
+        android:id="@+id/fleo_table_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/day"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:text="@string/hours"
+                android:layout_weight="3.5"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:text="@string/closed"
+                android:layout_weight="0.25"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/monday"
+                android:layout_weight="0.75"
+                android:gravity="center"
+                android:padding="7dp"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="7dp"
+                android:inputType="time"
+                android:hint="@string/from"
+                android:id="@+id/monday_from"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="7dp"
+                android:inputType="time"
+                android:hint="@string/to"
+                android:id="@+id/monday_to"
+                android:textSize="12dp" />
+
+            <CheckBox
+                android:layout_weight="0"
+                android:gravity="center"
+                android:padding="7dp"
+                android:id="@+id/monday_closed"
+                android:checked="false" />
+
+
+
+
+        </TableRow>
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/tuesday"
+
+                android:layout_weight="0.75"
+                android:gravity="center"
+                android:padding="7dp"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="7dp"
+                android:inputType="time"
+                android:hint="@string/from"
+                android:id="@+id/tuesday_from"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="7dp"
+                android:inputType="time"
+                android:hint="@string/to"
+                android:id="@+id/tuesday_to"
+                android:textSize="12dp" />
+            <CheckBox
+                android:layout_weight="0"
+                android:gravity="center"
+                android:padding="7dp"
+                android:id="@+id/tuesday_closed"
+                />
+
+
+
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/wednesday"
+
+                android:layout_weight="0.75"
+                android:gravity="center"
+                android:padding="7dp"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="7dp"
+                android:inputType="time"
+                android:hint="@string/from"
+                android:id="@+id/wednesday_from"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="7dp"
+                android:inputType="time"
+                android:hint="@string/to"
+                android:id="@+id/wednesday_to"
+                android:textSize="12dp" />
+
+            <CheckBox
+                android:layout_weight="0"
+                android:gravity="center"
+                android:padding="7dp"
+                android:id="@+id/wednesday_closed"
+                />
+
+
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/thurdsay"
+
+                android:layout_weight="0.75"
+                android:gravity="center"
+                android:padding="7dp"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="7dp"
+                android:inputType="time"
+                android:hint="@string/from"
+                android:id="@+id/thursday_from"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="7dp"
+                android:inputType="time"
+                android:hint="@string/to"
+                android:id="@+id/thursday_to"
+                android:textSize="12dp" />
+
+            <CheckBox
+                android:layout_weight="0"
+                android:gravity="center"
+                android:padding="7dp"
+                android:id="@+id/thursday_closed"
+                />
+
+
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/friday"
+
+                android:layout_weight="0.75"
+                android:gravity="center"
+                android:padding="7dp"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="7dp"
+                android:inputType="time"
+                android:hint="@string/from"
+                android:id="@+id/friday_from"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="7dp"
+                android:inputType="time"
+                android:hint="@string/to"
+                android:id="@+id/friday_to"
+                android:textSize="12dp" />
+
+            <CheckBox
+                android:layout_weight="0"
+                android:gravity="center"
+                android:padding="7dp"
+                android:id="@+id/friday_closed"
+                />
+
+
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/saturday"
+
+                android:layout_weight="0.75"
+                android:gravity="center"
+                android:padding="7dp"
+                android:textSize="12dp"  />
+
+            <EditText
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="7dp"
+                android:inputType="time"
+                android:hint="@string/from"
+                android:id="@+id/saturday_from"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="7dp"
+                android:inputType="time"
+                android:hint="@string/to"
+                android:id="@+id/saturday_to"
+                android:textSize="12dp" />
+
+            <CheckBox
+                android:layout_weight="0"
+                android:gravity="center"
+                android:padding="7dp"
+                android:id="@+id/saturday_closed"
+                />
+
+
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/sunday"
+
+                android:layout_weight="0.75"
+                android:gravity="center"
+                android:padding="7dp"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="7dp"
+                android:inputType="time"
+                android:hint="@string/from"
+                android:id="@+id/sunday_from"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="7dp"
+                android:inputType="time"
+                android:hint="@string/to"
+                android:id="@+id/sunday_to"
+                android:textSize="12dp" />
+
+            <CheckBox
+                android:layout_weight="0"
+                android:gravity="center"
+                android:padding="7dp"
+                android:id="@+id/sunday_closed"
+                />
+
+
+
+        </TableRow>
+
+
+
+
+
+    </TableLayout>
+
+
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/fleo_buttons"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fleo_scroll_view"
+        >
+        <Button
+            android:id="@+id/fleo_cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/selected_tab_text_color"
+            android:background="@color/colorPrimary"
+            android:text="@string/button_text_cancel"
+            android:textSize="@dimen/title_font_size"/>
+        <Button
+            android:id="@+id/fleo_save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/selected_tab_text_color"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="@string/button_text_save"
+            android:textSize="@dimen/title_font_size"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

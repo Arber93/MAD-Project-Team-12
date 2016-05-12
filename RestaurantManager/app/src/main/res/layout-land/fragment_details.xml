@@ -1,0 +1,397 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="it.polito.mad.team12.restaurantmanager.DetailsFragment">
+
+
+    <RelativeLayout
+        android:id="@+id/activity_customer_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/frag_details_tablel_openings">
+
+
+        <ImageView
+            android:id="@+id/acvivity_customer_logores"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/edit_logo"
+            android:background="@drawable/ic_edit_pen"
+            android:layout_marginLeft="5dp"
+            />
+
+        <TextView
+            android:id="@+id/frag_det_resname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/acvivity_customer_logores"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            />
+
+        <TextView
+            android:id="@+id/frag_det_street"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/acvivity_customer_logores"
+            android:layout_below="@id/frag_det_resname"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"/>
+
+
+
+
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phone"
+        android:id="@+id/textView"
+        android:paddingTop="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hours_open"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textView"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:paddingTop="5dp"
+        android:textStyle="bold"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" />
+
+    <TableLayout
+        android:id="@+id/frag_details_tablel_openings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView2"
+        android:layout_marginLeft="5dp"
+        >
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/monday"
+                android:id="@+id/textView3"
+                android:padding="0.5dp"
+                android:layout_weight="16"
+                android:layout_marginRight="80dp"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/frag_details_monday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"
+                />
+
+        </TableRow>
+
+
+
+        <TableRow>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tuesday"
+                android:id="@+id/textView4"
+                android:padding="0.5dp"
+                android:layout_weight="16"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/frag_details_tuesday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+        </TableRow>
+
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wednesday"
+                android:id="@+id/textView5"
+                android:padding="0.5dp"
+                android:layout_weight="16" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/frag_details_wednesday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+
+        </TableRow>
+
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/thurdsay"
+                android:id="@+id/textView6"
+                android:padding="0.5dp"
+                android:layout_weight="16" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/frag_details_thursday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+
+        </TableRow>
+
+
+        <TableRow>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/friday"
+                android:id="@+id/textView7"
+                android:padding="0.5dp"
+                android:layout_weight="16"
+                />
+
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/frag_details_friday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+
+        </TableRow>
+
+        <TableRow>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/saturday"
+                android:id="@+id/textView8"
+                android:padding="0.5dp"
+                android:layout_weight="16" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/frag_details_saturday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+
+        </TableRow>
+
+        <TableRow>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sunday"
+                android:id="@+id/textView9"
+                android:padding="0.5dp"
+                android:layout_weight="16"/>
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/frag_details_sunday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+
+        </TableRow>
+
+
+
+    </TableLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/phoneNumber"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/changePhone"
+        android:paddingTop="5dp" />
+
+
+    <ViewFlipper
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/viewFlip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    </ViewFlipper>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nextImage"
+        android:text="@string/next"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/prevImage"
+        android:text="@string/prev"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_details_edit_flipper"
+        android:layout_alignParentBottom="true"
+        android:text="@string/editFlipper"
+        android:layout_toRightOf="@id/prevImage"
+        android:layout_toLeftOf="@+id/nextImage"
+        />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/changeOpenings"
+        android:background="@drawable/ic_edit_pen"
+        android:layout_above="@+id/frag_details_tablel_openings"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/changePhone"
+        android:background="@drawable/ic_edit_pen"
+        android:layout_above="@+id/textView2"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView"
+        android:paddingRight="50dp" />
+
+
+
+    <LinearLayout
+        android:id="@+id/fragment_details_checkboxes_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/frag_details_tablel_openings"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+        <CheckBox
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/fragment_details_checkbox_vegan"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/vegan"
+            android:button="@drawable/checkbox_selector"/>
+
+        <CheckBox
+            android:layout_marginRight="10dp"
+            android:id="@+id/fragment_details_checkbox_vegetarian"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/vegetarian"
+            android:button="@drawable/checkbox_selector"/>
+
+        <CheckBox
+            android:id="@+id/fragment_details_checkbox_gluten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/gluten"
+            android:button="@drawable/gluten_checkbox_selector"
+            android:textSize="12dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

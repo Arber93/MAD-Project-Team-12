@@ -1,310 +1,380 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+
+
+    <ScrollView
+        android:id="@+id/fleo_scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal">
+        android:layout_height="wrap_content"
+        >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/day"
-            android:id="@+id/textView2"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+    <TableLayout
+        android:id="@+id/fleo_table_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hours"
-            android:id="@+id/textView3"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/closed"
-            android:id="@+id/textView4"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText"
-            android:text="@string/monday"
-            android:layout_below="@+id/textView2"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:padding="10dp"
-            android:layout_toStartOf="@+id/editText2"
-            android:layout_alignRight="@+id/cancelb"
-            android:layout_alignEnd="@+id/cancelb" />
+            <TextView
+                android:text="@string/day"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="time"
-            android:ems="10"
-            android:id="@+id/editText2"
-            android:layout_alignTop="@+id/editText"
-            android:layout_toLeftOf="@+id/checkBox"
-            android:layout_toStartOf="@+id/checkBox" />
+            <TextView
+                android:text="@string/hours"
+                android:layout_weight="3.5"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textStyle="bold" />
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox"
-            android:layout_alignTop="@+id/editText2"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:paddingRight="10dp" />
+            <TextView
+                android:text="@string/closed"
+                android:layout_weight="0.25"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText3"
-            android:text="@string/tuesday"
-            android:layout_below="@+id/editText"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/editText"
-            android:layout_alignEnd="@+id/editText"
-            android:padding="10dp" />
+        </TableRow>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText4"
-            android:text="@string/wednesday"
-            android:layout_below="@+id/editText3"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/editText3"
-            android:layout_alignEnd="@+id/editText3"
-            android:padding="10dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText5"
-            android:text="@string/thurdsay"
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            android:layout_below="@+id/editText4"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/editText4"
-            android:layout_alignEnd="@+id/editText4"
-            android:padding="10dp" />
+            <TextView
+                android:text="@string/monday"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textSize="12dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText6"
-            android:text="@string/friday"
+            <EditText
+                android:layout_weight="1.25"
+                android:gravity="center"
+                android:padding="15dp"
+                android:inputType="time"
+                android:hint="@string/from"
+                android:id="@+id/monday_from"
+                android:textSize="12dp" />
 
-            android:layout_below="@+id/editText5"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/editText5"
-            android:layout_alignEnd="@+id/editText5"
-            android:padding="10dp" />
+            <EditText
+                android:layout_weight="1.25"
+                android:gravity="center"
+                android:padding="15dp"
+                android:inputType="time"
+                android:hint="@string/to"
+                android:id="@+id/monday_to"
+                android:textSize="12dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText7"
-            android:text="@string/saturday"
+            <CheckBox
+                android:layout_weight="-0.5"
+                android:gravity="center"
+                android:padding="15dp"
+                android:id="@+id/monday_closed"
+                android:checked="false" />
 
-            android:layout_below="@+id/editText6"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/editText6"
-            android:layout_alignEnd="@+id/editText6"
-            android:padding="10dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText8"
-            android:text="@string/sunday"
 
-            android:layout_below="@+id/editText7"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignRight="@+id/editText7"
-            android:layout_alignEnd="@+id/editText7"
-            android:padding="13dp" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:id="@+id/editText9"
-            android:layout_alignTop="@+id/editText3"
-            android:layout_alignLeft="@+id/editText2"
-            android:layout_alignStart="@+id/editText2"
-            android:layout_alignRight="@+id/editText2"
-            android:layout_alignEnd="@+id/editText2" />
+        </TableRow>
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:id="@+id/editText10"
 
-            android:layout_alignTop="@+id/editText4"
-            android:layout_alignLeft="@+id/editText9"
-            android:layout_alignStart="@+id/editText9"
-            android:layout_alignRight="@+id/editText9"
-            android:layout_alignEnd="@+id/editText9" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:id="@+id/editText11"
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            android:layout_alignTop="@+id/editText5"
-            android:layout_alignLeft="@+id/editText10"
-            android:layout_alignStart="@+id/editText10"
-            android:layout_alignRight="@+id/editText10"
-            android:layout_alignEnd="@+id/editText10" />
+            <TextView
+                android:text="@string/tuesday"
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:id="@+id/editText12"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textSize="12dp" />
 
-            android:layout_alignTop="@+id/editText6"
-            android:layout_alignLeft="@+id/editText11"
-            android:layout_alignStart="@+id/editText11"
-            android:layout_alignRight="@+id/editText11"
-            android:layout_alignEnd="@+id/editText11" />
+            <EditText
+                android:layout_weight="1.25"
+                android:gravity="center"
+                android:padding="15dp"
+                android:inputType="time"
+                android:hint="@string/from"
+                android:id="@+id/tuesday_from"
+                android:textSize="12dp" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:id="@+id/editText13"
+            <EditText
+                android:layout_weight="1.25"
+                android:gravity="center"
+                android:padding="15dp"
+                android:inputType="time"
+                android:hint="@string/to"
+                android:id="@+id/tuesday_to"
+                android:textSize="12dp" />
+            <CheckBox
+                android:layout_weight="-0.5"
+                android:gravity="center"
+                android:padding="15dp"
+                android:id="@+id/tuesday_closed"
+                />
 
-            android:layout_alignTop="@+id/editText7"
-            android:layout_alignLeft="@+id/editText12"
-            android:layout_alignStart="@+id/editText12"
-            android:layout_alignRight="@+id/editText12"
-            android:layout_alignEnd="@+id/editText12" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:id="@+id/editText14"
 
-            android:layout_below="@+id/editText13"
-            android:layout_alignLeft="@+id/editText13"
-            android:layout_alignStart="@+id/editText13"
-            android:layout_alignRight="@+id/editText13"
-            android:layout_alignEnd="@+id/editText13" />
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox2"
-            android:paddingRight="10dp"
-            android:layout_above="@+id/editText10"
-            android:layout_alignLeft="@+id/checkBox"
-            android:layout_alignStart="@+id/checkBox" />
+        </TableRow>
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox3"
-            android:paddingRight="10dp"
-            android:layout_alignBottom="@+id/editText10"
-            android:layout_alignLeft="@+id/checkBox2"
-            android:layout_alignStart="@+id/checkBox2" />
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox4"
-            android:paddingRight="10dp"
-            android:layout_alignBottom="@+id/editText11"
-            android:layout_alignLeft="@+id/checkBox3"
-            android:layout_alignStart="@+id/checkBox3" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox5"
-            android:paddingRight="10dp"
-            android:layout_above="@+id/editText13"
-            android:layout_alignLeft="@+id/checkBox4"
-            android:layout_alignStart="@+id/checkBox4" />
+            <TextView
+                android:text="@string/wednesday"
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox6"
-            android:paddingRight="10dp"
-            android:layout_above="@+id/editText8"
-            android:layout_alignLeft="@+id/checkBox5"
-            android:layout_alignStart="@+id/checkBox5" />
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textSize="12dp" />
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBox7"
-            android:paddingRight="10dp"
-            android:layout_alignBottom="@+id/editText8"
-            android:layout_alignLeft="@+id/checkBox6"
-            android:layout_alignStart="@+id/checkBox6" />
+            <EditText
+                android:layout_weight="1.25"
+                android:gravity="center"
+                android:padding="15dp"
+                android:inputType="time"
+                android:hint="@string/from"
+                android:id="@+id/wednesday_from"
+                android:textSize="12dp" />
 
+            <EditText
+                android:layout_weight="1.25"
+                android:gravity="center"
+                android:padding="15dp"
+                android:inputType="time"
+                android:hint="@string/to"
+                android:id="@+id/wednesday_to"
+                android:textSize="12dp" />
+
+            <CheckBox
+                android:layout_weight="-0.5"
+                android:gravity="center"
+                android:padding="15dp"
+                android:id="@+id/wednesday_closed"
+                />
+
+
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/thurdsay"
+
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1.25"
+                android:gravity="center"
+                android:padding="15dp"
+                android:inputType="time"
+                android:hint="@string/from"
+                android:id="@+id/thursday_from"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1.25"
+                android:gravity="center"
+                android:padding="15dp"
+                android:inputType="time"
+                android:hint="@string/to"
+                android:id="@+id/thursday_to"
+                android:textSize="12dp" />
+
+            <CheckBox
+                android:layout_weight="-0.5"
+                android:gravity="center"
+                android:padding="15dp"
+                android:id="@+id/thursday_closed"
+                />
+
+
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/friday"
+
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1.25"
+                android:gravity="center"
+                android:padding="15dp"
+                android:inputType="time"
+                android:hint="@string/from"
+                android:id="@+id/friday_from"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1.25"
+                android:gravity="center"
+                android:padding="15dp"
+                android:inputType="time"
+                android:hint="@string/to"
+                android:id="@+id/friday_to"
+                android:textSize="12dp" />
+
+            <CheckBox
+                android:layout_weight="-0.5"
+                android:gravity="center"
+                android:padding="15dp"
+                android:id="@+id/friday_closed"
+                />
+
+
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/saturday"
+
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1.25"
+                android:gravity="center"
+                android:padding="15dp"
+                android:inputType="time"
+                android:hint="@string/from"
+                android:id="@+id/saturday_from"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1.25"
+                android:gravity="center"
+                android:padding="15dp"
+                android:inputType="time"
+                android:hint="@string/to"
+                android:id="@+id/saturday_to"
+                android:textSize="12dp" />
+
+            <CheckBox
+                android:layout_weight="-0.5"
+                android:gravity="center"
+                android:padding="15dp"
+                android:id="@+id/saturday_closed"
+                />
+
+
+
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/sunday"
+
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1.25"
+                android:gravity="center"
+                android:padding="15dp"
+                android:inputType="time"
+                android:hint="@string/from"
+                android:id="@+id/sunday_from"
+                android:textSize="12dp" />
+
+            <EditText
+                android:layout_weight="1.25"
+                android:gravity="center"
+                android:padding="15dp"
+                android:inputType="time"
+                android:hint="@string/to"
+                android:id="@+id/sunday_to"
+                android:textSize="12dp" />
+
+            <CheckBox
+                android:layout_weight="-0.5"
+                android:padding="15dp"
+                android:gravity="center"
+                android:id="@+id/sunday_closed"
+                />
+
+
+
+        </TableRow>
+
+
+
+
+
+    </TableLayout>
+
+
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/fleo_buttons"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fleo_scroll_view"
+        >
         <Button
+            android:id="@+id/fleo_cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cancel"
-            android:id="@+id/cancelb"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="69dp" />
-
+            android:layout_weight="1"
+            android:textColor="@color/selected_tab_text_color"
+            android:background="@color/colorPrimary"
+            android:text="@string/button_text_cancel"
+            android:textSize="@dimen/title_font_size"/>
         <Button
+            android:id="@+id/fleo_save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/confirm"
-            android:id="@+id/confirmb"
-            android:layout_alignTop="@+id/cancelb"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:textColor="@color/selected_tab_text_color"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="@string/button_text_save"
+            android:textSize="@dimen/title_font_size"
+            />
+    </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/phone"
-            android:id="@+id/textView5"
-            android:layout_marginTop="42dp"
-            android:layout_below="@+id/editText14"
-            android:layout_alignRight="@+id/textView2"
-            android:layout_alignEnd="@+id/textView2" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:ems="10"
-            android:id="@+id/phoneNumber"
-            android:layout_alignBottom="@+id/textView5"
-            android:layout_alignRight="@+id/checkBox7"
-            android:layout_alignEnd="@+id/checkBox7" />
-
-    </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/default_bottom_padding"
+    android:paddingLeft="@dimen/default_left_padding"
+    android:paddingRight="@dimen/default_right_padding"
+    android:paddingTop="@dimen/default_top_padding"
+    android:background="#e8f5fb">
+
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Scrivi una Recensione"
+                        android:id="@+id/review_insert_info"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/close_icon"
+                        android:id="@+id/review_close_dialog"
+                        android:layout_alignParentTop="false"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="#ff0000"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="false"
+                        android:layout_toRightOf="@+id/review_insert_info"
+                        android:layout_toEndOf="@+id/review_insert_info"
+                        android:gravity="right" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/review_insert_title"
+                android:layout_below="@+id/scrollView2"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignRight="@+id/scrollView2"
+                android:layout_alignEnd="@+id/scrollView2"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:hint="@string/review_hint_insert_title"
+                android:layout_marginTop="6dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Il tuo voto:"
+                    android:id="@+id/review_score_info"
+                    android:layout_gravity="bottom"
+                    android:textColor="#000000" />
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/review_ratingBar_insert"
+                    style="@style/FoodRatingBar"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.5"
+                    android:id="@+id/review_score"
+                    android:layout_alignBottom="@+id/review_rate"
+                    android:layout_toRightOf="@+id/review_rate"
+                    android:layout_toEndOf="@+id/review_rate"
+                    android:paddingLeft="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#ff0000"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/5"
+                    android:id="@+id/review_score2"
+                    android:layout_alignBottom="@+id/review_score"
+                    android:layout_toRightOf="@+id/review_score"
+                    android:layout_toEndOf="@+id/review_score"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/review_insert"
+                android:hint="@string/review_hint_insert_title"
+                android:layout_marginTop="6dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/save_icon"
+                    android:id="@+id/review_insert_save"
+                    android:textStyle="bold"
+                    android:textSize="30sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/review_button_save"
+                    android:singleLine="false"
+                    android:textColor="#000000" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

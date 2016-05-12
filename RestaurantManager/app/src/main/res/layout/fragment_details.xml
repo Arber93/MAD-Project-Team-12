@@ -5,12 +5,53 @@
     tools:context="it.polito.mad.team12.restaurantmanager.DetailsFragment">
 
 
-    <ImageView
+
+    <RelativeLayout
+        android:id="@+id/activity_customer_info"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:id="@+id/mapPhotoHolder"
-        android:layout_gravity="center_horizontal|top"
-        android:src="@drawable/maph"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp">
+
+
+        <ImageView
+            android:id="@+id/acvivity_customer_logores"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/edit_logo"
+            android:background="@drawable/ic_edit_pen"
+            android:layout_marginLeft="5dp"
+            />
+
+        <TextView
+            android:id="@+id/frag_det_resname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/acvivity_customer_logores"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            />
+
+        <TextView
+            android:id="@+id/frag_det_street"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/acvivity_customer_logores"
+            android:layout_below="@id/frag_det_resname"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"/>
+
+
+
+
+    </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,11 +59,11 @@
         android:text="@string/phone"
         android:id="@+id/textView"
         android:paddingTop="15dp"
-        android:paddingBottom="5dp"
-        android:layout_below="@+id/mapPhotoHolder"
+        android:layout_below="@id/activity_customer_info"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="26dp" />
+        android:layout_marginLeft="26dp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -35,144 +76,221 @@
         android:paddingTop="15dp"
         android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <TableLayout
+        android:id="@+id/frag_details_tablel_openings"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/monday"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/textView2"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:paddingTop="5dp" />
+        android:layout_below="@id/textView2"
+        android:layout_marginLeft="25dp"
+        >
+
+        <TableRow>
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/monday"
+            android:id="@+id/textView3"
+            android:padding="0.5dp"
+            android:layout_weight="16"
+            />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/frag_details_monday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"
+                />
+
+        </TableRow>
+
+
+
+        <TableRow>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tuesday"
+                android:id="@+id/textView4"
+                android:padding="0.5dp"
+                android:layout_weight="16"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/frag_details_tuesday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+        </TableRow>
+
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wednesday"
+                android:id="@+id/textView5"
+                android:padding="0.5dp"
+                android:layout_weight="16" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/frag_details_wednesday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+
+        </TableRow>
+
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/thurdsay"
+                android:id="@+id/textView6"
+                android:padding="0.5dp"
+                android:layout_weight="16" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/frag_details_thursday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+
+        </TableRow>
+
+
+        <TableRow>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/friday"
+                android:id="@+id/textView7"
+                android:padding="0.5dp"
+                android:layout_weight="16"
+                />
+
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/frag_details_friday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+
+        </TableRow>
+
+        <TableRow>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/saturday"
+                android:id="@+id/textView8"
+                android:padding="0.5dp"
+                android:layout_weight="16" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/frag_details_saturday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+
+        </TableRow>
+
+        <TableRow>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sunday"
+                android:id="@+id/textView9"
+                android:padding="0.5dp"
+                android:layout_weight="16"/>
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/frag_details_sunday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+
+        </TableRow>
+
+
+
+    </TableLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tuesday"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/textView3"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/wednesday"
-        android:id="@+id/textView5"
-        android:layout_below="@+id/textView4"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignStart="@+id/textView4" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/thurdsay"
-        android:id="@+id/textView6"
-        android:layout_below="@+id/textView5"
-        android:layout_alignLeft="@+id/textView5"
-        android:layout_alignStart="@+id/textView5" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/friday"
-        android:id="@+id/textView7"
-        android:layout_below="@+id/textView6"
-        android:layout_alignLeft="@+id/textView6"
-        android:layout_alignStart="@+id/textView6" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/saturday"
-        android:id="@+id/textView8"
-        android:layout_below="@+id/textView7"
-        android:layout_alignLeft="@+id/textView7"
-        android:layout_alignStart="@+id/textView7" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sunday"
-        android:id="@+id/textView9"
-        android:layout_below="@+id/textView8"
-        android:layout_alignLeft="@+id/textView8"
-        android:layout_alignStart="@+id/textView8" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView10"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="25dp"
-        android:layout_marginEnd="37dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView11"
-        android:layout_above="@+id/textView5"
-        android:layout_alignLeft="@+id/textView10"
-        android:layout_alignStart="@+id/textView10" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView12"
-        android:layout_above="@+id/textView6"
-        android:layout_alignLeft="@+id/textView11"
-        android:layout_alignStart="@+id/textView11" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView13"
-        android:layout_below="@+id/textView12"
-        android:layout_alignRight="@+id/textView12"
-        android:layout_alignEnd="@+id/textView12" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView14"
-        android:layout_above="@+id/textView8"
-        android:layout_alignLeft="@+id/textView13"
-        android:layout_alignStart="@+id/textView13" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView15"
-        android:layout_alignTop="@+id/textView8"
-        android:layout_alignLeft="@+id/textView14"
-        android:layout_alignStart="@+id/textView14" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView16"
-        android:layout_below="@+id/textView15"
-        android:layout_alignRight="@+id/textView15"
-        android:layout_alignEnd="@+id/textView15" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
         android:ems="10"
         android:id="@+id/phoneNumber"
         android:layout_alignBottom="@+id/textView"
-        android:layout_toRightOf="@+id/textView2"
-        android:padding="10dp" />
+        android:layout_toRightOf="@+id/textView2" />
 
 
     <ViewFlipper
@@ -181,32 +299,12 @@
         android:id="@+id/viewFlip"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:src="@drawable/resta1"
-            android:scaleType="centerCrop"
-            android:id="@+id/imageRes1"/>
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:src="@drawable/resta4"
-            android:scaleType="centerCrop"
-            android:id="@+id/imageRes2"/>
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:src="@drawable/resta3"
-            android:scaleType="centerCrop"
-            android:id="@+id/imageRes3"/>
-
-
-
+        android:layout_alignParentStart="true"
+        >
     </ViewFlipper>
+
+
+
 
     <Button
         android:layout_width="wrap_content"
@@ -217,6 +315,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -225,5 +325,76 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_details_edit_flipper"
+        android:layout_alignParentBottom="true"
+        android:text="@string/editFlipper"
+        android:layout_toRightOf="@id/prevImage"
+        android:layout_toLeftOf="@+id/nextImage"
+        />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/changeOpenings"
+        android:layout_above="@+id/frag_details_tablel_openings"
+        android:layout_toRightOf="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2"
+        android:background="@drawable/ic_edit_pen"
+        android:layout_marginLeft="5dp"
+        />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/changePhone"
+        android:background="@drawable/ic_edit_pen"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@id/textView"
+        android:layout_alignBottom="@id/textView"
+        android:layout_marginLeft="5dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/fragment_details_checkboxes_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/frag_details_tablel_openings"
+        >
+    <CheckBox
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/fragment_details_checkbox_vegan"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/vegan"
+        android:button="@drawable/checkbox_selector"/>
+
+    <CheckBox
+        android:layout_marginRight="10dp"
+        android:id="@+id/fragment_details_checkbox_vegetarian"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/vegetarian"
+        android:button="@drawable/checkbox_selector"/>
+
+    <CheckBox
+        android:id="@+id/fragment_details_checkbox_gluten"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+
+        android:layout_weight="1"
+        android:text="@string/gluten"
+        android:button="@drawable/gluten_checkbox_selector"
+        android:textSize="12dp"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

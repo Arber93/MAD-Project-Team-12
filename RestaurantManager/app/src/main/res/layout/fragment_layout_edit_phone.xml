@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:id="@+id/flep_table_editphone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="left"
+                android:padding="15dp"
+                android:textStyle="bold"
+                android:text="@string/phone"
+                />
+
+            <EditText
+                android:layout_weight="3.5"
+                android:gravity="left"
+                android:padding="15dp"
+                android:id="@+id/phoneEdited"
+                android:inputType="phone"
+                android:layout_width="match_parent" />
+
+
+
+        </TableRow>
+
+
+    </TableLayout>
+
+
+    <LinearLayout
+        android:id="@+id/fleo_buttons"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <Button
+            android:id="@+id/flep_cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/selected_tab_text_color"
+
+            android:background="@color/colorPrimary"
+            android:text="@string/button_text_cancel"
+            android:textSize="@dimen/title_font_size"/>
+        <Button
+            android:id="@+id/flep_save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/selected_tab_text_color"
+
+            android:background="@color/colorPrimary"
+            android:text="@string/button_text_save"
+            android:textSize="@dimen/title_font_size"
+            />
+    </LinearLayout>
+
+
+
+</LinearLayout>

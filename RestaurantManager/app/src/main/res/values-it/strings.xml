@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="review_hint_reply">Inserisci la tua risposta</string>
+    <string name="review_info">Le recensioni dei clienti</string>
+    <string name="review_info2">Basato su</string>
+    <string name="review_info3p">valutazioni</string>
+    <string name="review_info3s">valutazione</string>
+    <string name="review_info4">Da</string>
+    <string name="review_info5">il</string>
+    <string name="delete_reply_text">Cancella Risposta</string>
+    <string name="review_write">Scrivi Recensione</string>
+
+    <string name="review_hint_insert_title">Inserisci il Titolo della Recensione</string>
+    <string name="review_hint_insert">Inserisci Recensione</string>
+
+    <string name="paper_plane">&#xf1d8;</string>
+    <string name="delete_reply">&#xf014;</string>
+    <string name="close_icon">&#xf00d;</string>
+    <string name="save_icon">&#xf0c7;</string>
+    <string name="pencil_icon">&#xf040;</string>
+
+    <string name="app_name">Restaurant Manager</string>
+    <string name="accept">ACCETTA</string>
+    <string name="accepted">ACCETTATO</string>
+    <string name="action_settings">Impostazioni</string>
+    <string name="additional_notes"></string>
+    <string name="ami_description_field_hint">Descrivi il prodotto qui</string>
+    <string name="ami_description_field_title">Descrizione</string>
+    <string name="ami_gluten_free_title"></string>
+    <string name="to">Alle</string>
+    <string name="from">Dalle</string>
+    <string name="btn_reservations">Prenotazioni</string>
+    <string name="button_text_cancel">CANCELLA</string>
+    <string name="button_text_save">SALVA</string>
+    <string name="cancel">Cancella</string>
+    <string name="closed">Chiuso</string>
+    <string name="confirm">Conferma</string>
+    <string name="day">Giorno</string>
+    <string name="details">Dettagli</string>
+    <string name="friday">Venerdì</string>
+    <string name="hours">Ora</string>
+    <string name="hours_open">Orari di Apertura:</string>
+    <string name="menu">Menù</string>
+    <string name="monday">Lunedì</string>
+    <string name="phone">Telefono:</string>
+    <string name="saturday">Sabato</string>
+    <string name="sunday">Domenica</string>
+    <string name="thurdsay">Giovedì</string>
+    <string name="tuesday">Martedì</string>
+    <string name="wednesday">Mercoledì</string>
+    <string name="vegan">Vegano</string>
+    <string name="vegetarian">Vegetariano</string>
+    <string name="gluten">Senza Glutine</string>
+    <string name="editFlipper">Modifica</string>
+    <string name="fromcamera">Scatta Foto</string>
+    <string name="fromroll">Da Rullino</string>
+    <string name="deletephoto">Elimina</string>
+    <string name="category">Tipi di Cucina</string>
+
+    <string-array name="foodcategories">
+
+        <item>Tutte le Categorie</item>
+        <item>Americano</item>
+        <item>Asiatico</item>
+        <item>Bevande</item>
+        <item>Hamburgers</item>
+        <item>Indiano</item>
+        <item>Italiano</item>
+        <item>Greco</item>
+        <item>Giapponese</item>
+        <item>Messicano</item>
+        <item>Pizza</item>
+        <item>Tailandese</item>
+
+    </string-array>
+
+
+    <string-array name="sortingfilters">
+        <item>No Filtri</item>
+        <item>A-Z</item>
+        <item>Più Vicini</item>
+        <item>Più Recensioni</item>
+
+
+    </string-array>
+
+
+
+    <string name="mandatory">Obbligatorio</string>
+</resources>

@@ -14,6 +14,8 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.polito.mad.team12.restaurantmanager.review.*;
+
 /**
  * Created by Andrea on 08/05/2016.
  */
@@ -87,7 +89,7 @@ public class CustomerRestaurantActivityMain extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(CustomerRestaurantDetailsFragment.class, Details);
        // adapter.addFragment(, Menu);
-       // adapter.addFragment(, Reviews);
+        adapter.addFragment(ReviewsInsertFragment.class, Reviews);
         viewPager.setAdapter(adapter);
     }
 

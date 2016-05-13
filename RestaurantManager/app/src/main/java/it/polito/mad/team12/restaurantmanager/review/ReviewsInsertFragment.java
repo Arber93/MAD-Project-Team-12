@@ -1,6 +1,8 @@
 package it.polito.mad.team12.restaurantmanager.review;
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -8,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import it.polito.mad.team12.restaurantmanager.CustomerRestaurantActivityMain;
 import it.polito.mad.team12.restaurantmanager.R;
 
 /**
@@ -78,6 +82,9 @@ public class ReviewsInsertFragment extends Fragment {
 
         nameRestaurant.setText(restaurantID);
 
+        CustomerRestaurantActivityMain act = (CustomerRestaurantActivityMain) getActivity();
+        setRestaurantID(act.retrieveRestInfo());
+
         setUpRecyclerView(restaurantID);
 
         ratingBar.setRating(ReviewUtility.getStarsRestaurant(restaurantID));
@@ -87,11 +94,15 @@ public class ReviewsInsertFragment extends Fragment {
         else
             rating.setText(getResources().getText(R.string.review_info3p));
         score.setText(ratingBar.getRating() + "");
+        /*
         String nome = ReviewUtility.getImageName(restaurantID);
         String uri = ":mipmap/" + nome;
 
         int imageResource = getResources().getIdentifier(getActivity().getPackageName() + uri, null, null);
-        restaurantImage.setImageResource(imageResource);
+        */
+        String imres =ReviewUtility.getImageName(restaurantID);
+        Bitmap imageResource = decodeBase64(imres);
+        restaurantImage.setImageBitmap(imageResource);
 
         Typeface font = Typeface.createFromAsset(getActivity().getAssets(),"fontawesome-webfont.ttf");
         ((TextView) myFragmentId.findViewById(R.id.review_write_icon)).setTypeface(font);
@@ -131,6 +142,13 @@ public class ReviewsInsertFragment extends Fragment {
         mLinearLayoutManagerVertical.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLinearLayoutManagerVertical);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+    }
+
+
+    public static Bitmap decodeBase64(String input)
+    {
+        byte[] decodedBytes = Base64.decode(input, 0);
+        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
     }
 
 }

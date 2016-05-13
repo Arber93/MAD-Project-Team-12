@@ -31,6 +31,7 @@ public class ReviewUtility {
     public static TreeMap<String, Restaurant> restaurant = new TreeMap<>();
 
     public static ArrayList<Review> getReviews(String restaurantID) {
+
         return new ArrayList<>(reviewForRestaurant.values());//get(restaurantID);
     }
 
@@ -60,7 +61,7 @@ public class ReviewUtility {
 
     public static void loadReviews(final String restaurantID){
 
-        Firebase myFirebaseRef = new Firebase("https://restaurantaf.firebaseio.com/");
+        Firebase myFirebaseRef = new Firebase("https://popping-inferno-6667.firebaseio.com/reviews");
 
         myFirebaseRef.child("reviews").addChildEventListener(new ChildEventListener() {
             @Override
@@ -107,7 +108,7 @@ public class ReviewUtility {
 
     public static void loadRestaurant(final String restaurantID){
 
-        Firebase myFirebaseRef = new Firebase("https://restaurantaf.firebaseio.com/");
+        Firebase myFirebaseRef = new Firebase("https://popping-inferno-6667.firebaseio.com/reviews");
 
         myFirebaseRef.child("Restaurant").addValueEventListener(new ValueEventListener() {
             @Override

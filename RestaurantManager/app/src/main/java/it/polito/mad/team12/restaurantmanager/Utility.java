@@ -27,11 +27,12 @@ public final class Utility {
     // TODO Fill this class with constants and methods to be used by multiple activities/fragments
     public static final String LOG_WARNING_TAG = "warning";
     public static final String IMAGE_EXTENSION = ".jpg";
-    public static final String FIREBASE_ROOT = "https://boiling-torch-1263.firebaseio.com/";
-    public static final String FIREBASE_RESTAURANTS = "https://boiling-torch-1263.firebaseio.com/restaurants/";
+    public static final String FIREBASE_ROOT = "https://popping-inferno-6667.firebaseio.com/";
+    public static final String FIREBASE_RESTAURANTS = FIREBASE_ROOT + "/restaurants";
+    public static final String FIREBASE_MENUS = FIREBASE_ROOT + "/menus";
     public static final String FIREBASE_MENU_PATH = "/menu";
-    public static final String FIREBASE_MENU_ITEMS_PATH = FIREBASE_MENU_PATH + "/items";
-    public static final String FIREBASE_MENU_OFFERS_PATH = FIREBASE_MENU_PATH + "/offers";
+    public static final String FIREBASE_MENU_ITEMS_PATH = "/items";
+    public static final String FIREBASE_MENU_OFFERS_PATH = "/offers";
 
     public static final int TAKE_PHOTO = 1;
     public static final int BROWSE_GALLERY = 2;
@@ -96,12 +97,12 @@ public final class Utility {
     }
 
     public static Firebase getMenuItemsFrom(String restaurantID) {
-        Firebase result = new Firebase(FIREBASE_RESTAURANTS + restaurantID + FIREBASE_MENU_ITEMS_PATH);
+        Firebase result = new Firebase(FIREBASE_MENUS + restaurantID + FIREBASE_MENU_ITEMS_PATH);
         return result;
     }
 
     public static Firebase getMenuOffersFrom(String restaurantID) {
-        Firebase result = new Firebase(FIREBASE_RESTAURANTS + restaurantID + FIREBASE_MENU_OFFERS_PATH);
+        Firebase result = new Firebase(FIREBASE_MENUS + restaurantID + FIREBASE_MENU_OFFERS_PATH);
         return result;
     }
 

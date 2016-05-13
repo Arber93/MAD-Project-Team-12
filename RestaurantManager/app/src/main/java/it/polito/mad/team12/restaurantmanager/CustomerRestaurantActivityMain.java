@@ -87,9 +87,9 @@ public class CustomerRestaurantActivityMain extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(CustomerRestaurantDetailsFragment.class, Details);
-       // adapter.addFragment(, Menu);
-        adapter.addFragment(ReviewsInsertFragment.class, Reviews);
+        adapter.addFragment(new CustomerRestaurantDetailsFragment(), Details);
+        adapter.addFragment(ShowMenuFragment.newInstance(name), Menu);
+        adapter.addFragment(new ReviewsInsertFragment(), Reviews);
         viewPager.setAdapter(adapter);
     }
 
@@ -100,7 +100,7 @@ public class CustomerRestaurantActivityMain extends AppCompatActivity {
 
     class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-        private List<Class<? extends Fragment>> mFragmentList = new ArrayList<>();
+        private List<Fragment> mFragmentList = new ArrayList<>();
         private List<String> mFragmentTitleList = new ArrayList<>();
 
         public ViewPagerAdapter(FragmentManager manager) {
@@ -109,16 +109,9 @@ public class CustomerRestaurantActivityMain extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            try {
-                Fragment instance = mFragmentList.get(position).newInstance();
-                return instance;
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-                throw new RuntimeException(e);
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-                throw new RuntimeException(e);
-            }
+            Fragment instance;
+            instance = mFragmentList.get(position);
+            return instance;
         }
 
         @Override
@@ -131,8 +124,8 @@ public class CustomerRestaurantActivityMain extends AppCompatActivity {
             return POSITION_NONE;
         }
 
-        public void addFragment(Class<? extends Fragment> fragmentClass, String title) {
-            mFragmentList.add(fragmentClass);
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }
 

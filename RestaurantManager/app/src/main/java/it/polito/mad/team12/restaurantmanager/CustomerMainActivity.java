@@ -822,8 +822,12 @@ public class CustomerMainActivity extends AppCompatActivity implements GoogleApi
 
     public void onSaveInstanceState(Bundle savedInstanceState) {
 
-        savedInstanceState.putDouble("lat",latitude);
-        savedInstanceState.putDouble("lon",longitude);
+        if(latitude != null) {
+            savedInstanceState.putDouble("lat", latitude);
+        }
+        if(longitude != null) {
+            savedInstanceState.putDouble("lon", longitude);
+        }
         super.onSaveInstanceState(savedInstanceState);
     }
 

@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -302,14 +303,6 @@ public class CustomerRestaurantDetailsFragment extends Fragment {
 
         }
     }
-
-
-
-
-
-
-
-
 
 
 

@@ -63,6 +63,7 @@ public class ReviewUtility {
 
         Firebase myFirebaseRef = new Firebase("https://popping-inferno-6667.firebaseio.com/reviews");
 
+
         myFirebaseRef.child("reviews").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {

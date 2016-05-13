@@ -19,6 +19,8 @@ public class ReservationsActivity extends AppCompatActivity {
     private String PENDING;
     private String ACCEPTED;
     private String DENIED;
+    private String COMPLETED;
+
     Toolbar toolbar;
     TabLayout tabLayout;
     private ViewPager viewPager;
@@ -31,6 +33,7 @@ public class ReservationsActivity extends AppCompatActivity {
         PENDING = getResources().getString(R.string.pending);
         ACCEPTED = getResources().getString(R.string.accepted);
         DENIED = getResources().getString(R.string.denied);
+        COMPLETED = getResources().getString(R.string.completed);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -39,6 +42,9 @@ public class ReservationsActivity extends AppCompatActivity {
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
 
         OnPageChangeListener myOnPageChangeListener =
                 new OnPageChangeListener(){
@@ -66,8 +72,6 @@ public class ReservationsActivity extends AppCompatActivity {
                     }};
         viewPager.addOnPageChangeListener(myOnPageChangeListener);
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -75,6 +79,7 @@ public class ReservationsActivity extends AppCompatActivity {
         adapter.addFragment(PendingReservationsFragment.class, PENDING);
         adapter.addFragment(AcceptedReservationsFragment.class, ACCEPTED);
         adapter.addFragment(DeniedReservationsFragment.class, DENIED);
+        adapter.addFragment(CompletedReservationsFragment.class, COMPLETED);
         viewPager.setAdapter(adapter);
     }
 

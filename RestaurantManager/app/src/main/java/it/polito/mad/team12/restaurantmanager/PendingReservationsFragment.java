@@ -10,6 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,7 +26,6 @@ public class PendingReservationsFragment extends Fragment {
     public static final String JSON_RESERVATIONS = "JSONReservations";
     private String RESERVATION_ID;
     private String CUSTOMER_NAME;
-    private String CUSTOMER_PHONE_NUMBER;
     private String ORDERED_ITEMS;
     private String TIME_DATE;
     private String ADDITIONAL_NOTES;
@@ -69,11 +73,15 @@ public class PendingReservationsFragment extends Fragment {
 
         RESERVATION_ID = getString(R.string.reservation_id);
         CUSTOMER_NAME = getString(R.string.customer_name);
-        CUSTOMER_PHONE_NUMBER = getString(R.string.customer_phone_number);
         ORDERED_ITEMS = getString(R.string.ordered_items);
         TIME_DATE = getString(R.string.time_date_reservation);
         ADDITIONAL_NOTES = getString(R.string.additional_notes);
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 
     @Override
@@ -148,7 +156,6 @@ public class PendingReservationsFragment extends Fragment {
         for (int i = 0; i < reservationsArray.length(); i++) {
             String current_id = null;
             String current_name = null;
-            String current_number = null;
             String current_items = null;
             String current_td= null;
             String current_notes = null;
@@ -156,7 +163,6 @@ public class PendingReservationsFragment extends Fragment {
                 JSONObject reservation = reservationsArray.getJSONObject(i);
                 current_id = RESERVATION_ID + reservation.getString("reservation_id");
                 current_name = CUSTOMER_NAME + reservation.getString("customer_name");
-                current_number = CUSTOMER_PHONE_NUMBER + reservation.getString("customer_phone_number");
                 current_td = TIME_DATE + reservation.getString("time_date");
                 current_notes = ADDITIONAL_NOTES + reservation.getString("additional_notes");
                 current_items = ORDERED_ITEMS + reservation.getString("ordered_items");
@@ -172,7 +178,6 @@ public class PendingReservationsFragment extends Fragment {
 
             ReservationDetails d = new ReservationDetails();
             d.setCustomerName(current_name);
-            d.setCustomerPhoneNumber(current_number);
             d.setOrderedItems(current_items);
             d.setTimeDate(current_td);
             d.setNotes(current_notes);

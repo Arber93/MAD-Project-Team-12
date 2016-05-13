@@ -16,7 +16,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class DeniedReservationsFragment extends Fragment {
+public class CompletedReservationsFragment extends Fragment {
 
     public static final String JSON_RESERVATIONS = "JSONReservations";
     private String RESERVATION_ID;
@@ -24,9 +24,7 @@ public class DeniedReservationsFragment extends Fragment {
     private String ORDERED_ITEM;
     private String TIME_DATE;
     private String ADDITIONAL_NOTES;
-    private String jsonPending;
-    private String jsonAccepted;
-    private String jsonDenied;
+    private String jsonCompleted;
 
     private SharedPreferences sharedPreferences;
 
@@ -34,7 +32,7 @@ public class DeniedReservationsFragment extends Fragment {
     ExpandableListView expandList;
     private ArrayList<ReservationHeader> expListItems;
 
-    public DeniedReservationsFragment() {
+    public CompletedReservationsFragment() {
         // Required empty public constructor
     }
 
@@ -43,26 +41,11 @@ public class DeniedReservationsFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         sharedPreferences = this.getActivity().getSharedPreferences(JSON_RESERVATIONS, Context.MODE_PRIVATE);
-        jsonPending = sharedPreferences.getString("pending", null);
-        jsonAccepted = sharedPreferences.getString("accepted", null);
-        jsonDenied = sharedPreferences.getString("denied", null);
 
-        if (jsonPending == null){
-            jsonPending = "{\"Reservations\":[{\"reservation_id\":\"1\",\"customer_name\":\"Mario Rossi\", \"customer_phone_number\":\"333 1111111\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"4\",\"customer_name\":\"Mario Neri\", \"customer_phone_number\":\"333 2222222\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"7\",\"customer_name\":\"Mario Bianchi\", \"customer_phone_number\":\"333 3333333\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"10\",\"customer_name\":\"Mario Verdi\", \"customer_phone_number\":\"333 4444444\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"}]}";
+        if (jsonCompleted == null){
+            jsonCompleted = "{\"Reservations\":[{\"reservation_id\":\"0\",\"customer_name\":\"Mat Ros\", \"customer_phone_number\":\"333 1111111\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"00\",\"customer_name\":\"Mario Neri\", \"customer_phone_number\":\"333 2222222\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"000\",\"customer_name\":\"Mario Bianchi\", \"customer_phone_number\":\"333 3333333\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"0000\",\"customer_name\":\"Mario Verdi\", \"customer_phone_number\":\"333 4444444\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"}]}";
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("pending", jsonPending);
-            editor.commit();
-        }
-        if (jsonAccepted == null){
-            jsonAccepted = "{\"Reservations\":[{\"reservation_id\":\"2\",\"customer_name\":\"Marco Rossi\", \"customer_phone_number\":\"333 1111111\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"5\",\"customer_name\":\"Mario Neri\", \"customer_phone_number\":\"333 2222222\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"8\",\"customer_name\":\"Mario Bianchi\", \"customer_phone_number\":\"333 3333333\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"11\",\"customer_name\":\"Mario Verdi\", \"customer_phone_number\":\"333 4444444\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"}]}";
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("accepted", jsonAccepted);
-            editor.commit();
-        }
-        if (jsonDenied == null){
-            jsonDenied = "{\"Reservations\":[{\"reservation_id\":\"3\",\"customer_name\":\"Matteo Rossi\", \"customer_phone_number\":\"333 1111111\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"6\",\"customer_name\":\"Mario Neri\", \"customer_phone_number\":\"333 2222222\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"9\",\"customer_name\":\"Mario Bianchi\", \"customer_phone_number\":\"333 3333333\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"12\",\"customer_name\":\"Mario Verdi\", \"customer_phone_number\":\"333 4444444\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"}]}";
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("denied", jsonDenied);
+            editor.putString("completed", jsonCompleted);
             editor.commit();
         }
 
@@ -78,12 +61,12 @@ public class DeniedReservationsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_denied_reservations, container, false);
+        View view = inflater.inflate(R.layout.fragment_completed_reservations, container, false);
 
         // get the listview
         expandList = (ExpandableListView) view.findViewById(R.id.lvExp);
         expListItems = setListData();
-        expAdapter = new ExpandableListAdapter(getActivity(), expListItems, R.layout.fragment_denied_reservations);
+        expAdapter = new ExpandableListAdapter(getActivity(), expListItems, R.layout.fragment_completed_reservations);
         expandList.setAdapter(expAdapter);
 
         // Listview Group click listener
@@ -126,19 +109,18 @@ public class DeniedReservationsFragment extends Fragment {
         return view;
     }
 
-
     public ArrayList<ReservationHeader> setListData() {
 
         // get the updated list
-        jsonDenied = sharedPreferences.getString("denied", null);
-        Log.d("ADebugTag", "*****************Denied***************: " + jsonDenied);
+        jsonCompleted = sharedPreferences.getString("completed", null);
+        Log.d("ADebugTag", "*****************Completed***************: " + jsonCompleted);
 
         ArrayList<ReservationHeader> list = new ArrayList<ReservationHeader>();
         ArrayList<ReservationDetails> ch_list;
         JSONArray reservations = null;
 
         try {
-            JSONObject root = new JSONObject(jsonDenied);
+            JSONObject root = new JSONObject(jsonCompleted);
             reservations = root.getJSONArray("Reservations");
         } catch (JSONException e) {
             e.printStackTrace();
@@ -157,7 +139,6 @@ public class DeniedReservationsFragment extends Fragment {
                 current_items = ORDERED_ITEM + reservation.getString("ordered_items");
                 current_td = TIME_DATE + reservation.getString("time_date");
                 current_notes = ADDITIONAL_NOTES + reservation.getString("additional_notes");
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }

@@ -27,13 +27,15 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     int pendingFragmentInt = R.layout.fragment_pending_reservations;
     int acceptedFragmentInt = R.layout.fragment_accepted_reservations;
     int deniedFragmentInt = R.layout.fragment_denied_reservations;
+    int completedFragmentInt = R.layout.fragment_completed_reservations;
+
     SharedPreferences sharedPreferences;
     String jsonPending;
     String jsonAccepted;
     String jsonDenied;
+    String jsonCompleted;
     String current_id;
     String current_name;
-    String current_number;
     String current_items;
     String current_td;
     String current_notes;
@@ -49,6 +51,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         this.jsonPending = sharedPreferences.getString("pending", null);
         this.jsonAccepted = sharedPreferences.getString("accepted", null);
         this.jsonDenied= sharedPreferences.getString("denied", null);
+        this.jsonCompleted= sharedPreferences.getString("completed", null);
 
     }
 
@@ -74,12 +77,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
         TextView tv1 = (TextView) convertView.findViewById(R.id.customer_name);
-        TextView tv2 = (TextView) convertView.findViewById(R.id.customer_phone_number);
         TextView tv3 = (TextView) convertView.findViewById(R.id.ordered_items);
         TextView tv4 = (TextView) convertView.findViewById(R.id.time_date);
         TextView tv5 = (TextView) convertView.findViewById(R.id.notes);
         tv1.setText(child.getCustomerName());
-        tv2.setText(child.getCustomerPhoneNumber());
         tv3.setText(child.getOrderedItems());
         tv4.setText(child.getTimeDate());
         tv5.setText(child.getNotes());
@@ -130,8 +131,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             params.addRule(RelativeLayout.ALIGN_PARENT_END);
             btn_deny.setLayoutParams(params);
         }
-        if (currentFragmentInt == deniedFragmentInt){
-            // once denied, a reservation cannot be re-accepted, nor re-denied
+        if (currentFragmentInt == deniedFragmentInt || currentFragmentInt == completedFragmentInt){
+            // once denied or completed, a reservation cannot be re-accepted, nor re-denied
             btn_accept.setVisibility(View.GONE);
             btn_deny.setVisibility(View.GONE);
         }
@@ -226,7 +227,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             JSONObject reservation = oldArray.getJSONObject(i); //get the single reservation
             current_id = reservation.getString("reservation_id");
             current_name = reservation.getString("customer_name");
-            current_number = reservation.getString("customer_phone_number");
             current_td = reservation.getString("time_date");
             current_notes = reservation.getString("additional_notes");
             current_items = reservation.getString("ordered_items");
@@ -289,7 +289,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         try {
             newReservation.put("reservation_id", current_id); // current_something gets the value in getAndRemove
             newReservation.put("customer_name", current_name);
-            newReservation.put("customer_phone_number", current_number);
             newReservation.put("time_date", current_td);
             newReservation.put("additional_notes", current_notes);
             newReservation.put("ordered_items", current_items);

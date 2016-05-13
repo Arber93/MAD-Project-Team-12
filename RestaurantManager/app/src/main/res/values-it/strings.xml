@@ -14,9 +14,7 @@
 
     <string name="app_name">Restaurant Manager</string>
     <string name="accept">ACCETTA</string>
-    <string name="accepted">ACCETTATO</string>
     <string name="action_settings">Impostazioni</string>
-    <string name="additional_notes"></string>
     <string name="ami_description_field_hint">Descrivi il prodotto qui</string>
     <string name="ami_description_field_title">Descrizione</string>
     <string name="ami_gluten_free_title"></string>
@@ -44,4 +42,52 @@
     <string name="vegan">Vegano</string>
     <string name="vegetarian">Vegetariano</string>
     <string name="gluten">Senza Glutine</string>
+
+    <string name="pending">IN ATTESA</string>
+    <string name="accepted">ACCETTATE</string>
+    <string name="denied">RIFIUTATE</string>
+    <string name="deny">RIFIUTA</string>
+
+    <string name="title_activity_reservations">Prenotazioni</string>
+
+    <string name="reservation_id">"ID: "</string>
+    <string name="customer_name">"Nome Cliente: "</string>
+    <string name="customer_phone_number">"Telefono Cliente: "</string>
+    <string name="ordered_items">"Ordine: "</string>
+    <string name="additional_notes">"Note aggiuntive: "</string>
+    <string name="time_date_reservation">Ora e Giorno: </string>
+
+    <string name="dialog_message_accept">Sei sicuro di voler accettare questa prenotazione?</string>
+    <string name="dialog_title_accept">ACCETTI?</string>
+    <string name="dialog_message_deny">Sei sicuro di voler rifiutare questa prenotazione?</string>
+    <string name="dialog_title_deny">RIFIUTI?</string>
+    <string name="ok">OK</string>
+    <string name="back">INDIETRO</string>
+    <string name="app_name">FirebaseTest</string>
+    <string name="submit">invia</string>
+    <string name="first_courses">Primi</string>
+    <string name="second_courses">Secondi</string>
+    <string name="side_dishes">contorni</string>
+    <string name="drinks">Drinks</string>
+    <string name="sandwiches">Sandwiches</string>
+    <string name="others">altro</string>
+    <string name="cart">carrello</string>
+    <string name="save_and_continue">Salva e continua</string>
+    <string name="go_to_cart">vedi carrello</string>
+    <string name="cancel_data">cancella dati</string>
+    <string name="data_success">Dati salvati correttamente</string>
+    <string name="reservation_sent">Prenotazione inviata</string>
+    <string name="data_canceled">Dati rimossi</string>
+    <string name="temp_data_canceled">Dati temporanei rimossi</string>
+    <string name="notes_hint">Inserisci qui ulteriori note per il ristoranre</string>
+    <string name="select_time">Seleziona l\'ora</string>
+    <string name="select_date">Seleziona il giorno</string>
+    <string name="modifications_not_saved">Modifiche non salvate</string>
+    <string name="send">Invia</string>
+    <string name="empty_reservation">Per favore, seleziona almeno un articolo</string>
+    <string name="date">"Giorno : "</string>
+    <string name="time">"Ora : "</string>
+    <string name="too_early">Troppo presto</string>
+
+
 </resources>

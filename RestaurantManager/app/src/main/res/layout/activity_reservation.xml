@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/first_courses"
+        android:id="@+id/btn_first_courses"
+        android:background="#B71C1C"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/second_courses"
+        android:id="@+id/btn_second_courses"
+        android:background="#C62828"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/side_dishes"
+        android:id="@+id/btn_side_dishes"
+        android:background="#D32F2F"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/sandwiches"
+        android:id="@+id/btn_sandwiches"
+        android:background="#E53935"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/drinks"
+        android:id="@+id/btn_drinks"
+        android:background="#F44336"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/others"
+        android:id="@+id/btn_others"
+        android:background="#EF5350"
+        android:layout_gravity="center_horizontal" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/go_to_cart"
+            android:layout_margin="2dp"
+            android:id="@+id/btn_cart"
+            android:background="#FFCDD2"
+            android:layout_gravity="center_horizontal"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/cancel_data"
+            android:layout_margin="2dp"
+            android:id="@+id/btn_cancel"
+            android:background="#FFCDD2"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+</LinearLayout>

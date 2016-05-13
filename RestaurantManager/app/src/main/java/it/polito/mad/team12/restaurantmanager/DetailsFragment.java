@@ -2,19 +2,33 @@ package it.polito.mad.team12.restaurantmanager;
 
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+import com.firebase.geofire.GeoFire;
+import com.firebase.geofire.GeoLocation;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -27,12 +41,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Map;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DetailsFragment extends Fragment implements View.OnClickListener {
+public class DetailsFragment extends Fragment implements View.OnClickListener, GestureDetector.OnGestureListener {
     /*
      *    This fragment will contain information on the restaurant (such as location, timetables,
      *  photos, etc.). The manager must be able to edit this data through the use of dialog boxes.
@@ -48,8 +63,10 @@ public class DetailsFragment extends Fragment implements View.OnClickListener {
     private TextView sat;
     private TextView sun;
     private ViewFlipper fliIm;
+    private GestureDetector mGestureDetector;
     private Button next;
     private Button prev;
+    private Button editFlipper;
     private String monday;
     private String phone;
     private String tuesday;
@@ -58,12 +75,17 @@ public class DetailsFragment extends Fragment implements View.OnClickListener {
     private String friday;
     private String saturday;
     private String sunday;
+    private String b64ph1,b64ph2,b64ph3,b64ph4;
     private CheckBox vegan,vegetarian,glutenfree;
-
-    private Button editHours, editPhone;
+    private float initialX;
+    private TextView street,resname;
+    private Button editHours, editPhone, editLogo;
     private RestaurantDetails resDet= new RestaurantDetails();
-
-
+    private Firebase mRootRef, restaurant, mPhotosRef, photos;
+    ImageView image1,image2,image3,image4;
+    ImageView reslogo;
+    Firebase geoRef = new Firebase("https://popping-inferno-6667.firebaseio.com/geofire");
+    private GeoFire geoFire;
 
 
     public DetailsFragment() {
@@ -73,12 +95,39 @@ public class DetailsFragment extends Fragment implements View.OnClickListener {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Firebase.setAndroidContext(getContext());
 
+        String restaurant11= "Tutto PizzaCorso Duca Degli Abruzzi 19";
+        mRootRef= new Firebase("https://popping-inferno-6667.firebaseio.com/restaurants");   //ROOT of Firebase Restaurants
+        restaurant= mRootRef.child(restaurant11);      //access the specified restaurant
+
+        mPhotosRef = new Firebase("https://popping-inferno-6667.firebaseio.com/photos");
+        photos = mPhotosRef.child(restaurant11);
+
+        image1= new ImageView(getContext());
+        image2= new ImageView(getContext());
+        image3= new ImageView(getContext());
+        image4= new ImageView(getContext());
+
+        geoFire = new GeoFire(geoRef);
+        geoFire.setLocation(restaurant11, new GeoLocation(45.0585825,7.6573937));
+
+
+
+
+        /*
         setHasOptionsMenu(true);
         File jsonFile = new File(getActivity().getFilesDir(), "details.xml");
 
         if(jsonFile.exists()) {
           loadDataFromJsonFile();
+            b64ph1=resDet.getPhoto1();  //the base 64 encodings of the images for the viewflipper
+            b64ph2=resDet.getPhoto2();
+            b64ph3=resDet.getPhoto3();
+            b64ph4=resDet.getPhoto4();
+
+
+
         } else {
             resDet.setTelephone("011950225");
             resDet.setMondayFrom("8:30");
@@ -98,6 +147,7 @@ public class DetailsFragment extends Fragment implements View.OnClickListener {
 
             saveDataToJsonFile();
         }
+        */
 
     }
 
@@ -131,6 +181,13 @@ public class DetailsFragment extends Fragment implements View.OnClickListener {
 
     }
 
+    public static Bitmap decodeBase64(String input)
+    {
+        byte[] decodedBytes = Base64.decode(input, 0);
+        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+    }
+
+
     private void saveDataToJsonFile(){
         Gson gson = new Gson();
         Type DetailsType = new TypeToken<RestaurantDetails>(){}.getType();
@@ -162,68 +219,217 @@ public class DetailsFragment extends Fragment implements View.OnClickListener {
         fri=(TextView) myFragment.findViewById(R.id.frag_details_friday);
         sat=(TextView) myFragment.findViewById(R.id.frag_details_saturday);
         sun=(TextView) myFragment.findViewById(R.id.frag_details_sunday);
-        fliIm=(ViewFlipper) myFragment.findViewById(R.id.viewFlip);
+        editFlipper=(Button) myFragment.findViewById(R.id.fragment_details_edit_flipper);
+
+        fliIm = (ViewFlipper) myFragment.findViewById(R.id.viewFlip);
+        fliIm.setInAnimation(getContext(), android.R.anim.fade_in);
+        fliIm.setOutAnimation(getContext(), android.R.anim.fade_out);
+
         next=(Button) myFragment.findViewById(R.id.nextImage);
         prev=(Button) myFragment.findViewById(R.id.prevImage);
 
+        editLogo=(Button) myFragment.findViewById(R.id.edit_logo);
         editHours=(Button) myFragment.findViewById(R.id.changeOpenings);
         editPhone=(Button) myFragment.findViewById(R.id.changePhone);
+        mGestureDetector = new GestureDetector(getContext(),this);
+        reslogo=(ImageView) myFragment.findViewById(R.id.acvivity_customer_logores);
 
         next.setOnClickListener(this);
         prev.setOnClickListener(this);
         editHours.setOnClickListener(this);
         editPhone.setOnClickListener(this);
+        editFlipper.setOnClickListener(this);
+        editLogo.setOnClickListener(this);
+        street=(TextView) myFragment.findViewById(R.id.frag_det_street);
+        resname=(TextView) myFragment.findViewById(R.id.frag_det_resname);
 
         vegan= (CheckBox) myFragment.findViewById(R.id.fragment_details_checkbox_vegan);
-        if (resDet.isVegan()) vegan.setChecked(true);
-        vegan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {  //VEGAN YES
-                                resDet.setVegan(true);
-                                saveDataToJsonFile();
-                } else {
-                                resDet.setVegan(false);
-                                saveDataToJsonFile();
-                }
 
-            }
-        });
 
         vegetarian =(CheckBox) myFragment.findViewById(R.id.fragment_details_checkbox_vegetarian);
-        if (resDet.isVegetarian()) vegetarian.setChecked(true);
-        vegetarian.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                                resDet.setVegetarian(true);
-                                saveDataToJsonFile();
-                } else {
-                                resDet.setVegetarian(false);
-                    saveDataToJsonFile();
 
-                }
-
-            }
-        });
 
         glutenfree= (CheckBox) myFragment.findViewById(R.id.fragment_details_checkbox_gluten);
-        if (resDet.isGlutenFree()) glutenfree.setChecked(true);
-        glutenfree.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        restaurant.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                                resDet.setGlutenFree(true);
-                    saveDataToJsonFile();
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                } else {
-                    resDet.setGlutenFree(false);
-                    saveDataToJsonFile();
+                resDet = dataSnapshot.getValue(RestaurantDetails.class);
+                phoneE.setText(resDet.getTelephone());
+                street.setText(resDet.getRestaurantAddress());
+                resname.setText(resDet.getRestaurantName());
+                if (resDet.isMonclosed() == false){
+                    mondays.setText(resDet.getMondayFrom()+"-"+resDet.getMondayTo());
+                } else mondays.setText(R.string.closed);
 
+                if (resDet.isTueclosed() == false){
+                    tue.setText(resDet.getTuesdayFrom()+"-"+resDet.getTuesdayTo());
+                } else tue.setText(R.string.closed);
+
+                if (resDet.isWedclosed() == false) {
+                    wed.setText(resDet.getWednesdayFrom()+"-"+resDet.getWednesdayTo());
+                } else wed.setText(R.string.closed);
+
+                if (resDet.isThurclosed() == false) {
+                    thu.setText(resDet.getThursdayFrom()+"-"+resDet.getThursdayTo());
+                } else thu.setText(R.string.closed);
+
+                if (resDet.isFriclosed() == false) {
+                    fri.setText(resDet.getFridayFrom()+"-"+resDet.getFridayTo());
+                } else fri.setText(R.string.closed);
+
+                if (resDet.isSatclosed() == false) {
+                    sat.setText(resDet.getSaturdayFrom()+"-"+resDet.getSaturdayTo());
+                } else sat.setText(R.string.closed);
+
+                if (resDet.isSunclosed() == false){
+                    sun.setText(resDet.getSundayFrom()+"-"+resDet.getSundayTo());
+                }else sun.setText(R.string.closed);
+
+                if (resDet.isVegan()) vegan.setChecked(true);
+                vegan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {  //VEGAN YES
+                            resDet.setVegan(true);
+                            restaurant.child("vegan").setValue(resDet.isVegan());
+                        } else {
+                            resDet.setVegan(false);
+                            restaurant.child("vegan").setValue(resDet.isVegan());
+                        }
+
+                    }
+                });
+                if (resDet.isVegetarian()) vegetarian.setChecked(true);
+                vegetarian.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                            resDet.setVegetarian(true);
+                            restaurant.child("vegetarian").setValue(resDet.isVegetarian());
+                        } else {
+                            resDet.setVegetarian(false);
+                            restaurant.child("vegetarian").setValue(resDet.isVegetarian());
+                        }
+
+                    }
+                });
+                if (resDet.isGlutenFree()) glutenfree.setChecked(true);
+                glutenfree.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                            resDet.setGlutenFree(true);
+                            restaurant.child("glutenFree").setValue(resDet.isGlutenFree());
+
+                        } else {
+                            resDet.setGlutenFree(false);
+                            restaurant.child("glutenFree").setValue(resDet.isGlutenFree());
+                        }
+
+                    }
+                });
+
+                String logores = resDet.getRestaurantLogo();
+                if (logores.equals("null") == false) {
+                    Bitmap lr = decodeBase64(logores);
+
+                    reslogo.setImageBitmap(lr);
                 }
 
             }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
         });
+
+
+
+        photos.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Map<String,String> mapP = dataSnapshot.getValue(Map.class);
+
+                b64ph1=(mapP.get("photo1"));   //set them to be what you find in Firebase
+                b64ph2=(mapP.get("photo2"));
+                b64ph3=(mapP.get("photo3"));
+                b64ph4=(mapP.get("photo4"));
+
+                fliIm.removeAllViews();
+
+                if (b64ph1 != null) {
+                    if (b64ph1.length() > 0) {
+                        if (b64ph1.equals("deleted") || b64ph1.equals("null")) {
+                        } else {
+                            Bitmap imageForFlipper1 = decodeBase64(b64ph1);
+                            image1.setImageBitmap(imageForFlipper1);
+                            image1.setScaleType(ImageView.ScaleType.FIT_XY);
+                            fliIm.addView(image1);
+
+                        }
+                    }
+                }
+
+                if (b64ph2 != null){
+                    if (b64ph2.length() > 0){
+                        if (b64ph2.equals("deleted") || b64ph2.equals("null")){
+
+                        }else{
+                            Bitmap imageForFlipper2 = decodeBase64(b64ph2);
+                            image2.setImageBitmap(imageForFlipper2);
+                            image2.setScaleType(ImageView.ScaleType.FIT_XY);
+                            fliIm.addView(image2);
+                        }
+                    }
+                }
+
+                if (b64ph3 != null){
+                    if (b64ph3.length() > 0){
+                        if (b64ph3.equals("deleted") || b64ph3.equals("null")){
+
+                        }else{
+                            Bitmap imageForFlipper3 = decodeBase64(b64ph3);
+                            image3.setImageBitmap(imageForFlipper3);
+                            image3.setScaleType(ImageView.ScaleType.FIT_XY);
+                            fliIm.addView(image3);
+                        }
+                    }
+                }
+
+                if (b64ph4 != null){
+                    if (b64ph4.length() > 0){
+                        if (b64ph4.equals("deleted") || b64ph4.equals("null")){
+
+                        }else{
+                            Bitmap imageForFlipper4 = decodeBase64(b64ph4);
+                            image4.setImageBitmap(imageForFlipper4);
+                            image4.setScaleType(ImageView.ScaleType.FIT_XY);
+                            fliIm.addView(image4);
+                        }
+                    }
+                }
+
+                if (b64ph1 == null && b64ph2==null && b64ph3 == null && b64ph4 == null){
+                    ImageView emptyIm = new ImageView(getContext());
+                    emptyIm.setImageDrawable(getResources().getDrawable(R.drawable.ic_empty_flipper_image));
+                    emptyIm.setScaleType(ImageView.ScaleType.CENTER);
+                    fliIm.addView(emptyIm);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+
+
+
 
        // Button editH = (Button) myFragment.findViewById(R.id.editHoursbutton);
        // editH.setOnClickListener(this);
@@ -254,36 +460,59 @@ public class DetailsFragment extends Fragment implements View.OnClickListener {
         }
 */
 
-        phoneE.setText(resDet.getTelephone());
-        if (resDet.isMonclosed() == false){
-            mondays.setText(resDet.getMondayFrom()+"-"+resDet.getMondayTo());
-        } else mondays.setText(R.string.closed);
-
-        if (resDet.isTueclosed() == false){
-            tue.setText(resDet.getTuesdayFrom()+"-"+resDet.getTuesdayTo());
-        } else tue.setText(R.string.closed);
-
-        if (resDet.isWedclosed() == false) {
-            wed.setText(resDet.getWednesdayFrom()+"-"+resDet.getWednesdayTo());
-        } else wed.setText(R.string.closed);
-
-        if (resDet.isThurclosed() == false) {
-            thu.setText(resDet.getThursdayFrom()+"-"+resDet.getThursdayTo());
-        } else thu.setText(R.string.closed);
-
-        if (resDet.isFriclosed() == false) {
-            fri.setText(resDet.getFridayFrom()+"-"+resDet.getFridayTo());
-        } else fri.setText(R.string.closed);
-
-        if (resDet.isSatclosed() == false) {
-            sat.setText(resDet.getSaturdayFrom()+"-"+resDet.getSaturdayTo());
-        } else sat.setText(R.string.closed);
-
-        if (resDet.isSunclosed() == false){
-            sun.setText(resDet.getSundayFrom()+"-"+resDet.getSundayTo());
-        }else sun.setText(R.string.closed);
 
         return myFragment;
+    }
+
+
+
+
+
+    @Override
+    public boolean onDown(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+
+        // Swipe left (next)
+        if (e1.getX() > e2.getX()) {
+            fliIm.showNext();
+        }
+
+        // Swipe right (previous)
+        if (e1.getX() < e2.getX()) {
+            fliIm.showPrevious();
+        }
+        return true;
+    }
+
+
+    public boolean onTouchEvent(MotionEvent event) {
+        mGestureDetector.onTouchEvent(event);
+
+        return getActivity().onTouchEvent(event);
     }
 
         public void onClick(View v){
@@ -293,6 +522,7 @@ public class DetailsFragment extends Fragment implements View.OnClickListener {
             if (v== prev){
                 fliIm.showPrevious();
             }
+
             if (v==editHours){
 
                 FragmentManager manager = getFragmentManager();
@@ -313,6 +543,24 @@ public class DetailsFragment extends Fragment implements View.OnClickListener {
                 EditPhoneDetails editing = new EditPhoneDetails();
                 editing.show(transaction,"Dialog");
 
+            }
+            if (v==editFlipper){
+                FragmentManager manager = getFragmentManager();
+                FragmentTransaction transaction;
+
+                transaction = manager.beginTransaction();
+
+                DetailsFlipperImagesEdit editing = new DetailsFlipperImagesEdit();
+                editing.show(transaction,"Dialog");
+            }
+            if (v==editLogo){
+                FragmentManager manager = getFragmentManager();
+                FragmentTransaction transaction;
+
+                transaction = manager.beginTransaction();
+
+                DetailsLogoEdit editing = new DetailsLogoEdit();
+                editing.show(transaction,"Dialog");
             }
         }
 
@@ -341,7 +589,7 @@ public class DetailsFragment extends Fragment implements View.OnClickListener {
     public void onResume(){
         super.onResume();
 
-        loadDataFromJsonFile();
+        //loadDataFromJsonFile();
     }
 
 

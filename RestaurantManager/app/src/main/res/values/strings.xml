@@ -32,7 +32,7 @@
     <string name="menu_item_image_description">Image of menu item</string>
     <string name="overflow_menu_image_description">Icon used to show more options</string>
     <string name="mcat_move_title">Move to Unavailable</string>
-    <string name="mct_delete">Delete</string>
+    <string name="mct_delete_title">Delete</string>
     <string name="mcut_move_title">Move to Available</string>
     <string name="restaurant_menu_title">Restaurant Menu</string>
     <string name="mt_add_new_item_string">Add New Item</string>
@@ -47,6 +47,9 @@
     <string name="ami_vegetarian_title">Vegetarian</string>
     <string name="ami_menu_new_item_title">New Menu Item</string>
     <string name="ami_menu_edit_item_title">Edit Menu Item</string>
+    <string name="ami_name_warning">The name field cannot be empty</string>
+    <string name="ami_description_warning">The description field cannot be empty</string>
+    <string name="ami_price_warning">That is not a valid price</string>
     <string name="button_text_cancel">CANCEL</string>
     <string name="button_text_save">SAVE</string>
     <string name="mct_edit_title">Edit</string>
@@ -58,6 +61,9 @@
     <string name="review_hint_reply">Insert your reply</string>
     <string name="review_info4">By</string>
     <string name="review_info5">on</string>
+
+    <string name="review_hint_insert_title">Insert your review\'s Title</string>
+    <string name="review_hint_insert">Insert review</string>
 
     <string name="phone">Phone:</string>
     <string name="editphone">Type you new number:</string>
@@ -78,10 +84,55 @@
     <string name="cancel">Cancel</string>
     <string name="prev">Prev.</string>
     <string name="next">Next</string>
+    <string name="dialog_fragment_menu_title">Choose an option</string>
+    <string name="ami_browse_gallery_string">Browse Gallery</string>
+    <string name="ami_take_photo_string">Take Photo</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_show_item_details">ShowItemDetailsActivity</string>
+    <string name="characteristics_title">Characteristics:</string>
+    <string name="characteristics_default_text">None</string>
+    <string name="sod_includes_title">Inlcudes:</string>
+
+    <string name="editFlipper">Edit</string>
     <string name="vegan">Vegan</string>
     <string name="vegetarian">Vegetarian</string>
     <string name="gluten">Gluten-Free</string>
+
+    <string name="fromcamera">New Photo</string>
+    <string name="fromroll">From Gallery</string>
+    <string name="deletephoto">Delete</string>
+    <string name="category">Food Categories</string>
+
+
+    <string-array name="foodcategories">
+        <item>All Categories</item>
+        <item>American</item>
+        <item>Asian</item>
+        <item>Beverages</item>
+        <item>Hamburgers</item>
+        <item>Indian</item>
+        <item>Italian</item>
+        <item>Greek</item>
+        <item>Japanese</item>
+        <item>Mexican</item>
+        <item>Pizza</item>
+        <item>Thai</item>
+
+    </string-array>
+
+
+    <string-array name="sortingfilters">
+        <item>No Filters</item>
+        <item>A-Z</item>
+        <item>Closest First</item>
+        <item>Best Reviews</item>
+
+
+    </string-array>
+
+
     
     <string name="dialog_message_accept">Do you really want to accept this reservation?</string>
     <string name="dialog_title_accept">ACCEPT?</string>
@@ -91,6 +142,8 @@
     <string name="back">BACK</string>
 
     <string name="paper_plane">&#xf1d8;</string>
+
+
     <string name="completed">COMPLETED</string>
     <string name="submit">SUBMIT</string>
     <string name="first_courses">First courses</string>
@@ -117,5 +170,16 @@
     <string name="time">"Time : "</string>
     <string name="too_early">Too early</string>
 
+
+    <string name="delete_reply">&#xf014;</string>
+    <string name="close_icon">&#xf00d;</string>
+    <string name="save_icon">&#xf0c7;</string>
+    <string name="pencil_icon">&#xf040;</string>
+    <string name="review_write">Write Review</string>
+    <string name="delete_reply_text">Delete Reply</string>
+
+    <string name="mandatory">Mandatory</string>
+
+    <string name="reviews_insert">Customer Review</string>
 
 </resources>

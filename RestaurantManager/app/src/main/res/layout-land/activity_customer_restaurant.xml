@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CustomerRestaurantDetailsFragment">
+
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/activity_customer_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp">
+
+
+        <ImageView
+            android:id="@+id/acvivity_customer_logores"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+
+            />
+
+        <TextView
+            android:id="@+id/activity_customer_resname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/acvivity_customer_logores"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            />
+
+        <TextView
+            android:id="@+id/activity_customer_popupmap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/acvivity_customer_logores"
+            android:layout_below="@id/activity_customer_resname"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/activity_customer_resphone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/acvivity_customer_logores"
+            android:layout_below="@id/activity_customer_popupmap"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            />
+
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/activity_customer_openingtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_customer_info"
+        android:text="@string/hours_open"
+        android:paddingTop="15dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        />
+
+    <TableLayout
+        android:id="@+id/acvitity_customer_openinghours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_customer_openingtext"
+        android:layout_marginLeft="25dp"
+        >
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/monday"
+                android:padding="0.5dp"
+                android:layout_weight="16"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/activity_monday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"
+                />
+
+        </TableRow>
+
+
+
+        <TableRow>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tuesday"
+                android:padding="0.5dp"
+                android:layout_weight="16"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/activity_tuesday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+        </TableRow>
+
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wednesday"
+                android:padding="0.5dp"
+                android:layout_weight="16" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/activity_wednesday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+
+        </TableRow>
+
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/thurdsay"
+                android:padding="0.5dp"
+                android:layout_weight="16" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/activity_thursday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+
+        </TableRow>
+
+
+        <TableRow>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/friday"
+                android:padding="0.5dp"
+                android:layout_weight="16"
+                />
+
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/activity_friday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+
+        </TableRow>
+
+        <TableRow>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/saturday"
+                android:padding="0.5dp"
+                android:layout_weight="16" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/activity_saturday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+
+        </TableRow>
+
+        <TableRow>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sunday"
+                android:padding="0.5dp"
+                android:layout_weight="16"/>
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/activity_sunday"
+                android:layout_marginRight="25dp"
+                android:layout_marginEnd="37dp"
+                android:padding="0.5dp"
+                android:gravity="end"/>
+
+
+
+
+        </TableRow>
+
+
+
+    </TableLayout>
+
+
+    <LinearLayout
+        android:id="@+id/customer_activity_checkboxes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/acvitity_customer_openinghours"
+        android:layout_marginTop="10dp"
+        >
+        <CheckBox
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/activity_customer_checkboxvegan"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/vegan"
+            android:button="@drawable/checkbox_selector"
+            android:clickable="false"/>
+
+        <CheckBox
+            android:layout_marginRight="10dp"
+            android:id="@+id/activity_customer_checkboxvegetarian"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/vegetarian"
+            android:button="@drawable/checkbox_selector"
+            android:clickable="false"/>
+
+        <CheckBox
+            android:id="@+id/activity_customer_checkboxgluten"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:text="@string/gluten"
+            android:button="@drawable/gluten_checkbox_selector"
+            android:textSize="12dp"
+            android:clickable="false"/>
+
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/customer_pager_photos_shower"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_below="@id/customer_activity_checkboxes"/>
+
+
+</RelativeLayout>
+
+</ScrollView>
+
+
+
+
+
+
+</RelativeLayout>

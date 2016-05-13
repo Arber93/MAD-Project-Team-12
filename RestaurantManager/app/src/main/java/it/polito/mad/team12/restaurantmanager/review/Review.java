@@ -1,26 +1,31 @@
 package it.polito.mad.team12.restaurantmanager.review;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 /**
  * Created by Antonio on 10/04/16.
  */
 public class Review {
-    String Title;
+    String reviewID;
+    String title;
     String text;
-    Float stars;
+    String stars;
     String userID;
-    String RestaurantID;
-    Date dataReview;
+    String restaurantID;
+    String dataReview;
     String reply;
+    String dataReply;
+
+    public Review(){}
+
+    public String getReviewID(){ return reviewID; }
+
+    public void setReviewID(String reviewID){ this.reviewID =reviewID; }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getText() {
@@ -31,11 +36,11 @@ public class Review {
         this.text = text;
     }
 
-    public Float getStars() {
+    public String getStars() {
         return stars;
     }
 
-    public void setStars(Float stars) {
+    public void setStars(String stars) {
         this.stars = stars;
     }
 
@@ -48,19 +53,18 @@ public class Review {
     }
 
     public String getRestaurantID() {
-        return RestaurantID;
+        return restaurantID;
     }
 
     public void setRestaurantID(String restaurantID) {
-        RestaurantID = restaurantID;
+        this.restaurantID = restaurantID;
     }
 
     public String getDataReview() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
-        return sdf.format(dataReview);
+        return dataReview;
     }
 
-    public void setDataReview(Date dataReview) {
+    public void setDataReview(String dataReview) {
         this.dataReview = dataReview;
     }
 
@@ -70,5 +74,13 @@ public class Review {
 
     public void setReply(String reply) {
         this.reply = reply;
+    }
+
+    public String getDataReply() {
+        return this.dataReply;
+    }
+
+    public void setDataReply(String dataReply) {
+        this.dataReply = dataReply;
     }
 }

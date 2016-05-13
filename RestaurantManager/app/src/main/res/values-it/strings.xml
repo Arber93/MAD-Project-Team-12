@@ -9,8 +9,17 @@
     <string name="review_info3s">valutazione</string>
     <string name="review_info4">Da</string>
     <string name="review_info5">il</string>
+    <string name="delete_reply_text">Cancella Risposta</string>
+    <string name="review_write">Scrivi Recensione</string>
+
+    <string name="review_hint_insert_title">Inserisci il Titolo della Recensione</string>
+    <string name="review_hint_insert">Inserisci Recensione</string>
 
     <string name="paper_plane">&#xf1d8;</string>
+    <string name="delete_reply">&#xf014;</string>
+    <string name="close_icon">&#xf00d;</string>
+    <string name="save_icon">&#xf0c7;</string>
+    <string name="pencil_icon">&#xf040;</string>
 
     <string name="app_name">Restaurant Manager</string>
     <string name="accept">ACCETTA</string>
@@ -89,5 +98,40 @@
     <string name="time">"Ora : "</string>
     <string name="too_early">Troppo presto</string>
 
+    <string name="editFlipper">Modifica</string>
+    <string name="fromcamera">Scatta Foto</string>
+    <string name="fromroll">Da Rullino</string>
+    <string name="deletephoto">Elimina</string>
+    <string name="category">Tipi di Cucina</string>
 
+    <string-array name="foodcategories">
+
+        <item>Tutte le Categorie</item>
+        <item>Americano</item>
+        <item>Asiatico</item>
+        <item>Bevande</item>
+        <item>Hamburgers</item>
+        <item>Indiano</item>
+        <item>Italiano</item>
+        <item>Greco</item>
+        <item>Giapponese</item>
+        <item>Messicano</item>
+        <item>Pizza</item>
+        <item>Tailandese</item>
+
+    </string-array>
+
+
+    <string-array name="sortingfilters">
+        <item>No Filtri</item>
+        <item>A-Z</item>
+        <item>Più Vicini</item>
+        <item>Più Recensioni</item>
+
+
+    </string-array>
+
+
+
+    <string name="mandatory">Obbligatorio</string>
 </resources>

@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+    <ScrollView
+        android:id="@+id/flipper_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        >
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/flipper_table_layout"
+            android:layout_marginLeft="35dp">
+
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+
+                android:id="@+id/flipper_photo1"
+                />
+
+                <TableLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="25dp"
+                    >
+
+                    <TableRow>
+            <Button
+                android:id="@+id/flipper_camera_photo1"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/ic_flipper_from_camera"
+
+                />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fromcamera"
+                        />
+                    </TableRow>
+
+                    <TableRow>
+            <Button
+                android:id="@+id/flipper_roll_photo1"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/ic_flipper_from_cameraroll"
+                />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fromroll"/>
+                    </TableRow>
+
+                    <TableRow>
+            <Button
+                android:id="@+id/flipper_delete_photo1"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/ic_delete_flipper_photo"
+                />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/deletephoto"/>
+                    </TableRow>
+                </TableLayout>
+
+            </TableRow>
+
+
+            <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/flipper_photo2"
+                    />
+
+
+
+                <TableLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="25dp"
+                    >
+
+                    <TableRow>
+                        <Button
+                            android:id="@+id/flipper_camera_photo2"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/ic_flipper_from_camera"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fromcamera"
+                            />
+                    </TableRow>
+
+                    <TableRow>
+                        <Button
+                            android:id="@+id/flipper_roll_photo2"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/ic_flipper_from_cameraroll"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fromroll"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <Button
+                            android:id="@+id/flipper_delete_photo2"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/ic_delete_flipper_photo"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/deletephoto"/>
+                    </TableRow>
+                </TableLayout>
+            </TableRow>
+
+
+
+            <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/flipper_photo3"
+                    />
+
+                <TableLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="25dp"
+                    >
+
+                    <TableRow>
+                        <Button
+                            android:id="@+id/flipper_camera_photo3"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/ic_flipper_from_camera"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fromcamera"
+                            />
+                    </TableRow>
+
+                    <TableRow>
+                        <Button
+                            android:id="@+id/flipper_roll_photo3"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/ic_flipper_from_cameraroll"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fromroll"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <Button
+                            android:id="@+id/flipper_delete_photo3"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/ic_delete_flipper_photo"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/deletephoto"/>
+                    </TableRow>
+                </TableLayout>
+            </TableRow>
+
+
+            <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/flipper_photo4"
+                    />
+
+                <TableLayout
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="25dp"
+                    >
+
+                    <TableRow>
+                        <Button
+                            android:id="@+id/flipper_camera_photo4"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/ic_flipper_from_camera"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fromcamera"
+                            />
+                    </TableRow>
+
+                    <TableRow>
+                        <Button
+                            android:id="@+id/flipper_roll_photo4"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/ic_flipper_from_cameraroll"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fromroll"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <Button
+                            android:id="@+id/flipper_delete_photo4"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/ic_delete_flipper_photo"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/deletephoto"/>
+                    </TableRow>
+                </TableLayout>
+            </TableRow>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </TableLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </ScrollView>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/fleo_buttons"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/flipper_scroll_view"
+        >
+        <Button
+            android:id="@+id/flipper_cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/selected_tab_text_color"
+            android:background="@color/colorPrimary"
+            android:text="@string/button_text_cancel"
+            android:textSize="@dimen/title_font_size"/>
+        <Button
+            android:id="@+id/flipper_save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/selected_tab_text_color"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="@string/button_text_save"
+            android:textSize="@dimen/title_font_size"
+            />
+    </LinearLayout>
+
+
+
+</RelativeLayout>

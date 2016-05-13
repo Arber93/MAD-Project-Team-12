@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/mt_card_view"
-    tools:context="it.polito.mad.team12.restaurantmanager.MenuTabFragment">
+    tools:context="it.polito.mad.team12.restaurantmanager.MenuTabFragment"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/cardview_row_height"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin">
 
         <ImageView
             android:id="@+id/mt_item_image"
             android:layout_width="@dimen/cardview_image_width"
             android:layout_height="@dimen/cardview_image_height"
+            android:layout_gravity="center"
             android:contentDescription="@string/menu_item_image_description"/>
 
         <RelativeLayout
@@ -25,6 +28,7 @@
 
             <TextView
                 android:id="@+id/mt_item_name"
+                style="@style/CardViewText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -32,47 +36,32 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textSize="@dimen/title_font_size"
-                style="@style/CardViewText"
                 />
             <!--android:text="Name"-->
 
             <TextView
                 android:id="@+id/mt_item_description"
+                style="@style/CardViewText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/mt_item_name"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textSize="@dimen/subtitle_font_size"
-                style="@style/CardViewText"
                 />
             <!--android:text="This is a sample description."-->
 
             <TextView
                 android:id="@+id/mt_item_price"
+                style="@style/CardViewText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:textSize="@dimen/subtitle_font_size"
                 android:layout_alignBaseline="@id/mt_item_name"
-                style="@style/CardViewText"
                 />
             <!--android:text="2.95 EURO"-->
-
         </RelativeLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/mt_overflow_menu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_overflow_menu"
-                android:contentDescription="@string/overflow_menu_image_description"
-                style="@style/CardViewIcon"/>
-        </LinearLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>

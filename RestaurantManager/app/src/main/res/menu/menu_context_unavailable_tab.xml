@@ -10,5 +10,5 @@
         />
     <item
         android:id="@+id/mct_delete"
-        android:title="@string/mct_delete"/>
+        android:title="@string/mct_delete_title"/>
 </menu>

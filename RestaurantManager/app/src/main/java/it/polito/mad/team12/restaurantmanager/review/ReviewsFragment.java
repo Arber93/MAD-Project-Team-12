@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.firebase.client.Firebase;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -36,23 +38,6 @@ public class ReviewsFragment extends Fragment {
     String restaurantID = "Nome Ristorante1";
 
 
-    /****
-     * Before call the Review fragment, it must call this method
-     * ****   try {
-     * ReviewUtility.loadJSONFromAsset(getAssets().open("reviews.json"));
-     * } catch (IOException e) {
-     * e.printStackTrace();
-     * }
-     * ****   For read and load the review by the json file
-     */
-
-
-    //********** When it create a ReviewsFragment, it must create a Bundle and it passed by argument
-    //          with the name of the restaurant
-    //This is an example:
-    //Bundle bundle = new Bundle();
-    //bundle.putString("restaurantID","Nome Ristorante1");
-    //reviewsFragment.setArguments(bundle);
     public ReviewsFragment() {
     }
 
@@ -68,8 +53,11 @@ public class ReviewsFragment extends Fragment {
         score = (TextView) myFragmentId.findViewById(R.id.review_score);
         rating = (TextView) myFragmentId.findViewById(R.id.review_info2);
 
-        ratingBar.setRating(ReviewUtility.getStarsRestaurant(restaurantID));
         nameRestaurant.setText(restaurantID);
+
+        setUpRecyclerView(restaurantID);
+
+        ratingBar.setRating(ReviewUtility.getStarsRestaurant(restaurantID));
         numberOfReviews.setText(ReviewUtility.numberOfReviews(restaurantID).toString());
         if (numberOfReviews.getText().equals("1"))
             rating.setText(getResources().getText(R.string.review_info3s));
@@ -82,21 +70,7 @@ public class ReviewsFragment extends Fragment {
         int imageResource = getResources().getIdentifier(getActivity().getPackageName() + uri, null, null);
         restaurantImage.setImageResource(imageResource);
 
-        setUpRecyclerView(restaurantID);
         return myFragmentId;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        try {
-            if(ReviewUtility.reviewForRestaurant.size()==0)
-                ReviewUtility.loadJSONFromAsset(getActivity().getAssets().open("reviews.json"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
     private void setUpRecyclerView(String retaurantID) {
@@ -116,6 +90,27 @@ public class ReviewsFragment extends Fragment {
         mLinearLayoutManagerVertical.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLinearLayoutManagerVertical);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        /*Firebase myFirebaseRef = new Firebase("https://restaurantaf.firebaseio.com/reviews");
+
+        ReviewFirebaseRecycleAdapter adapterFirebase = new ReviewFirebaseRecycleAdapter(Review.class,
+                R.layout.item_review,
+                ReviewFirebaseRecycleAdapter.MyViewReviewHolder.class,
+                myFirebaseRef);
+
+        adapterFirebase.notifyDataSetChanged();
+        recyclerView.setAdapter(adapterFirebase);
+        adapterFirebase.notifyDataSetChanged();
+
+        adapterFirebase.SetOnItemClickListener(new ReviewFirebaseRecycleAdapter.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(View v) {
+                DialogFragment newFragment = ReviewDialogFragment.newInstance(v,restaurantID);
+                newFragment.show(getFragmentManager(),"dialog");
+            }
+        });*/
+
     }
 
 }

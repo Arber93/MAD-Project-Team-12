@@ -16,6 +16,12 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.firebase.client.Firebase;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import it.polito.mad.team12.restaurantmanager.R;
 
 /**
@@ -31,15 +37,20 @@ public class ReviewDialogFragment extends DialogFragment {
     TextView data;
     TextView link;
 
+    String reviewID;
+
+    ReviewDialogFragment oReviewDialogFragment;
+
     public static ReviewDialogFragment newInstance(View detail,String restaurantID) {
 
         Bundle args = new Bundle();
         args.putString("title", ((TextView) detail.findViewById(R.id.review_title)).getText().toString());
         args.putString("user",((TextView) detail.findViewById(R.id.review_user)).getText().toString());
         args.putString("data",((TextView) detail.findViewById(R.id.review_date)).getText().toString());
-        args.putString("text",((TextView) detail.findViewById(R.id.review_text)).getText().toString());
-        args.putString("restaurantID",restaurantID);
-        args.putFloat("ratingBar",((RatingBar) detail.findViewById(R.id.review_ratingBar)).getRating());
+        args.putString("text", ((TextView) detail.findViewById(R.id.review_text)).getText().toString());
+        args.putString("restaurantID", restaurantID);
+        args.putFloat("ratingBar", ((RatingBar) detail.findViewById(R.id.review_ratingBar)).getRating());
+        args.putString("reviewID", ((TextView) detail.findViewById(R.id.review_id)).getText().toString());
 
         ReviewDialogFragment fragment = new ReviewDialogFragment();
         fragment.setArguments(args);
@@ -55,36 +66,79 @@ public class ReviewDialogFragment extends DialogFragment {
         ((TextView) myFragmentId.findViewById(R.id.review_user)).setText(getArguments().getString("user"));
         ((TextView) myFragmentId.findViewById(R.id.review_date)).setText(getArguments().getString("data"));
         ((TextView) myFragmentId.findViewById(R.id.review_text)).setText(getArguments().getString("text"));
+        reviewID = getArguments().getString("reviewID");
         final String restaurantID = getArguments().getString("restaurantID");
-        for(Review r : ReviewUtility.getReviews(restaurantID)){
-            if(r.getTitle().equals(getArguments().getString("title")) && r.getReply().trim().length()>0){
-                ((TextView) myFragmentId.findViewById(R.id.review_reply)).setText(r.getReply());
-                (myFragmentId.findViewById(R.id.review_reply_et)).setEnabled(false);
-                (myFragmentId.findViewById(R.id.sendReview )).setEnabled(false);
-                break;
-            }
+        oReviewDialogFragment = this;
+
+        if(ReviewUtility.getReview(reviewID).getReply().trim().length()>0) {
+            ((TextView) myFragmentId.findViewById(R.id.review_reply)).setText(ReviewUtility.getReview(reviewID).getReply());
+            ((TextView) myFragmentId.findViewById(R.id.review_dataReply)).setText(ReviewUtility.getReview(reviewID).getDataReply());
+            (myFragmentId.findViewById(R.id.review_reply_et)).setVisibility(View.INVISIBLE);
+            (myFragmentId.findViewById(R.id.sendReview)).setVisibility(View.INVISIBLE);
+            (myFragmentId.findViewById(R.id.review_delete_button)).setVisibility(View.VISIBLE);
+            (myFragmentId.findViewById(R.id.review_delete_text)).setVisibility(View.VISIBLE);
+        }else{
+            ((TextView) myFragmentId.findViewById(R.id.review_reply)).setText("");
+            ((TextView) myFragmentId.findViewById(R.id.review_dataReply)).setText("");
+            (myFragmentId.findViewById(R.id.review_reply_et)).setVisibility(View.VISIBLE);
+            (myFragmentId.findViewById(R.id.sendReview)).setVisibility(View.VISIBLE);
+            (myFragmentId.findViewById(R.id.review_delete_button)).setVisibility(View.INVISIBLE);
+            (myFragmentId.findViewById(R.id.review_delete_text)).setVisibility(View.INVISIBLE);
         }
+
+        ((TextView) myFragmentId.findViewById(R.id.review_close_dialog)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                oReviewDialogFragment.dismiss();
+            }
+        });
 
         Typeface font = Typeface.createFromAsset(getActivity().getAssets(),"fontawesome-webfont.ttf");
         final Button button = (Button)myFragmentId.findViewById(R.id.sendReview );
+        final Button deleteButton = (Button)myFragmentId.findViewById(R.id.review_delete_button);
         button.setTypeface(font);
+        deleteButton.setTypeface(font);
+        ((TextView) myFragmentId.findViewById(R.id.review_close_dialog)).setTypeface(font);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(((EditText) myFragmentId.findViewById(R.id.review_reply_et)).getText().toString().trim().length()>0) {
+                if (((EditText) myFragmentId.findViewById(R.id.review_reply_et)).getText().toString().trim().length() > 0) {
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy", Locale.ITALIAN);
+
                     ((TextView) myFragmentId.findViewById(R.id.review_reply)).setText(((EditText) myFragmentId.findViewById(R.id.review_reply_et)).getText());
                     ((EditText) myFragmentId.findViewById(R.id.review_reply_et)).setText("");
-                    (myFragmentId.findViewById(R.id.review_reply_et)).setEnabled(false);
-                    button.setEnabled(false);
-                    Log.d("->", restaurantID + " - " + (((TextView) myFragmentId.findViewById(R.id.review_title))).getText().toString());
-                    for (Review r : ReviewUtility.getReviews(restaurantID)) {
-                        if (r.getTitle().equals((((TextView) myFragmentId.findViewById(R.id.review_title))).getText().toString())) {
-                            r.setReply(((TextView) myFragmentId.findViewById(R.id.review_reply)).getText().toString());
-                            break;
-                        }
-                    }
+                    ((TextView) myFragmentId.findViewById(R.id.review_dataReply)).setText(sdf.format(new Date(System.currentTimeMillis())));
+                    (myFragmentId.findViewById(R.id.review_reply_et)).setVisibility(View.INVISIBLE);
+                    button.setVisibility(View.INVISIBLE);
+                    (myFragmentId.findViewById(R.id.review_delete_button)).setVisibility(View.VISIBLE);
+                    (myFragmentId.findViewById(R.id.review_delete_text)).setVisibility(View.VISIBLE);
+                    (myFragmentId.findViewById(R.id.review_reply)).setVisibility(View.VISIBLE);
+                    (myFragmentId.findViewById(R.id.review_dataReply)).setVisibility(View.VISIBLE);
+                    ReviewUtility.getReview(reviewID).setReply(((TextView) myFragmentId.findViewById(R.id.review_reply)).getText().toString());
+                    ReviewUtility.getReview(reviewID).setDataReply(((TextView) myFragmentId.findViewById(R.id.review_dataReply)).getText().toString());
+                    Firebase myFirebaseRef = new Firebase("https://restaurantaf.firebaseio.com/");
+                    myFirebaseRef.child("reviews/" + reviewID + "/reply").setValue(((TextView) myFragmentId.findViewById(R.id.review_reply)).getText().toString());
+                    myFirebaseRef.child("reviews/" + reviewID + "/dataReply").setValue(((TextView) myFragmentId.findViewById(R.id.review_dataReply)).getText().toString());
                 }
+            }
+        });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReviewUtility.getReview(reviewID).setReply("");
+                ((TextView) myFragmentId.findViewById(R.id.review_reply)).setText("");
+                ((TextView) myFragmentId.findViewById(R.id.review_dataReply)).setText("");
+                (myFragmentId.findViewById(R.id.review_reply_et)).setVisibility(View.VISIBLE);//setEnabled(false);
+                button.setVisibility(View.VISIBLE);//.setEnabled(false);
+                (myFragmentId.findViewById(R.id.review_delete_button)).setVisibility(View.INVISIBLE);
+                (myFragmentId.findViewById(R.id.review_delete_text)).setVisibility(View.INVISIBLE);
+                (myFragmentId.findViewById(R.id.review_reply)).setVisibility(View.INVISIBLE);
+                (myFragmentId.findViewById(R.id.review_dataReply)).setVisibility(View.INVISIBLE);
+                Firebase myFirebaseRef = new Firebase("https://restaurantaf.firebaseio.com/");
+                myFirebaseRef.child("reviews/" + reviewID + "/reply").setValue("");
+                myFirebaseRef.child("reviews/" + reviewID + "/dataReply").setValue("");
             }
         });
 

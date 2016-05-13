@@ -6,11 +6,9 @@
     android:orientation="vertical"
     >
 
-    <android.support.v7.widget.RecyclerView
+    <it.polito.mad.team12.restaurantmanager.ContextMenuRecyclerView
         android:id="@+id/mt_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="@dimen/card_view_top_padding"
-        android:divider="?android:dividerHorizontal"
         />
 </LinearLayout>

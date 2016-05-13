@@ -5,12 +5,53 @@
     tools:context="it.polito.mad.team12.restaurantmanager.DetailsFragment">
 
 
-    <ImageView
+
+    <RelativeLayout
+        android:id="@+id/activity_customer_info"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:id="@+id/mapPhotoHolder"
-        android:layout_gravity="center_horizontal|top"
-        android:src="@drawable/maph"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp">
+
+
+        <ImageView
+            android:id="@+id/acvivity_customer_logores"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/edit_logo"
+            android:background="@drawable/ic_edit_pen"
+            android:layout_marginLeft="5dp"
+            />
+
+        <TextView
+            android:id="@+id/frag_det_resname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/acvivity_customer_logores"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            />
+
+        <TextView
+            android:id="@+id/frag_det_street"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/acvivity_customer_logores"
+            android:layout_below="@id/frag_det_resname"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"/>
+
+
+
+
+    </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,7 +59,7 @@
         android:text="@string/phone"
         android:id="@+id/textView"
         android:paddingTop="15dp"
-        android:layout_below="@+id/mapPhotoHolder"
+        android:layout_below="@id/activity_customer_info"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="26dp"
@@ -258,30 +299,8 @@
         android:id="@+id/viewFlip"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:src="@drawable/resta1"
-            android:scaleType="centerCrop"
-            android:id="@+id/imageRes1"/>
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:src="@drawable/resta4"
-            android:scaleType="centerCrop"
-            android:id="@+id/imageRes2"/>
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:src="@drawable/resta3"
-            android:scaleType="centerCrop"
-            android:id="@+id/imageRes3"/>
-
-
+        android:layout_alignParentStart="true"
+        >
     </ViewFlipper>
 
 
@@ -296,6 +315,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -304,6 +325,16 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_details_edit_flipper"
+        android:layout_alignParentBottom="true"
+        android:text="@string/editFlipper"
+        android:layout_toRightOf="@id/prevImage"
+        android:layout_toLeftOf="@+id/nextImage"
+        />
 
     <Button
         style="?android:attr/buttonStyleSmall"

@@ -29,8 +29,8 @@ public class ReviewsInsertFragment extends Fragment {
     private ImageView restaurantImage;
     private TextView rating;
     private TextView score;
-    String restaurantID = "Nome Ristorante1";
-    String userID = "Antonio";
+    String restaurantID = "";//"Nome Ristorante1";
+    String userID = "";//"Antonio";
 
 
     /****
@@ -51,6 +51,16 @@ public class ReviewsInsertFragment extends Fragment {
     //bundle.putString("restaurantID","Nome Ristorante1");
     //reviewsFragment.setArguments(bundle);
     public ReviewsInsertFragment() {
+    }
+
+    public void setRestaurantID(String restaurantID){
+        this.restaurantID = restaurantID;
+        ReviewUtility.loadReviews(restaurantID);
+        ReviewUtility.loadRestaurant(restaurantID);
+    }
+
+    public void setUserID(String userID){
+        this.userID = userID;
     }
 
     @Override

@@ -65,6 +65,7 @@ public class ReviewDialogIFragment extends DialogFragment {
         ((TextView) myFragmentId.findViewById(R.id.review_user)).setText(getArguments().getString("user"));
         ((TextView) myFragmentId.findViewById(R.id.review_date)).setText(getArguments().getString("data"));
         ((TextView) myFragmentId.findViewById(R.id.review_text)).setText(getArguments().getString("text"));
+        String restaurantID = getArguments().getString("restaurantID");
         reviewID = getArguments().getString("reviewID");
         oReviewDialogFragment = this;
 

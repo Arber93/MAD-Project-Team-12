@@ -150,5 +150,4 @@ public class ReviewsInsertFragment extends Fragment {
         byte[] decodedBytes = Base64.decode(input, 0);
         return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
     }
-
 }

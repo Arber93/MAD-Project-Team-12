@@ -18,8 +18,7 @@
             android:id="@+id/mt_item_image"
             android:layout_width="@dimen/cardview_image_width"
             android:layout_height="@dimen/cardview_image_height"
-            android:layout_gravity="center"
-            android:contentDescription="@string/menu_item_image_description"/>
+            android:layout_gravity="center"/>
 
         <RelativeLayout
             android:layout_width="wrap_content"

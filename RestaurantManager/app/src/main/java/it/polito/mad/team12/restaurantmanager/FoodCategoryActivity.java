@@ -1,5 +1,6 @@
 package it.polito.mad.team12.restaurantmanager;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+import com.firebase.client.Query;
 import com.firebase.ui.FirebaseRecyclerAdapter;
 
 import java.util.HashMap;
@@ -42,22 +44,25 @@ public class FoodCategoryActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        rootRef = new Firebase("https://blistering-inferno-3678.firebaseio.com");
+        //rootRef = new Firebase("https://blistering-inferno-3678.firebaseio.com");
         Bundle b = getIntent().getExtras();
         restaurantID = b.getString("restaurantID");
+        rootRef = Utility.getMenuItemsFrom(restaurantID);
         category = b.getString("category");
         Log.v("RESTAURANT ID", restaurantID);
         Log.v("CATEGORY", category);
 
         // FirebaseRecyclerAdapter setup
-        Firebase restaurantsRef = rootRef.child("restaurants");
+        /*Firebase restaurantsRef = rootRef.child("restaurants");
         Firebase restaurantRef = restaurantsRef.child(restaurantID);
         Firebase menuRef = restaurantRef.child("menu");
-        Firebase categoryRef = menuRef.child(category);
-        FirebaseRecyclerAdapter<ReservationItem, MyViewHolder> adapter = new
-                FirebaseRecyclerAdapter<ReservationItem, MyViewHolder>(ReservationItem.class,R.layout.item_temp_reservation, MyViewHolder.class, categoryRef) {
+        Firebase categoryRef = menuRef.child(category);*/
+        Query query = rootRef.orderByChild("category").equalTo(category);
+
+        FirebaseRecyclerAdapter<ItemData, MyViewHolder> adapter = new
+                FirebaseRecyclerAdapter<ItemData, MyViewHolder>(ItemData.class,R.layout.item_temp_reservation, MyViewHolder.class, query) {
                     @Override
-                    protected void populateViewHolder(MyViewHolder myViewHolder, ReservationItem item, int i) {
+                    protected void populateViewHolder(MyViewHolder myViewHolder, ItemData item, int i) {
                         //get the name of the current item
                         String currentItem = item.getName();
                         // check if the item was already selected and the screen was rotated
@@ -73,8 +78,6 @@ public class FoodCategoryActivity extends AppCompatActivity {
                     }
                 };
         recyclerView.setAdapter(adapter);
-
-
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

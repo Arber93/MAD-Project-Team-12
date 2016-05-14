@@ -10,6 +10,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,10 +82,31 @@ public class CustomerRestaurantActivityMain extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.customer_tabs);
         tabLayout.setupWithViewPager(viewPager);
-
-
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_restaurant_details, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch(item.getItemId()) {
+            case R.id.rd_make_reservation:
+                Intent intent = new Intent(this, ReservationActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("restaurantID", name);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
+
+        return true;
+    }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -135,5 +158,9 @@ public class CustomerRestaurantActivityMain extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ReviewUtility.clear();
+    }
 }

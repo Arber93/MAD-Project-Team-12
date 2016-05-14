@@ -27,9 +27,9 @@ public final class Utility {
     // TODO Fill this class with constants and methods to be used by multiple activities/fragments
     public static final String LOG_WARNING_TAG = "warning";
     public static final String IMAGE_EXTENSION = ".jpg";
-    public static final String FIREBASE_ROOT = "https://popping-inferno-6667.firebaseio.com/";
+    public static final String FIREBASE_ROOT = "https://popping-inferno-6667.firebaseio.com";
     public static final String FIREBASE_RESTAURANTS = FIREBASE_ROOT + "/restaurants";
-    public static final String FIREBASE_MENUS = FIREBASE_ROOT + "/menus";
+    public static final String FIREBASE_MENUS = FIREBASE_ROOT + "/menus/";
     public static final String FIREBASE_MENU_PATH = "/menu";
     public static final String FIREBASE_MENU_ITEMS_PATH = "/items";
     public static final String FIREBASE_MENU_OFFERS_PATH = "/offers";

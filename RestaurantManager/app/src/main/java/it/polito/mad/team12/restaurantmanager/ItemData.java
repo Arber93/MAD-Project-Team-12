@@ -7,9 +7,17 @@ import java.math.RoundingMode;
 
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class ItemData implements Comparable<ItemData>{
+    public static final String FIRST_COURSES = "first courses";
+    public static final String SECOND_COURSES = "second courses";
+    public static final String SIDE_DISHES = "side dishes";
+    public static final String SANDWICHES = "sandwiches";
+    public static final String DRINKS = "drinks";
+    public static final String OTHERS = "others";
+
     private String name;
     private String description;
     private BigDecimal price;
+    private String category;
 
     /*
      *  If characteristics like the following increase in number than an
@@ -107,6 +115,14 @@ public class ItemData implements Comparable<ItemData>{
 
     public void setHasImage(boolean hasImage) {
         this.hasImage = hasImage;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     @Override

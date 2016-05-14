@@ -163,4 +163,6 @@ public class ReviewDialogFragment extends DialogFragment {
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         window.setAttributes(lp);
     }
+
+
 }

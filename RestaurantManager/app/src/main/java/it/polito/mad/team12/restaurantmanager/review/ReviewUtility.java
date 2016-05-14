@@ -31,12 +31,11 @@ public class ReviewUtility {
     public static TreeMap<String, Restaurant> restaurant = new TreeMap<>();
 
     public static ArrayList<Review> getReviews(String restaurantID) {
-
         return new ArrayList<>(reviewForRestaurant.values());//get(restaurantID);
     }
 
     public static Review getReview(String reviewID){
-        return  reviewForRestaurant.get(reviewID);
+        return reviewForRestaurant.get(reviewID);
     }
 
     public static Float getStarsRestaurant(String restaurantID) {
@@ -63,33 +62,26 @@ public class ReviewUtility {
 
         Firebase myFirebaseRef = new Firebase("https://popping-inferno-6667.firebaseio.com/reviews");
 
-
-        myFirebaseRef.child("reviews").addChildEventListener(new ChildEventListener() {
+        myFirebaseRef.child("reviews").orderByChild("restaurantID").equalTo(restaurantID).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Review r = dataSnapshot.getValue(Review.class);
-                if(r.getRestaurantID().equals(restaurantID)){
-                    r.setReviewID(dataSnapshot.getKey());
-                    reviewForRestaurant.put(dataSnapshot.getKey(), r);
-                }
+                r.setReviewID(dataSnapshot.getKey());
+                reviewForRestaurant.put(r.getReviewID(), r);
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 Review r = dataSnapshot.getValue(Review.class);
-                if(r.getRestaurantID().equals(restaurantID)){
-                    r.setReviewID(dataSnapshot.getKey());
-                    reviewForRestaurant.put(dataSnapshot.getKey(), r);
-                }
+                r.setReviewID(dataSnapshot.getKey());
+                reviewForRestaurant.put(r.getReviewID(), r);
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 Review r = dataSnapshot.getValue(Review.class);
-                if(r.getRestaurantID().equals(restaurantID)){
-                    r.setReviewID(dataSnapshot.getKey());
-                    reviewForRestaurant.remove(dataSnapshot.getKey());
-                }
+                r.setReviewID(dataSnapshot.getKey());
+                reviewForRestaurant.remove(r.getReviewID());
             }
 
             @Override
@@ -102,9 +94,6 @@ public class ReviewUtility {
 
             }
         });
-
-
-
     }
 
     public static void loadRestaurant(final String restaurantID){

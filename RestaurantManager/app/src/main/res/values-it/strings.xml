@@ -26,7 +26,7 @@
     <string name="action_settings">Impostazioni</string>
     <string name="ami_description_field_hint">Descrivi il prodotto qui</string>
     <string name="ami_description_field_title">Descrizione</string>
-    <string name="ami_gluten_free_title"></string>
+    <string name="ami_gluten_free_title">Senza Glutine</string>
     <string name="to">Alle</string>
     <string name="from">Dalle</string>
     <string name="btn_reservations">Prenotazioni</string>
@@ -130,6 +130,31 @@
 
     </string-array>
 
+    <string name="menu_available_tab_title">Disponibile</string>
+    <string name="menu_unavailable_tab_title">Non Disponibile</string>
+    <string name="mcat_move_title">Sposta su Non Disponibile</string>
+    <string name="mct_delete_title">Elimina</string>
+    <string name="mcut_move_title">Sposta su Disponibile</string>
+    <string name="restaurant_menu_title">Menu del Ristorante</string>
+    <string name="mt_add_new_item_string">Aggiungi Nuovo Articolo</string>
+    <string name="ami_name_field_title">Nome</string>
+    <string name="ami_name_field_hint">Inserisci il nome del prodotto qui</string>
+    <string name="ami_price_field_title">Prezzo</string>
+    <string name="ami_price_field_hint">Inserisci il prezzo del prodoto qui</string>
+    <string name="ami_vegan_title">Vegano</string>
+    <string name="ami_vegetarian_title">Vegetariano</string>
+    <string name="ami_menu_new_item_title">Nuovo Articolo</string>
+    <string name="ami_menu_edit_item_title">Modifica Articolo</string>
+    <string name="ami_name_warning">Il campo nome non puo essere vuoto</string>
+    <string name="ami_description_warning">Il campo descrizione non puo essere vuoto</string>
+    <string name="ami_price_warning">Il campo prezzo non contiene un valore valido</string>
+    <string name="mct_edit_title">Modifica</string>
+    <string name="ami_browse_gallery_string">Galleria</string>
+    <string name="ami_take_photo_string">Fotocamera</string>
+    <string name="characteristics_title">Caratteristiche:</string>
+    <string name="characteristics_default_text">Nessuna</string>
+    <string name="sod_includes_title">Inlcude:</string>
+    <string name="rd_make_reservation_string">Prenotare</string>
 
 
     <string name="mandatory">Obbligatorio</string>

@@ -3,6 +3,7 @@ package it.polito.mad.team12.restaurantmanager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,7 +32,7 @@ public class FoodCategoryActivity extends AppCompatActivity {
     public static HashMap<String,String> selectedItems = new HashMap<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_category);
         btn_submit = (Button) findViewById(R.id.btn_submit);
@@ -47,45 +48,32 @@ public class FoodCategoryActivity extends AppCompatActivity {
         category = b.getString("category");
         Log.v("RESTAURANT ID", restaurantID);
         Log.v("CATEGORY", category);
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
         // FirebaseRecyclerAdapter setup
         Firebase restaurantsRef = rootRef.child("restaurants");
         Firebase restaurantRef = restaurantsRef.child(restaurantID);
         Firebase menuRef = restaurantRef.child("menu");
         Firebase categoryRef = menuRef.child(category);
         FirebaseRecyclerAdapter<ReservationItem, MyViewHolder> adapter = new
-            FirebaseRecyclerAdapter<ReservationItem, MyViewHolder>(ReservationItem.class,R.layout.item_temp_reservation, MyViewHolder.class, categoryRef) {
-            @Override
-            protected void populateViewHolder(MyViewHolder myViewHolder, ReservationItem item, int i) {
-                //get the name of the current item
-                String currentItem = item.getName();
-                // check if the item was already selected
-                if (sharedPreferences.getString(currentItem,null) != null){
-                    myViewHolder.quantity.setText(sharedPreferences.getString(currentItem,null));
-                } else {
-                    myViewHolder.quantity.setText("0");
-                }
-                // set the name of the item
-                myViewHolder.name.setText(currentItem);
-            }
-        };
+                FirebaseRecyclerAdapter<ReservationItem, MyViewHolder>(ReservationItem.class,R.layout.item_temp_reservation, MyViewHolder.class, categoryRef) {
+                    @Override
+                    protected void populateViewHolder(MyViewHolder myViewHolder, ReservationItem item, int i) {
+                        //get the name of the current item
+                        String currentItem = item.getName();
+                        // check if the item was already selected and the screen was rotated
+                        if (savedInstanceState != null){
+                            myViewHolder.quantity.setText(savedInstanceState.getString(currentItem,null));
+                        } else if (sharedPreferences.getString(currentItem,null) != null){
+                            myViewHolder.quantity.setText(sharedPreferences.getString(currentItem,null));
+                        } else {
+                            myViewHolder.quantity.setText("0");
+                        }
+                        // set the name of the item
+                        myViewHolder.name.setText(currentItem);
+                    }
+                };
         recyclerView.setAdapter(adapter);
 
-/*
-        FirebaseListAdapter<String> adapter = new FirebaseListAdapter<String>(this, String.class, android.R.layout.simple_list_item_1, menuRef) {
-            @Override
-            protected void populateView(android.view.View view, String s, int i) {
-                Log.v("VALUE", s);
-                TextView textView = (TextView)view.findViewById(android.R.id.text1);
-                textView.setText(s);
-            }
-        };
-        listView.setAdapter(adapter);
-*/
 
     }
 
@@ -161,5 +149,15 @@ public class FoodCategoryActivity extends AppCompatActivity {
         Toast.makeText(this, getResources().getString(R.string.modifications_not_saved), Toast.LENGTH_SHORT).show();
 
         finish();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        for (String s : selectedItems.keySet()) {
+            if (!selectedItems.get(s).equals("0")) {
+                outState.putString(s, selectedItems.get(s));
+            }
+        }
     }
 }

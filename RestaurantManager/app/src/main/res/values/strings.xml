@@ -29,8 +29,6 @@
 
     <string name="menu_available_tab_title">Available</string>
     <string name="menu_unavailable_tab_title">Unavailable</string>
-    <string name="menu_item_image_description">Image of menu item</string>
-    <string name="overflow_menu_image_description">Icon used to show more options</string>
     <string name="mcat_move_title">Move to Unavailable</string>
     <string name="mct_delete_title">Delete</string>
     <string name="mcut_move_title">Move to Available</string>
@@ -84,7 +82,7 @@
     <string name="cancel">Cancel</string>
     <string name="prev">Prev.</string>
     <string name="next">Next</string>
-    <string name="dialog_fragment_menu_title">Choose an option</string>
+
     <string name="ami_browse_gallery_string">Browse Gallery</string>
     <string name="ami_take_photo_string">Take Photo</string>
 
@@ -181,5 +179,6 @@
     <string name="mandatory">Mandatory</string>
 
     <string name="reviews_insert">Customer Review</string>
+    <string name="rd_make_reservation_string">Make Reservation</string>
 
 </resources>

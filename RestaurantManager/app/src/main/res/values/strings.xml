@@ -26,7 +26,6 @@
     <string name="menu">Menu</string>
     <string name="reviews">Reviews</string>
 
-
     <string name="menu_available_tab_title">Available</string>
     <string name="menu_unavailable_tab_title">Unavailable</string>
     <string name="mcat_move_title">Move to Unavailable</string>

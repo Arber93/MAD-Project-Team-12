@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -36,6 +37,7 @@ public class ReservationActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         Bundle b = getIntent().getExtras();
         restaurantID = b.getString("restaurantID");
+        Log.v("resID---------", restaurantID);
 
         setContentView(R.layout.activity_reservation);
         btn_first_courses = (Button) findViewById(R.id.btn_first_courses);

@@ -90,7 +90,7 @@
     <string name="title_activity_show_item_details">ShowItemDetailsActivity</string>
     <string name="characteristics_title">Characteristics:</string>
     <string name="characteristics_default_text">None</string>
-    <string name="sod_includes_title">Inlcudes:</string>
+    <string name="sod_includes_title">Includes:</string>
 
     <string name="editFlipper">Edit</string>
     <string name="vegan">Vegan</string>

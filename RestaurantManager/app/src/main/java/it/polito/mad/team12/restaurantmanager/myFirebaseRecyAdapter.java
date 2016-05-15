@@ -76,7 +76,7 @@ public class myFirebaseRecyAdapter extends FirebaseRecyclerAdapter<RestaurantDet
             v.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
-                    if (restListen != null) restListen.onItemClick(v, name.getText().toString()+address);
+                    if (restListen != null) restListen.onItemClick(v, name.getText().toString() + " " + address);
                 }
             });
 

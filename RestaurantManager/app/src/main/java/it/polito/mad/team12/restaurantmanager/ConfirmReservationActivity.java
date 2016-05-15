@@ -97,7 +97,7 @@ public class ConfirmReservationActivity extends AppCompatActivity implements Dat
         SimpleItemAdapter adapter = new SimpleItemAdapter(mapItems);
         listView.setAdapter(adapter);
 
-        rootRef = new Firebase("https://blistering-inferno-3678.firebaseio.com");
+        rootRef = new Firebase("https://popping-inferno-6667.firebaseio.com");
         // FirebaseRecyclerAdapter setup
         Firebase reservationsRef = rootRef.child("reservations");
         pendingRef = reservationsRef.child("pending");

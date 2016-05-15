@@ -10,8 +10,6 @@ import com.firebase.client.Query;
 import com.firebase.ui.FirebaseRecyclerAdapter;
 
 import it.polito.mad.team12.restaurantmanager.R;
-import it.polito.mad.team12.restaurantmanager.RestaurantDetails;
-import it.polito.mad.team12.restaurantmanager.myFirebaseRecyAdapter;
 
 /**
  * Created by Antonio on 10/05/16.

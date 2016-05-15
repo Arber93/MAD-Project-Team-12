@@ -1,7 +1,5 @@
 package it.polito.mad.team12.restaurantmanager;
 
-import android.content.ClipData;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

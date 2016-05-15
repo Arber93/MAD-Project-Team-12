@@ -159,4 +159,6 @@
 
 
     <string name="mandatory">Obbligatorio</string>
+    <string name="completed">COMPLETATO</string>
+    <string name="reservations">Prenotazioni</string>
 </resources>

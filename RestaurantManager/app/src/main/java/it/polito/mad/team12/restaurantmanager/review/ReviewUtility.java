@@ -1,22 +1,12 @@
 package it.polito.mad.team12.restaurantmanager.review;
 
-import android.util.Log;
-
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
-import com.google.gson.Gson;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 import java.util.TreeMap;
 
 import it.polito.mad.team12.restaurantmanager.Restaurant;

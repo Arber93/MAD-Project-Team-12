@@ -20,15 +20,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".MyApplication">
-        <activity android:name=".MainActivity">
+        android:name="it.polito.mad.team12.restaurantmanager.MyApplication">
+        <activity android:name="it.polito.mad.team12.restaurantmanager.MainActivity">
         </activity>
         <activity
-            android:name=".ReservationsActivity"
+            android:name="it.polito.mad.team12.restaurantmanager.ReservationsActivity"
             android:label="@string/title_activity_reservations"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".AddMenuItemActivity" />
-        <activity android:name=".CustomerMainActivity">
+            android:parentActivityName="it.polito.mad.team12.restaurantmanager.MainActivity" />
+        <activity android:name="it.polito.mad.team12.restaurantmanager.AddMenuItemActivity" />
+        <activity android:name="it.polito.mad.team12.restaurantmanager.CustomerMainActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,23 +37,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FoodCategoryActivity"
+            android:name="it.polito.mad.team12.restaurantmanager.FoodCategoryActivity"
             android:label="FoodCategoryActivity" >
         </activity>
         <activity
-            android:name=".ReservationActivity"
+            android:name="it.polito.mad.team12.restaurantmanager.ReservationActivity"
             android:label="ReservationActivity" >
         </activity>
         <activity
-            android:name=".ConfirmReservationActivity"
+            android:name="it.polito.mad.team12.restaurantmanager.ConfirmReservationActivity"
             android:label="ConfirmReservationActivity" >
         </activity>
    <activity         
-android:name=".ShowItemDetailsActivity"
+android:name="it.polito.mad.team12.restaurantmanager.ShowItemDetailsActivity"
             android:label="@string/title_activity_show_item_details"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ShowOfferDetailsActivity"></activity>
-        <activity android:name=".CustomerRestaurantActivityMain"></activity>
+        <activity android:name="it.polito.mad.team12.restaurantmanager.ShowOfferDetailsActivity"></activity>
+        <activity android:name="it.polito.mad.team12.restaurantmanager.CustomerRestaurantActivityMain"></activity>
     </application>
 
 </manifest>

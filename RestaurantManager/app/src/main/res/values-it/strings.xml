@@ -140,7 +140,7 @@
     <string name="ami_name_field_title">Nome</string>
     <string name="ami_name_field_hint">Inserisci il nome del prodotto qui</string>
     <string name="ami_price_field_title">Prezzo</string>
-    <string name="ami_price_field_hint">Inserisci il prezzo del prodoto qui</string>
+    <string name="ami_price_field_hint">Inserisci il prezzo del prodotto qui</string>
     <string name="ami_vegan_title">Vegano</string>
     <string name="ami_vegetarian_title">Vegetariano</string>
     <string name="ami_menu_new_item_title">Nuovo Articolo</string>
@@ -153,7 +153,7 @@
     <string name="ami_take_photo_string">Fotocamera</string>
     <string name="characteristics_title">Caratteristiche:</string>
     <string name="characteristics_default_text">Nessuna</string>
-    <string name="sod_includes_title">Inlcude:</string>
+    <string name="sod_includes_title">Include:</string>
     <string name="rd_make_reservation_string">Prenotare</string>
 
 

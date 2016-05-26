@@ -7,6 +7,13 @@
     android:orientation="vertical"
     android:gravity="bottom">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log Out"
+        android:id="@+id/ic_drawer_logout"
+        android:layout_gravity="right" />
+
     <ImageView
         android:id="@+id/ic_drawer_profile"
         android:layout_width="100dp"
@@ -15,6 +22,7 @@
         />
 
     <TextView
+        android:id="@+id/ic_drawer_managername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Restaurant Manager"

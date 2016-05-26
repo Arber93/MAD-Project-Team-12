@@ -94,7 +94,9 @@ public class DetailsFragment extends Fragment implements View.OnClickListener, G
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(getContext());
 
-        String restaurant11= "Tutto PizzaCorso Duca Degli Abruzzi 19";
+        MainActivity acT = (MainActivity) getActivity();
+        String restaurant11= acT.retrieveRestID();
+
         mRootRef= new Firebase("https://popping-inferno-6667.firebaseio.com/restaurants");   //ROOT of Firebase Restaurants
         restaurant= mRootRef.child(restaurant11);      //access the specified restaurant
 
@@ -105,11 +107,6 @@ public class DetailsFragment extends Fragment implements View.OnClickListener, G
         image2= new ImageView(getContext());
         image3= new ImageView(getContext());
         image4= new ImageView(getContext());
-
-        geoFire = new GeoFire(geoRef);
-        geoFire.setLocation(restaurant11, new GeoLocation(45.0585825,7.6573937));
-
-
 
 
         /*
@@ -253,6 +250,7 @@ public class DetailsFragment extends Fragment implements View.OnClickListener, G
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 resDet = dataSnapshot.getValue(RestaurantDetails.class);
+                System.out.println("IL RISTORANTEEEEEEEEEEEEEEEEEEEEEEEEEE "+resDet.getRestaurantName());
                 phoneE.setText(resDet.getTelephone());
                 street.setText(resDet.getRestaurantAddress());
                 resname.setText(resDet.getRestaurantName());

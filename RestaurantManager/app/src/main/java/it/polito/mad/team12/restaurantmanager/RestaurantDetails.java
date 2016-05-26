@@ -27,13 +27,17 @@ public class RestaurantDetails {
 
 
     public RestaurantDetails(){
-       /* vegan=false;
+
+    }
+
+    public RestaurantDetails(String newer){
+          vegan=false;
         vegetarian=false;
         glutenFree=false;
         monclosed=tueclosed=wedclosed= thurclosed=friclosed=satclosed=sunclosed = false;
-        mondayFrom=mondayTo=photo1=photo2=photo3=photo4=tuesdayTo=tuesdayFrom=wednesdayFrom=wednesdayTo=thursdayTo=thursdayFrom=fridayFrom=fridayTo=saturdayTo=saturdayFrom=sundayFrom=sundayTo=null;
+        mondayFrom=mondayTo=telephone=tuesdayTo=tuesdayFrom=wednesdayFrom=wednesdayTo=thursdayTo=thursdayFrom=fridayFrom=fridayTo=saturdayTo=saturdayFrom=sundayFrom=sundayTo=" ";
+        restaurantLogo="null";
 
-   */
     }
 
 

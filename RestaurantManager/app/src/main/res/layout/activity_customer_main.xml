@@ -1,69 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="it.polito.mad.team12.restaurantmanager.CustomerMainActivity">
+
+<android.support.v4.widget.DrawerLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/drawer_customer_layout"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
 
 
-    <!-- This LinearLayout represents the contents of the screen  -->
-    <LinearLayout
-        android:id="@+id/customer_main_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <!-- The ActionBar displayed at the top -->
-        <include
-            layout="@layout/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <TableLayout
-        android:id="@+id/customer_spinner_holder"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@id/customer_main_toolbar">
-
-        <TableRow>
-
-        <Spinner
-            android:id="@+id/customer_spinner_foodcategory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            >
-
-
-        </Spinner>
-
-
-        <Spinner
-            android:id="@+id/customer_spinner_sortingfilters"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            >
-
-
-        </Spinner>
-
-        </TableRow>
-
-    </TableLayout>
-
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/customer_main_recycler"
-        android:layout_below="@id/customer_spinner_holder"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
-
-    </android.support.v7.widget.RecyclerView>
+        tools:context="it.polito.mad.team12.restaurantmanager.CustomerMainActivity">
 
 
+        <!-- This LinearLayout represents the contents of the screen  -->
+        <LinearLayout
+            android:id="@+id/customer_main_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-</RelativeLayout>
+            <!-- The ActionBar displayed at the top -->
+            <include
+                layout="@layout/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TableLayout
+            android:id="@+id/customer_spinner_holder"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/customer_main_toolbar">
+
+            <TableRow>
+
+                <Spinner
+                    android:id="@+id/customer_spinner_foodcategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    >
+
+
+                </Spinner>
+
+
+                <Spinner
+                    android:id="@+id/customer_spinner_sortingfilters"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    >
+
+
+                </Spinner>
+
+            </TableRow>
+
+        </TableLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/customer_main_recycler"
+            android:layout_below="@id/customer_spinner_holder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+        </android.support.v7.widget.RecyclerView>
+
+
+    </RelativeLayout>
+
+
+
+    <!-- The navigation drawer that comes from the left -->
+<!-- Note that `android:layout_gravity` needs to be set to 'start' -->
+<android.support.design.widget.NavigationView
+    android:id="@+id/nvCView"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="@android:color/white"
+    app:menu="@menu/drawer_customer_view"/>
+</android.support.v4.widget.DrawerLayout>

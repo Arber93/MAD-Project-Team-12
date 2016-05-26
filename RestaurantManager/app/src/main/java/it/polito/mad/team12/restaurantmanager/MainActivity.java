@@ -1,7 +1,9 @@
 package it.polito.mad.team12.restaurantmanager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -13,6 +15,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.firebase.client.Firebase;
 
@@ -25,12 +30,18 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView nvDrawer;
     private ActionBarDrawerToggle drawerToggle;
     private Toolbar toolbar;
-    String restaurantID = "Nome Ristorante1";
-
+    private String restaurantID;
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
+
+        pref = getSharedPreferences("testapp", MODE_PRIVATE);
+        String restname = pref.getString("restID", null);
+
+        this.restaurantID= restname;
 
         setContentView(R.layout.activity_main);
 
@@ -67,6 +78,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
+
+
+        View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header);
+        TextView profileLogout;
+        profileLogout = (TextView) headerLayout.findViewById(R.id.ic_drawer_logout);
+
+        profileLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
+
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -102,14 +126,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.nav_review_fragment:
                 Fragment reviewsFragment = new ReviewsFragment();
-
                 transaction = manager.beginTransaction();
                 transaction.replace(R.id.flContent, reviewsFragment);
                 transaction.commit();
                 break;
             case R.id.nav_review_fragment_insert:
                 Fragment reviewsFragmentInsert = new ReviewsInsertFragment();
-
                 transaction = manager.beginTransaction();
                 transaction.replace(R.id.flContent, reviewsFragmentInsert);
                 transaction.commit();
@@ -166,6 +188,26 @@ public class MainActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggles
         drawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    public String retrieveRestID(){
+        String restID=restaurantID;
+        return restID;
+    }
+
+    @Override
+    public void onBackPressed(){
+
+    }
+
+    public void logout(){
+        System.out.println("I HAVE LOGGED OUT!! ");
+        editor = pref.edit();
+        editor.putString("loggedin","false");
+        editor.commit();
+        Intent i = new Intent(this, MainLoginActivity.class);
+        startActivity(i);
+        finish();
     }
 
 }

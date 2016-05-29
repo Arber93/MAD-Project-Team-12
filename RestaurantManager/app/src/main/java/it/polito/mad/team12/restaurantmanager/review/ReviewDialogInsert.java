@@ -93,7 +93,7 @@ public class ReviewDialogInsert extends DialogFragment {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy", Locale.ITALIAN);
                 r.setDataReview(sdf.format(new Date(System.currentTimeMillis())));
 
-                Firebase fb = new Firebase("https://restaurantaf.firebaseio.com/");
+                Firebase fb = new Firebase("https://popping-inferno-6667.firebaseio.com/");
                 r.setReviewID(fb.child("reviews").push().getKey());
                 fb.child("reviews/"+r.getReviewID()).setValue(r);
                 oReviewDialogInsert.dismiss();

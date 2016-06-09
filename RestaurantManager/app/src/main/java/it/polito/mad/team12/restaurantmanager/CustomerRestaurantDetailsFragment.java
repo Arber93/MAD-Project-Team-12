@@ -14,6 +14,7 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -48,6 +49,9 @@ public class CustomerRestaurantDetailsFragment extends Fragment {
     private ViewPager viewPager;
     PagerAdapter adapter;
     private String[] images={"0","0","0","0"};
+    private Button takemethere;
+    CustomerRestaurantShowMap showing = new CustomerRestaurantShowMap();
+    private boolean firstVisit;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,7 +63,7 @@ public class CustomerRestaurantDetailsFragment extends Fragment {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         */
-
+        firstVisit=true;
         phoneE = (TextView) myFragment.findViewById(R.id.activity_customer_resphone);
         mondays = (TextView) myFragment.findViewById(R.id.activity_monday);
         tue = (TextView) myFragment.findViewById(R.id.activity_tuesday);
@@ -70,7 +74,9 @@ public class CustomerRestaurantDetailsFragment extends Fragment {
         sun = (TextView) myFragment.findViewById(R.id.activity_sunday);
         viewPager = (ViewPager) myFragment.findViewById(R.id.customer_pager_photos_shower);
         streetname = (TextView) myFragment.findViewById(R.id.activity_customer_popupmap);
-        streetname.setOnClickListener(new View.OnClickListener() {
+        takemethere = (Button) myFragment.findViewById(R.id.activity_customer_takemethere);
+
+        takemethere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -79,8 +85,8 @@ public class CustomerRestaurantDetailsFragment extends Fragment {
 
                 transaction = manager.beginTransaction();
 
-                CustomerRestaurantShowMap showing = new CustomerRestaurantShowMap();
                 showing.show(transaction, "Dialog");
+
             }
         });
         resname = (TextView) myFragment.findViewById(R.id.activity_customer_resname);
@@ -98,6 +104,8 @@ public class CustomerRestaurantDetailsFragment extends Fragment {
 
         mPhotosRef = new Firebase("https://popping-inferno-6667.firebaseio.com/photos");
         photos = mPhotosRef.child(name);
+
+
 
         image1 = new ImageView(getContext());
         image2 = new ImageView(getContext());
@@ -297,6 +305,17 @@ public class CustomerRestaurantDetailsFragment extends Fragment {
             // Remove viewpager_item.xml from ViewPager
             ((ViewPager) container).removeView((View) object);
 
+        }
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+
+        if (firstVisit){
+            firstVisit=false;
+        }else {
+            showing.dismiss();
         }
     }
 

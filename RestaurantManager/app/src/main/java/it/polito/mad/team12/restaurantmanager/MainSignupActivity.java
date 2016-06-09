@@ -4,10 +4,12 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,13 +21,23 @@ import android.widget.TextView;
 
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.geofire.GeoFire;
+import com.firebase.geofire.GeoLocation;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
+import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class MainSignupActivity extends AppCompatActivity {
 
-    private EditText email,password,name,resname,restreet;
+    private EditText email,password,name,resname;
     private Button signupbutton;
     private RadioButton simple,manager;
     Firebase mRef = new Firebase("https://popping-inferno-6667.firebaseio.com");
@@ -39,6 +51,11 @@ public class MainSignupActivity extends AppCompatActivity {
     private String category="";
     private String categoryIT="";
     ArrayAdapter<CharSequence> catAd;
+    private TextInputLayout lt;
+    Firebase geoRef = new Firebase("https://popping-inferno-6667.firebaseio.com/geofire");
+    private GeoFire geoFire;
+    private String restreet;
+    private LatLng respos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +65,12 @@ public class MainSignupActivity extends AppCompatActivity {
         loginLink = (TextView) findViewById(R.id.link_login);
         name = (EditText) findViewById(R.id.signup_input_name);
         resname = (EditText) findViewById(R.id.signup_restaurantname);
-        restreet = (EditText) findViewById(R.id.signup_streetrestaurant);
+        // restreet = (EditText) findViewById(R.id.signup_streetrestaurant);
         email= (EditText) findViewById(R.id.signup_input_email);
         password = (EditText) findViewById(R.id.signup_input_password);
         signupbutton = (Button) findViewById(R.id.btn_signup);
         spinnerCategories = (Spinner) findViewById(R.id.customer_spinner_foodcategory);
+        lt = (TextInputLayout) findViewById(R.id.textinputlayoutaddress);
 
         catAd = ArrayAdapter.createFromResource(this, R.array.foodcategories, android.R.layout.simple_spinner_item);
         catAd.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);   //built-in layout resources
@@ -64,7 +82,8 @@ public class MainSignupActivity extends AppCompatActivity {
         if (simple.isChecked()){
 
             resname.setVisibility(View.GONE);
-            restreet.setVisibility(View.GONE);
+          // restreet.setVisibility(View.GONE);
+        lt.setVisibility(View.GONE);
             spinnerCategories.setVisibility(View.GONE);
         }
 
@@ -73,9 +92,9 @@ public class MainSignupActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 resname.setVisibility(View.GONE);
-                restreet.setVisibility(View.GONE);
+               // restreet.setVisibility(View.GONE);
                 spinnerCategories.setVisibility(View.GONE);
-
+                lt.setVisibility(View.GONE);
             }
         });
 
@@ -84,7 +103,30 @@ public class MainSignupActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 resname.setVisibility(View.VISIBLE);
-                restreet.setVisibility(View.VISIBLE);
+             //   restreet.setVisibility(View.VISIBLE);
+
+                lt.setVisibility(View.VISIBLE);
+
+                PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.signup_streetrestaurantfrag);
+
+                autocompleteFragment.setHint(getResources().getString(R.string.streetn));
+                autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+                    @Override
+                    public void onPlaceSelected(Place place) {
+                        // TODO: Get info about the selected place.
+                        System.out.println ("Place: " + place.getName());
+                        restreet=place.getName().toString();
+                        respos=place.getLatLng();
+
+                    }
+
+                    @Override
+                    public void onError(Status status) {
+                        // TODO: Handle the error.
+                        System.out.println ("An error occurred: " + status);
+                    }
+                });
+
                 spinnerCategories.setVisibility(View.VISIBLE);
             }
         });
@@ -176,7 +218,7 @@ public class MainSignupActivity extends AppCompatActivity {
                     }
 
                 } else if (manager.isChecked()) {
-                    if (name.getText().toString().length() >0 && email.getText().toString().length() >0 && password.getText().toString().length() >0 && resname.getText().toString().length() >0 && restreet.getText().toString().length() >0){
+                    if (name.getText().toString().length() >0 && email.getText().toString().length() >0 && password.getText().toString().length() >0 && resname.getText().toString().length() >0 && restreet.length() >0){
 
 
                         if (category.equals("wrong")){
@@ -216,6 +258,7 @@ public class MainSignupActivity extends AppCompatActivity {
 
 
         });
+
 
 
 
@@ -295,24 +338,27 @@ public class MainSignupActivity extends AppCompatActivity {
                 System.out.println("Successfully created user account with uid: " + result.get("uid"));
 
                 Firebase usersRef = mRef.child("users").child(result.get("uid").toString());
-                usersRef.child("managerOf").setValue(resname.getText().toString()+" "+restreet.getText().toString());
+                usersRef.child("managerOf").setValue(resname.getText().toString()+" "+restreet);
                 usersRef.child("userName").setValue(name.getText().toString());
 
-                Firebase restaurantRef = mRef.child("restaurants").child(resname.getText().toString()+" "+restreet.getText().toString());
+                Firebase restaurantRef = mRef.child("restaurants").child(resname.getText().toString()+" "+restreet);
 
                 RestaurantDetails dres = new RestaurantDetails("newer");
-                dres.setRestaurantAddress(restreet.getText().toString());
+                dres.setRestaurantAddress(restreet);
                 dres.setCategoryFood(category);
                 dres.setCategoryFoodIT(categoryIT);
                 dres.setRestaurantName(resname.getText().toString());
 
                 restaurantRef.setValue(dres);
 
-                Firebase photosRed = mRef.child("photos").child(resname.getText().toString()+" "+restreet.getText().toString());
+                Firebase photosRed = mRef.child("photos").child(resname.getText().toString()+" "+restreet);
                 photosRed.child("photo1").setValue("null");
                 photosRed.child("photo2").setValue("null");
                 photosRed.child("photo3").setValue("null");
                 photosRed.child("photo4").setValue("null");
+
+                geoFire =  new GeoFire(geoRef);
+                geoFire.setLocation(resname.getText().toString()+" "+restreet,new GeoLocation(respos.latitude,respos.longitude));
 
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainSignupActivity.this);

@@ -12,6 +12,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +32,8 @@ public class CustomerRestaurantActivityMain extends AppCompatActivity {
     private String Details,Menu,Reviews;
     private ViewPager viewPager;
     TabLayout tabLayout;
-
+    private Firebase mLocRef, restLoc;
+    private Double latitude, longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,25 @@ public class CustomerRestaurantActivityMain extends AppCompatActivity {
         Intent intent= getIntent();
         this.name= intent.getExtras().getString("restName");
 
+
+        mLocRef = new Firebase("https://popping-inferno-6667.firebaseio.com/geofire");   //ROOT of Firebase Restaurants
+        restLoc = mLocRef.child(name).child("l");      //access the specified restaurant
+
+
+        restLoc.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                System.out.println("VEDIAMO UN POCHINOOOO "+dataSnapshot.child("0").getValue().toString());
+
+                latitude = Double.parseDouble(dataSnapshot.child("0").getValue().toString());
+                longitude = Double.parseDouble(dataSnapshot.child("1").getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
 
         // Set a Toolbar to replace the ActionBar.
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -118,7 +143,8 @@ public class CustomerRestaurantActivityMain extends AppCompatActivity {
     public String retrieveRestInfo(){
         return name;
     }
-
+    public Double retrieveLat(){return latitude; }
+    public Double retrieveLon(){return longitude; }
 
     class ViewPagerAdapter extends FragmentStatePagerAdapter {
 

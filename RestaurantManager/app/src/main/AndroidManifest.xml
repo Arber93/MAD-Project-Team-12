@@ -51,6 +51,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainSignupActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAYvFSYNcsj6LYpNkup1Q3nkHsLz13-iZY"/>
+
     </application>
 
 </manifest>

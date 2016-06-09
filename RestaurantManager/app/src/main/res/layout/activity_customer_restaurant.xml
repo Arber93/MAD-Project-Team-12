@@ -41,7 +41,17 @@
             android:layout_toRightOf="@id/acvivity_customer_logores"
             android:layout_below="@id/activity_customer_resname"
             android:layout_marginLeft="15dp"
+            android:layout_marginRight="25dp"
             android:layout_marginTop="5dp"/>
+
+        <Button
+            android:id="@+id/activity_customer_takemethere"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_toRightOf="@id/activity_customer_popupmap"
+            android:layout_below="@id/activity_customer_resname"
+            android:background="@drawable/ic_take_me_there"
+            />
 
         <TextView
             android:id="@+id/activity_customer_resphone"

@@ -179,6 +179,7 @@ public class MainLoginActivity extends AppCompatActivity {
         editor.putString("loggedin","true");
         editor.putString("userID",userUID);
         editor.putString("restID",potentialRestaurant);
+        editor.putString("nameU", userName );
         editor.commit();
 
        if (potentialRestaurant.equals("null")) {

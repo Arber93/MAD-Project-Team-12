@@ -278,12 +278,9 @@ public class MainSignupActivity extends AppCompatActivity {
                 System.out.println("Successfully created user account with uid: " + result.get("uid"));
 
                 Firebase usersRef = mRef.child("users").child(result.get("uid").toString());
-                Map<String, String> userMap = new HashMap<String, String>();
-                userMap.put("userName", name.getText().toString());
-                userMap.put("managerOf", "null");
-                Map<String, Map<String, String>> users = new HashMap<String, Map<String, String>>();
-                users.put(result.get("uid").toString(), userMap);
-                usersRef.setValue(users);
+                usersRef.child("managerOf").setValue("null");
+                usersRef.child("userName").setValue(name.getText().toString());
+
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainSignupActivity.this);
                 builder.setMessage(getResources().getString(R.string.signupsuccess))

@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private String restaurantID;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
+    private String nameOfUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,10 +80,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupDrawerContent(NavigationView navigationView) {
 
+        pref = getSharedPreferences("testapp", MODE_PRIVATE);
+        nameOfUser = pref.getString("nameU",null);
+
 
         View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header);
         TextView profileLogout;
+        TextView managerName;
         profileLogout = (TextView) headerLayout.findViewById(R.id.ic_drawer_logout);
+        managerName = (TextView) headerLayout.findViewById(R.id.ic_drawer_name);
+
+        managerName.setText(nameOfUser);
 
         profileLogout.setOnClickListener(new View.OnClickListener() {
             @Override

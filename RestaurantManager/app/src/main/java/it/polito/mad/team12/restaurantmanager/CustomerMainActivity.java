@@ -65,6 +65,7 @@ public class CustomerMainActivity extends AppCompatActivity implements GoogleApi
     private RestaurantDetails resDet;
     private LinkedHashMap<String,RestaurantDetails> Geodets = new LinkedHashMap<String,RestaurantDetails>();
     private LinkedList<RestaurantDetails> linkedGeo = new LinkedList<RestaurantDetails>();
+    private String nameOfUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -774,11 +775,17 @@ public class CustomerMainActivity extends AppCompatActivity implements GoogleApi
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
+        pref = getSharedPreferences("testapp", MODE_PRIVATE);
+        nameOfUser = pref.getString("nameU",null);
 
 
         View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header);
+        TextView customerName;
         TextView profileLogout;
         profileLogout = (TextView) headerLayout.findViewById(R.id.ic_drawer_logout);
+        customerName = (TextView) headerLayout.findViewById(R.id.ic_drawer_name);
+
+        customerName.setText(nameOfUser);
 
         profileLogout.setOnClickListener(new View.OnClickListener() {
             @Override

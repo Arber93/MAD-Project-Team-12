@@ -308,18 +308,6 @@ public class CustomerRestaurantDetailsFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onResume(){
-        super.onResume();
-
-        if (firstVisit){
-            firstVisit=false;
-        }else {
-            showing.dismiss();
-        }
-    }
-
-
 
     public static Bitmap decodeBase64(String input)
     {

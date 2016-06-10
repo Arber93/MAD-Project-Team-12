@@ -22,7 +22,7 @@
         />
 
     <TextView
-        android:id="@+id/ic_drawer_managername"
+        android:id="@+id/ic_drawer_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Restaurant Manager"

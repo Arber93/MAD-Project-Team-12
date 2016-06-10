@@ -374,7 +374,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/vegan"
-        android:button="@drawable/checkbox_selector"/>
+        android:button="@drawable/vegan_checkbox_selector"/>
 
     <CheckBox
         android:layout_marginRight="10dp"

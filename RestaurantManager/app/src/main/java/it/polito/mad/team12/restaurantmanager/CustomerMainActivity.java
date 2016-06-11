@@ -9,6 +9,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +44,9 @@ import com.google.android.gms.location.LocationServices;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+
+import it.polito.mad.team12.restaurantmanager.review.ReviewUtility;
+import it.polito.mad.team12.restaurantmanager.review.ReviewsUserFragment;
 
 
 public class CustomerMainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
@@ -776,8 +782,9 @@ public class CustomerMainActivity extends AppCompatActivity implements GoogleApi
 
     private void setupDrawerContent(NavigationView navigationView) {
         pref = getSharedPreferences("testapp", MODE_PRIVATE);
-        nameOfUser = pref.getString("nameU",null);
+        nameOfUser = pref.getString("nameU", null);
 
+        ReviewUtility.loadReviewsForUser(nameOfUser);
 
         View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header);
         TextView customerName;
@@ -798,10 +805,35 @@ public class CustomerMainActivity extends AppCompatActivity implements GoogleApi
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        //   selectDrawerItem(menuItem);
+                        //      selectDrawerItem(menuItem);
                         return true;
                     }
                 });
+    }
+
+    public void selectDrawerItem(MenuItem menuItem) {
+        // Create a new fragment and specify the fragment to show based on nav item clicked
+        Fragment fragment = null;
+        Class fragmentClass = null;
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction;
+        boolean activity_started = false;
+        switch(menuItem.getItemId()) {
+            case R.id.nav_my_reviews:
+                transaction = manager.beginTransaction();
+                transaction.replace(R.id.flContent, new ReviewsUserFragment()); //ID in cui attaccare fragment??
+                transaction.commit();
+                break;
+            default:
+                //fragmentClass = DefaultFragment.class;
+        }
+
+        // Highlight the selected item has been done by NavigationView
+        menuItem.setChecked(true);
+        // Set action bar title
+        setTitle(menuItem.getTitle());
+        // Close the navigation drawer
+        mDrawer.closeDrawers();
     }
 
 

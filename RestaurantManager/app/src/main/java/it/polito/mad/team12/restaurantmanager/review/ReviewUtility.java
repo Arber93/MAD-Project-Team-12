@@ -17,6 +17,7 @@ import it.polito.mad.team12.restaurantmanager.Restaurant;
 public class ReviewUtility {
 
     public static TreeMap<String, Review> reviewForRestaurant = new TreeMap<>();
+    public static TreeMap<String, Review> reviewForUser = new TreeMap<>();
     //public static TreeMap<String, ArrayList<Review>> reviewForRestaurant = new TreeMap<>();
     public static TreeMap<String, Restaurant> restaurant = new TreeMap<>();
 
@@ -24,8 +25,20 @@ public class ReviewUtility {
         return new ArrayList<>(reviewForRestaurant.values());//get(restaurantID);
     }
 
+    public static void removeReview(String reviewID){
+        reviewForUser.remove(reviewID);
+    }
+
+    public static ArrayList<Review> getReviewsForUser(String userID) {
+        return new ArrayList<>(reviewForUser.values());//get(restaurantID);
+    }
+
     public static Review getReview(String reviewID){
         return reviewForRestaurant.get(reviewID);
+    }
+
+    public static Review getReviewForUser(String reviewID){
+        return reviewForUser.get(reviewID);
     }
 
     public static Float getStarsRestaurant(String restaurantID) {
@@ -39,6 +52,10 @@ public class ReviewUtility {
         return reviewForRestaurant.size();
     }
 
+    public static Integer numberOfReviewsForUser(String restaurantID) {
+        return reviewForUser.size();
+    }
+
     public static String getImageName(String restaurantID) {
         return restaurant.get(restaurantID)==null?"":restaurant.get(restaurantID).getimageName();
     }
@@ -46,6 +63,44 @@ public class ReviewUtility {
     public static void clear(){
         reviewForRestaurant = new TreeMap<>();
         restaurant = new TreeMap<>();
+    }
+
+    public static void loadReviewsForUser(final String userID){
+
+        Firebase myFirebaseRef = new Firebase("https://popping-inferno-6667.firebaseio.com/reviews");
+
+        myFirebaseRef.child("reviews").orderByChild("userID").equalTo(userID).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Review r = dataSnapshot.getValue(Review.class);
+                r.setReviewID(dataSnapshot.getKey());
+                reviewForUser.put(r.getReviewID(), r);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                Review r = dataSnapshot.getValue(Review.class);
+                r.setReviewID(dataSnapshot.getKey());
+                reviewForUser.put(r.getReviewID(), r);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                Review r = dataSnapshot.getValue(Review.class);
+                r.setReviewID(dataSnapshot.getKey());
+                reviewForUser.remove(r.getReviewID());
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
     }
 
     public static void loadReviews(final String restaurantID){

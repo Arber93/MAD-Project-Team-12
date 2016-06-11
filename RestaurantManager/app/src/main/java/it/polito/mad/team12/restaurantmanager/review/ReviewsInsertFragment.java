@@ -1,6 +1,7 @@
 package it.polito.mad.team12.restaurantmanager.review;
 
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
@@ -73,6 +74,12 @@ public class ReviewsInsertFragment extends Fragment {
         // Inflate the layout for this fragment
         myFragmentId = inflater.inflate(R.layout.fragment_reviews_insert, container, false);
 
+        CustomerRestaurantActivityMain act = (CustomerRestaurantActivityMain) getActivity();
+        setRestaurantID(act.retrieveRestInfo());
+
+        SharedPreferences pref = act.getSharedPreferences("testapp", act.MODE_PRIVATE);
+        setUserID(pref.getString("nameU", null));
+
         ratingBar = (RatingBar) myFragmentId.findViewById(R.id.review_rate);
         numberOfReviews = (TextView) myFragmentId.findViewById(R.id.review_number);
         nameRestaurant = (TextView) myFragmentId.findViewById(R.id.review_nameRestaurant);
@@ -81,9 +88,6 @@ public class ReviewsInsertFragment extends Fragment {
         rating = (TextView) myFragmentId.findViewById(R.id.review_info2);
 
         nameRestaurant.setText(restaurantID);
-
-        CustomerRestaurantActivityMain act = (CustomerRestaurantActivityMain) getActivity();
-        setRestaurantID(act.retrieveRestInfo());
 
         setUpRecyclerView(restaurantID);
 
@@ -137,7 +141,10 @@ public class ReviewsInsertFragment extends Fragment {
                 newFragment.show(getFragmentManager(),"dialog");
             }
         });
+
+        adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
         LinearLayoutManager mLinearLayoutManagerVertical = new LinearLayoutManager(getContext());
         mLinearLayoutManagerVertical.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLinearLayoutManagerVertical);

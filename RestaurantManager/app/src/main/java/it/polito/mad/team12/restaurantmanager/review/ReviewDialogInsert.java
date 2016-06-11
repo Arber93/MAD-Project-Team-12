@@ -1,6 +1,7 @@
 package it.polito.mad.team12.restaurantmanager.review;
 
 import android.app.Dialog;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -59,6 +60,7 @@ public class ReviewDialogInsert extends DialogFragment {
                 ((TextView) myFragmentId.findViewById(R.id.review_score)).setText(rating + "");
             }
         });
+
         userID = getArguments().getString("user");
         restaurantID = getArguments().getString("restaurantID");
         ((EditText) myFragmentId.findViewById(R.id.review_insert)).setText("");
@@ -93,9 +95,10 @@ public class ReviewDialogInsert extends DialogFragment {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy", Locale.ITALIAN);
                 r.setDataReview(sdf.format(new Date(System.currentTimeMillis())));
 
-                Firebase fb = new Firebase("https://popping-inferno-6667.firebaseio.com/");
+                Firebase fb = new Firebase("https://popping-inferno-6667.firebaseio.com/reviews");
                 r.setReviewID(fb.child("reviews").push().getKey());
                 fb.child("reviews/"+r.getReviewID()).setValue(r);
+
                 oReviewDialogInsert.dismiss();
             }
         });

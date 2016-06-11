@@ -78,7 +78,7 @@ public class DeniedReservationsFragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rootRef = new Firebase("https://blistering-inferno-3678.firebaseio.com");
+        rootRef = new Firebase(Utility.FIREBASE_ROOT);
         Firebase reservationsRef = rootRef.child("reservations");
         deniedRef = reservationsRef.child("denied");
         FirebaseRecyclerAdapter<Reservation, MyViewHolder> adapter = new

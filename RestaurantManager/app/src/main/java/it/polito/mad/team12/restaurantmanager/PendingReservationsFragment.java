@@ -79,7 +79,7 @@ public class PendingReservationsFragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rootRef = new Firebase("https://blistering-inferno-3678.firebaseio.com");
+        rootRef = new Firebase(Utility.FIREBASE_ROOT);
         Firebase reservationsRef = rootRef.child("reservations");
         pendingRef = reservationsRef.child("pending");
         FirebaseRecyclerAdapter<Reservation, MyViewHolder> adapter = new
@@ -139,7 +139,7 @@ public class PendingReservationsFragment extends Fragment {
         Button b_accept;
         Button b_deny;
         Button b_complete;
-        Firebase rootRef = new Firebase("https://blistering-inferno-3678.firebaseio.com");
+        Firebase rootRef = new Firebase(Utility.FIREBASE_ROOT);
         Firebase reservationsRef = rootRef.child("reservations");
         Firebase pendingRef = reservationsRef.child("pending");
         Firebase acceptedRef = reservationsRef.child("accepted");

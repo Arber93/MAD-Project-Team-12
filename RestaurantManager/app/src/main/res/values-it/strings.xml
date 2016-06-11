@@ -173,6 +173,7 @@
     <string name="createaccount">Crea Un Nuovo Account</string>
 
     <string name="authenticating">LogIn in corso...</string>
+    <string name="creatingaccount">Creazione Account...</string>
 
     <string name="myreservations">Le mie Prenotazioni</string>
     <string name="myreviews">Le mie Recensioni</string>

@@ -188,6 +188,7 @@
     <string name="alreadyaccount">Already a member? Login</string>
     <string name="createaccount">Create Account</string>
     <string name="authenticating">Authenticating...</string>
+    <string name="creatingaccount">Creating Account...</string>
 
     <string name="myreservations">My Reservations</string>
     <string name="myreviews">My Reviews</string>

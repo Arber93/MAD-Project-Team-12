@@ -122,6 +122,8 @@ public class MainLoginActivity extends AppCompatActivity {
                                    userName = (String) snapshot.child("userName").getValue();
 
                                 enterActivity();
+                                progressDialog.cancel();
+
 
                             }
                             @Override
@@ -163,8 +165,8 @@ public class MainLoginActivity extends AppCompatActivity {
                     }
 
 
+
                 });
-        progressDialog.cancel();
 
 
 

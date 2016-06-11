@@ -59,7 +59,7 @@ public class DeniedReservationsFragment extends Fragment {
         TIME_DATE = getString(R.string.time_date_reservation);
         ADDITIONAL_NOTES = getString(R.string.additional_notes);
         //TODO get the restaurantID and use it for the Firebase query
-        //restaurantID = "restaurantID";
+        restaurantID = "restaurantID";
         current_ordered_items = new StringBuffer("");
         timestamp_long = new StringBuffer("");
     }
@@ -74,13 +74,17 @@ public class DeniedReservationsFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_accepted_reservations, container, false);
+
+        rootRef = new Firebase(Utility.FIREBASE_ROOT);
+        Firebase reservationsRef = rootRef.child("reservations");
+        Firebase restaurantRef = reservationsRef.child(restaurantID);
+        deniedRef = restaurantRef.child("denied");
+
         // recyclerView setup
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rootRef = new Firebase(Utility.FIREBASE_ROOT);
-        Firebase reservationsRef = rootRef.child("reservations");
-        deniedRef = reservationsRef.child("denied");
+
         FirebaseRecyclerAdapter<Reservation, MyViewHolder> adapter = new
                 FirebaseRecyclerAdapter<Reservation, MyViewHolder>(Reservation.class,R.layout.item_reservation, MyViewHolder.class, deniedRef) {
                     @Override

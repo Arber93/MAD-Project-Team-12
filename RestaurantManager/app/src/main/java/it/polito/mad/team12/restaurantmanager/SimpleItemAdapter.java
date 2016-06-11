@@ -19,7 +19,7 @@ public class SimpleItemAdapter extends BaseAdapter {
     private final ArrayList mData;
     SharedPreferences sharedPreferences;
 
-    public SimpleItemAdapter(Map<String,String> map) {
+    public SimpleItemAdapter(Map<String,String> map, Context context) {
         mData = new ArrayList();
         mData.addAll(map.entrySet());
         this.context = context;
@@ -50,7 +50,7 @@ public class SimpleItemAdapter extends BaseAdapter {
 
         final Map.Entry<String,String> item = getItem(position);
 
-        TextView name = (TextView) convertView.findViewById(R.id.itemName);
+        final TextView name = (TextView) convertView.findViewById(R.id.itemName);
         TextView quantity = (TextView) convertView.findViewById(R.id.quantity);
         Button btn_remove = (Button) convertView.findViewById(R.id.btn_remove);
         Log.v("ITEM VALUE", item.getValue());
@@ -69,7 +69,7 @@ public class SimpleItemAdapter extends BaseAdapter {
                     }
                 });
 
-
         return convertView;
+
     }
 }

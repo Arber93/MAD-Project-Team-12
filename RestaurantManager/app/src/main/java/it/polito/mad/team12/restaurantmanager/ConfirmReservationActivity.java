@@ -87,13 +87,13 @@ public class ConfirmReservationActivity extends AppCompatActivity implements Tim
         spItems = getSharedPreferences(CART_ITEMS, Context.MODE_PRIVATE);
         mapItems = (Map<String,String>) spItems.getAll();
 
-        SimpleItemAdapter adapter = new SimpleItemAdapter(mapItems);
+        SimpleItemAdapter adapter = new SimpleItemAdapter(mapItems, this);
         listView.setAdapter(adapter);
 
-        rootRef = new Firebase("https://popping-inferno-6667.firebaseio.com");
-        // FirebaseRecyclerAdapter setup
+        rootRef = new Firebase(Utility.FIREBASE_ROOT);
         Firebase reservationsRef = rootRef.child("reservations");
-        pendingRef = reservationsRef.child("pending");
+        Firebase restaurantRef = reservationsRef.child(restaurantID);
+        pendingRef = restaurantRef.child("pending");
     }
 
     public void sendReservation(View v){
@@ -129,8 +129,12 @@ public class ConfirmReservationActivity extends AppCompatActivity implements Tim
 
             if (longTsReservation > (longTsCurrent + acceptTime)){
                 String stringTsReservation = String.valueOf(longTsReservation);
-                Reservation reservation = new Reservation(mapItems, stringTsReservation, notes, senderID, receiverID);
-                pendingRef.push().setValue(reservation);
+                //reservationId generation
+                Firebase newPendingRef = pendingRef.push();
+                String reservationId = newPendingRef.getKey();
+
+                Reservation reservation = new Reservation(reservationId, mapItems, stringTsReservation, notes, senderID, receiverID);
+                newPendingRef.setValue(reservation);
                 Toast.makeText(this, getResources().getString(R.string.reservation_sent), Toast.LENGTH_SHORT).show();
 
                 //clear the Reservation's data

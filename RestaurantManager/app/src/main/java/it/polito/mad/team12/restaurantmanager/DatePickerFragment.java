@@ -55,7 +55,7 @@ public class DatePickerFragment extends DialogFragment
         } else {
             final Calendar c = Calendar.getInstance();
             year = c.get(Calendar.YEAR);
-            month = c.get(Calendar.MONTH) + 1; // +1 otherwise it starts from zero
+            month = c.get(Calendar.MONTH);
             day = c.get(Calendar.DAY_OF_MONTH);
         }
 
@@ -66,6 +66,7 @@ public class DatePickerFragment extends DialogFragment
     @Override
     public void onDateSet(DatePicker view, int year, int month, int day) {
 
+        month++; //cause the DatePickerDialogue returns the month's number starting from zero
         // Save the selected date
         SharedPreferences.Editor editor = spDateTime.edit();
         editor.putString("Year", String.valueOf(year));

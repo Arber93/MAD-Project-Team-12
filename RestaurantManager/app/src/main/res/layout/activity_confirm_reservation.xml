@@ -63,21 +63,14 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="@string/select_date"
-            android:onClick="selectDate"
-            android:id="@+id/selectDate"
-            />
-        <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
             android:text="@string/select_time"
             android:onClick="selectTime"
             android:id="@+id/selectTime"
             />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
             android:onClick="sendReservation"
             android:text="@string/send"

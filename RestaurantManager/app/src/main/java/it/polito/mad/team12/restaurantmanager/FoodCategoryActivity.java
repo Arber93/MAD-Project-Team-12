@@ -66,10 +66,13 @@ public class FoodCategoryActivity extends AppCompatActivity {
                         // check if the item was already selected and the screen was rotated
                         if (savedInstanceState != null){
                             myViewHolder.quantity.setText(savedInstanceState.getString(currentItem,null));
+                            selectedItems.put(currentItem, savedInstanceState.getString(currentItem, null));
                         } else if (sharedPreferences.getString(currentItem,null) != null){
                             myViewHolder.quantity.setText(sharedPreferences.getString(currentItem,null));
+                            selectedItems.put(currentItem, sharedPreferences.getString(currentItem,null));
                         } else {
                             myViewHolder.quantity.setText("0");
+                            selectedItems.put(currentItem, "0");
                         }
                         // set the name of the item
                         myViewHolder.name.setText(currentItem);

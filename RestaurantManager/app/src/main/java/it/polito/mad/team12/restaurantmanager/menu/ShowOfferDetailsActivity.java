@@ -1,4 +1,4 @@
-package it.polito.mad.team12.restaurantmanager;
+package it.polito.mad.team12.restaurantmanager.menu;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -15,12 +15,14 @@ import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
 
-public class ShowOfferDetailsActivity extends AppCompatActivity {
+import it.polito.mad.team12.restaurantmanager.R;
+import it.polito.mad.team12.restaurantmanager.Utility;
 
-    public static final String OFFER_DATA = "offer data";
+public class ShowOfferDetailsActivity extends AppCompatActivity {
 
     private OfferData offerData;
     private Currency italianCurrency = Currency.getInstance(Locale.ITALY);
+    private String restaurantName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +39,12 @@ public class ShowOfferDetailsActivity extends AppCompatActivity {
             Gson gson = new Gson();
             Bundle extras = intent.getExtras();
 
-            offerData = gson.fromJson(extras.getString(OFFER_DATA), OfferData.class);
+            offerData = gson.fromJson(extras.getString(Utility.OFFER_DATA_KEY), OfferData.class);
             getSupportActionBar().setTitle(offerData.getName());
 
             populateLayout();
+
+            restaurantName = extras.getString(Utility.RESTAURANT_ID_KEY);
         }
     }
 
@@ -67,7 +71,8 @@ public class ShowOfferDetailsActivity extends AppCompatActivity {
         StringBuilder characteristics = new StringBuilder("");
 
         if(offerData.getHasImage()) {
-            //TODO handle image download from Firebase
+            Utility.getItemImageFrom(restaurantName, offerData.getName())
+                    .addListenerForSingleValueEvent(new ImageViewValueListener(imageView));
         } else {
             imageView.setImageResource(R.drawable.default_food_image);
         }
@@ -78,7 +83,7 @@ public class ShowOfferDetailsActivity extends AppCompatActivity {
 
         offerPrice.setText(offerData.getPrice().toString() + " " + italianCurrency.getSymbol());
 
-        itemsIncluded.addAll(offerData.getOffers().keySet());
+        itemsIncluded.addAll(offerData.getLinks().keySet());
         for(int i = 0; i < itemsIncluded.size(); i++) {
             includes.append(itemsIncluded.get(i));
             if(i != itemsIncluded.size() - 1) {

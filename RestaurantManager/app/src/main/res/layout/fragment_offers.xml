@@ -1,0 +1,13 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="it.polito.mad.team12.restaurantmanager.menu.OffersFragment">
+
+    <it.polito.mad.team12.restaurantmanager.menu.ContextMenuRecyclerView
+        android:id="@+id/offers_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

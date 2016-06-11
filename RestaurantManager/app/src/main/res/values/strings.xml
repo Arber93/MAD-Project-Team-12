@@ -130,7 +130,6 @@
     </string-array>
 
 
-    
     <string name="dialog_message_accept">Do you really want to accept this reservation?</string>
     <string name="dialog_title_accept">ACCEPT?</string>
     <string name="dialog_message_deny">Do you really want to deny this reservation?</string>
@@ -143,12 +142,15 @@
 
     <string name="completed">COMPLETED</string>
     <string name="submit">SUBMIT</string>
-    <string name="first_courses">First courses</string>
-    <string name="second_courses">Second courses</string>
-    <string name="side_dishes">Side dishes</string>
+    <string name="first_courses">First Courses</string>
+    <string name="second_courses">Second Courses</string>
+    <string name="side_dishes">Side Dishes</string>
     <string name="drinks">Drinks</string>
-    <string name="sandwiches">Sandwiches</string>
+    <string name="desserts">Desserts</string>
     <string name="others">Others</string>
+    <string name="offers">Offers</string>
+
+    <string name="sandwiches">Sandwiches</string>
     <string name="cart">cart</string>
     <string name="save_and_continue">Save and continue</string>
     <string name="go_to_cart">go to cart</string>
@@ -179,5 +181,25 @@
 
     <string name="reviews_insert" translatable="false">Customer Review</string>
     <string name="rd_make_reservation_string">Make Reservation</string>
+    <string name="show_offers_title">Offers</string>
+
+    <string name="item_added_first_time">Item added to the active reservation</string>
+    <string name="item_added_successive_times">Item quantity incremented in the active reservation</string>
+    <string name="ami_category_field_title">Category</string>
+    <string name="restaurant_offers_title">Restaurant Offers</string>
+    <string name="title_activity_add_menu_offer">AddMenuOfferActivity</string>
+    <string name="amo_menu_edit_offer_title">Edit Offer</string>
+    <string name="amo_menu_new_offer_title">New Offer</string>
+    <string name="amo_offered_on_field_title">Offered On</string>
+    <string name="toggle_button_monday">M</string>
+    <string name="toggle_button_tuesday">T</string>
+    <string name="toggle_button_wednesday">W</string>
+    <string name="toggle_button_thursday">T</string>
+    <string name="toggle_button_friday">F</string>
+    <string name="toggle_button_saturday">S</string>
+    <string name="toggle_button_sunday">S</string>
+    <string name="amo_includes_string">Includes</string>
+    <string name="amo_add_new_item">Add Item</string>
+    <string name="amo_item_number_warning">You need to provide at least 1 item</string>
 
 </resources>

@@ -70,7 +70,7 @@
     <style name="HorizontalDivider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/horizontal_divider_height</item>
-        <item name="android:background">@color/horizontal_divider_color</item>
+        <item name="android:background">@color/divider_color</item>
         <item name="android:paddingTop">@dimen/horizontal_divider_top_padding</item>
         <item name="android:paddingBottom">@dimen/horizontal_divider_bottom_padding</item>
     </style>
@@ -87,5 +87,7 @@
         <item name="android:maxHeight">12dip</item>
     </style>
 
-    <style name="ToolbarStyle"></style>
+    <style name="ToolbarStyle">
+
+    </style>
 </resources>

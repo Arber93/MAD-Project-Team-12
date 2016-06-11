@@ -1,4 +1,4 @@
-package it.polito.mad.team12.restaurantmanager;
+package it.polito.mad.team12.restaurantmanager.menu;
 
 
 import android.content.Intent;
@@ -21,14 +21,18 @@ import com.google.gson.Gson;
 
 import java.util.HashMap;
 
+import it.polito.mad.team12.restaurantmanager.R;
+import it.polito.mad.team12.restaurantmanager.Utility;
+
 
 public class MenuTabFragment extends Fragment {
-    private final static String AVAILABLE_ARG = "AVAILABLE_ARG";
-    private final static int EDIT_MENU_ITEM = 1;
+    private static final String AVAILABLE_ARG = "AVAILABLE_ARG";
+    private static final int EDIT_MENU_ITEM = 1;
 
     private boolean available;
     private ContextMenuRecyclerView recyclerView;
     private MenuTabFragment.MenuTabRecyclerAdapter adapter;
+    private static final String RESTAURANT_ID = "American Graffiti Via Lagrange 58";
 
 
     public MenuTabFragment() {
@@ -59,7 +63,7 @@ public class MenuTabFragment extends Fragment {
 
     private void setUpRecyclerView(View container) {
         recyclerView = (ContextMenuRecyclerView) container.findViewById(R.id.mt_recycler_view);
-        Query query = Utility.getMenuItemsFrom("restID").orderByChild("available").equalTo(available);
+        Query query = Utility.getMenuItemsFrom(RESTAURANT_ID, available).orderByKey();
         adapter = new MenuTabRecyclerAdapter(ItemData.class, R.layout.item_menu, MenuTabViewHolder.class, query);
         recyclerView.setAdapter(adapter);
 
@@ -69,7 +73,7 @@ public class MenuTabFragment extends Fragment {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        recyclerView.addItemDecoration(new Utility.SimpleDividerItemDecoration(getActivity()));
+        recyclerView.addItemDecoration(new Utility.SimpleDividerItemDecoration(getActivity(), Utility.SimpleDividerItemDecoration.PADDING_LEFT, (int)getResources().getDimension(R.dimen.cardview_image_width)));
 
         recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
@@ -82,7 +86,9 @@ public class MenuTabFragment extends Fragment {
 
         @Override
         protected void populateViewHolder(MenuTabViewHolder menuTabViewHolder, ItemData itemData, int position) {
-            menuTabViewHolder.setData(new RestaurantMenuItem(itemData), position);
+            menuTabViewHolder.setData(itemData, position);
+            menuTabViewHolder.passRestaurantID(RESTAURANT_ID);
+            menuTabViewHolder.passContext(getActivity());
             menuTabViewHolder.setListeners();
         }
 
@@ -91,25 +97,6 @@ public class MenuTabFragment extends Fragment {
             MenuTabViewHolder viewHolder = super.onCreateViewHolder(parent, viewType);
             viewHolder.setRecyclerView(recyclerView);
             return viewHolder;
-        }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(resultCode == AppCompatActivity.RESULT_OK) {
-            if(requestCode == EDIT_MENU_ITEM) {
-                String receivedData;
-
-                if((receivedData = data.getExtras().getString(AddMenuItemActivity.MENU_ITEM_DATA)) != null) {
-                    Gson gson = new Gson();
-                    RestaurantMenuItem menuItem = gson.fromJson(receivedData, RestaurantMenuItem.class);
-                    int position = data.getExtras().getInt(AddMenuItemActivity.MENU_ITEM_POSITION);
-                    MenuTabViewHolder viewHolder = (MenuTabViewHolder)recyclerView.getChildViewHolder(recyclerView.getChildAt(position));
-                    //viewHolder.editItem(position, menuItem);
-                }
-            }
         }
     }
 
@@ -125,26 +112,16 @@ public class MenuTabFragment extends Fragment {
     public boolean onContextItemSelected(MenuItem item) {
         ContextMenuRecyclerView.RecyclerViewContextMenuInfo info = (ContextMenuRecyclerView.RecyclerViewContextMenuInfo) item.getMenuInfo();
         MenuTabViewHolder viewHolder = ((MenuTabViewHolder)info.getViewHolder());
-        int pos = info.getPosition();
-        Firebase fb;
 
         switch (item.getItemId()) {
             case R.id.mct_move:
-                fb = Utility.getMenuItemsFrom("restID").child(viewHolder.itemName.getText().toString());
-                HashMap<String, Object> map = new HashMap<>();
-                if(item.getTitle().toString().equals(getResources().getString(R.string.mcat_move_title))){
-                    map.put("available", Boolean.valueOf(false));
-                } else {
-                    map.put("available", Boolean.valueOf(true));
-                }
-                fb.updateChildren(map);
+                viewHolder.requestMove();
                 break;
             case R.id.mct_edit:
-                //viewHolder.requestEdit(pos);
+                viewHolder.requestEdit();
                 break;
             case R.id.mct_delete:
-                fb = Utility.getMenuItemsFrom("restID").child(viewHolder.itemName.getText().toString());
-                fb.setValue(null);
+                viewHolder.requestRemoval();
                 break;
             default:
                 break;

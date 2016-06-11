@@ -16,6 +16,8 @@ import android.view.MenuItem;
 
 import com.firebase.client.Firebase;
 
+import it.polito.mad.team12.restaurantmanager.menu.MenuFragment;
+import it.polito.mad.team12.restaurantmanager.menu.OffersFragment;
 import it.polito.mad.team12.restaurantmanager.review.ReviewUtility;
 import it.polito.mad.team12.restaurantmanager.review.ReviewsFragment;
 import it.polito.mad.team12.restaurantmanager.review.ReviewsInsertFragment;
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView nvDrawer;
     private ActionBarDrawerToggle drawerToggle;
     private Toolbar toolbar;
-    String restaurantID = "Nome Ristorante1";
+    String restaurantID = "American Graffiti Via Lagrange 58";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction;
 
         transaction = manager.beginTransaction();
-        transaction.replace(R.id.flContent, new DetailsFragment());
+        transaction.replace(R.id.flContent, new OffersFragment());
         transaction.commit();
 
     }

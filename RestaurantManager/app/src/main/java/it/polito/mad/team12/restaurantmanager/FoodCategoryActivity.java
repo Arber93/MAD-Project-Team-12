@@ -19,6 +19,8 @@ import com.firebase.ui.FirebaseRecyclerAdapter;
 
 import java.util.HashMap;
 
+import it.polito.mad.team12.restaurantmanager.menu.ItemData;
+
 public class FoodCategoryActivity extends AppCompatActivity {
     public static final String CART_ITEMS = "CartItems";
     Firebase rootRef;
@@ -45,7 +47,7 @@ public class FoodCategoryActivity extends AppCompatActivity {
         //rootRef = new Firebase("https://blistering-inferno-3678.firebaseio.com");
         Bundle b = getIntent().getExtras();
         restaurantID = b.getString("restaurantID");
-        rootRef = Utility.getMenuItemsFrom(restaurantID);
+        rootRef = Utility.getMenuItemsFrom(restaurantID, true);
         category = b.getString("category");
         Log.v("RESTAURANT ID", restaurantID);
         Log.v("CATEGORY", category);

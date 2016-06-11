@@ -1,4 +1,4 @@
-package it.polito.mad.team12.restaurantmanager;
+package it.polito.mad.team12.restaurantmanager.menu;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +13,14 @@ import com.google.gson.Gson;
 import java.util.Currency;
 import java.util.Locale;
 
+import it.polito.mad.team12.restaurantmanager.R;
+import it.polito.mad.team12.restaurantmanager.Utility;
+
 public class ShowItemDetailsActivity extends AppCompatActivity {
-    public final static String MENU_ITEM_DATA = "menu item data";
 
     private ItemData itemData;
     private Currency italianCurrency = Currency.getInstance(Locale.ITALY);
+    private String restaurantName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +37,12 @@ public class ShowItemDetailsActivity extends AppCompatActivity {
             Gson gson = new Gson();
             Bundle extras = intent.getExtras();
 
-            itemData = gson.fromJson(extras.getString(MENU_ITEM_DATA), ItemData.class);
+            itemData = gson.fromJson(extras.getString(Utility.ITEM_DATA_KEY), ItemData.class);
             getSupportActionBar().setTitle(itemData.getName());
 
             populateLayout();
+
+            restaurantName = extras.getString(Utility.RESTAURANT_ID_KEY);
         }
     }
 
@@ -61,7 +66,8 @@ public class ShowItemDetailsActivity extends AppCompatActivity {
         StringBuilder characteristics = new StringBuilder("");
 
         if(itemData.getHasImage()) {
-            //TODO handle image download from Firebase
+            Utility.getItemImageFrom(restaurantName, itemData.getName())
+                    .addListenerForSingleValueEvent(new ImageViewValueListener(imageView));
         } else {
             imageView.setImageResource(R.drawable.default_food_image);
         }

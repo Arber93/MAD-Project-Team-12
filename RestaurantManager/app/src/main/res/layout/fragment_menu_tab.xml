@@ -6,7 +6,7 @@
     android:orientation="vertical"
     >
 
-    <it.polito.mad.team12.restaurantmanager.ContextMenuRecyclerView
+    <it.polito.mad.team12.restaurantmanager.menu.ContextMenuRecyclerView
         android:id="@+id/mt_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

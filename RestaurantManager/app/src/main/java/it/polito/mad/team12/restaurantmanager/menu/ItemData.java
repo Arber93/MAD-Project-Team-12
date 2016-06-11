@@ -1,23 +1,31 @@
-package it.polito.mad.team12.restaurantmanager;
+package it.polito.mad.team12.restaurantmanager.menu;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedSet;
 
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class ItemData implements Comparable<ItemData>{
     public static final String FIRST_COURSES = "first courses";
     public static final String SECOND_COURSES = "second courses";
     public static final String SIDE_DISHES = "side dishes";
-    public static final String SANDWICHES = "sandwiches";
     public static final String DRINKS = "drinks";
+    public static final String DESSERTS = "desserts";
     public static final String OTHERS = "others";
 
     private String name;
     private String description;
     private BigDecimal price;
     private String category;
+    private Set<String> links;
 
     /*
      *  If characteristics like the following increase in number than an
@@ -125,6 +133,26 @@ public class ItemData implements Comparable<ItemData>{
         this.category = category;
     }
 
+    public void setLinks(Map<String, Boolean> links) {
+        this.links = links.keySet();
+    }
+
+    public Map<String, Boolean> getLinks() {
+        Map<String, Boolean> result;
+
+        if(links == null) {
+            return null;
+        }
+
+        result = new HashMap<>();
+
+        for(String s: links) {
+            result.put(s, true);
+        }
+
+        return result;
+    }
+
     @Override
     public int compareTo(ItemData another) {
         return this.name.compareTo(another.name);
@@ -142,6 +170,26 @@ public class ItemData implements Comparable<ItemData>{
         }
 
         return this.name.equals(other.getName());
+    }
+
+    public boolean addLink(String name) {
+        return links.add(name);
+    }
+
+    public boolean removeLink(String name) {
+        return links.remove(name);
+    }
+
+    public void passLinks(Collection<String> links) {
+        if(this.links == null) {
+            this.links = new HashSet<>();
+        } else {
+            this.links.clear();
+        }
+
+        if(links != null) {
+            this.links.addAll(links);
+        }
     }
 
     public int hashCode(){

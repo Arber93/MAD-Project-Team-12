@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="it.polito.mad.team12.restaurantmanager.MenuFragment">
+    tools:context=".menu.MenuFragment">
 
     <!--<android.support.v7.widget.Toolbar
         android:id="@+id/m_toolbar"

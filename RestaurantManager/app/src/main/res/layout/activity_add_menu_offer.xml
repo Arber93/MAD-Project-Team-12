@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".menu.AddMenuItemActivity">
+    tools:context=".menu.AddMenuOfferActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/ami_toolbar"
+        android:id="@+id/amo_toolbar"
         style="@style/ToolbarStyle"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -16,13 +16,13 @@
         />
 
     <LinearLayout
-        android:id="@+id/ami_buttons"
+        android:id="@+id/amo_buttons"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
         <Button
-            android:id="@+id/ami_cancel_button"
+            android:id="@+id/amo_cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -31,7 +31,7 @@
             android:textSize="@dimen/title_font_size"
             android:textColor="@android:color/white" />
         <Button
-            android:id="@+id/ami_save_button"
+            android:id="@+id/amo_save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -42,11 +42,11 @@
     </LinearLayout>
 
     <ScrollView
-        android:id="@+id/ami_scroll_view"
+        android:id="@+id/amo_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/ami_toolbar"
-        android:layout_above="@id/ami_buttons"
+        android:layout_below="@id/amo_toolbar"
+        android:layout_above="@id/amo_buttons"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         >
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/ami_item_image"
+                    android:id="@+id/amo_item_image"
                     android:layout_width="@dimen/cardview_image_width"
                     android:layout_height="@dimen/cardview_image_height"
                     android:layout_gravity="center"
@@ -80,7 +80,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/ami_name_field_title" />
                     <EditText
-                        android:id="@+id/ami_name_field"
+                        android:id="@+id/amo_name_field"
                         style="@style/TextViewSubtitleStylePadded"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -91,25 +91,89 @@
                         android:background="@null"/>
                 </LinearLayout>
             </LinearLayout>
-			
-			<View style="@style/HorizontalDivider" />
-            <!-- Category Field-->
+
+            <View style="@style/HorizontalDivider" />
+            <!-- Offered On Field-->
             <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
                     style="@style/TextViewTitleStylePadded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ami_category_field_title"/>
-				<Spinner
-					android:id="@+id/ami_category_spinner"
-					style="@style/TextViewTitleStylePadded"
-					android:layout_width="fill_parent"
-					android:layout_height="wrap_content" />
+                    android:text="@string/amo_offered_on_field_title"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/default_bottom_padding">
+                    <ToggleButton
+                        android:id="@+id/amo_tb_Monday"
+                        android:layout_width="@dimen/toggle_button_width"
+                        android:layout_height="wrap_content"
+                        android:textOn="@string/toggle_button_monday"
+                        android:textOff="@string/toggle_button_monday"
+                        android:textColor="@color/toggle_button_text"
+                        android:background="@drawable/toggle_button_background"
+                        android:textSize="@dimen/title_font_size" />
+                    <ToggleButton
+                        android:id="@+id/amo_tb_Tuesday"
+                        android:layout_width="@dimen/toggle_button_width"
+                        android:layout_height="wrap_content"
+                        android:textOn="@string/toggle_button_tuesday"
+                        android:textOff="@string/toggle_button_tuesday"
+                        android:textColor="@color/toggle_button_text"
+                        android:background="@drawable/toggle_button_background"
+                        android:textSize="@dimen/title_font_size" />
+                    <ToggleButton
+                        android:id="@+id/amo_tb_Wednesday"
+                        android:layout_width="@dimen/toggle_button_width"
+                        android:layout_height="wrap_content"
+                        android:textOn="@string/toggle_button_wednesday"
+                        android:textOff="@string/toggle_button_wednesday"
+                        android:textColor="@color/toggle_button_text"
+                        android:background="@drawable/toggle_button_background"
+                        android:textSize="@dimen/title_font_size" />
+                    <ToggleButton
+                        android:id="@+id/amo_tb_Thursday"
+                        android:layout_width="@dimen/toggle_button_width"
+                        android:layout_height="wrap_content"
+                        android:textOn="@string/toggle_button_thursday"
+                        android:textOff="@string/toggle_button_thursday"
+                        android:textColor="@color/toggle_button_text"
+                        android:background="@drawable/toggle_button_background"
+                        android:textSize="@dimen/title_font_size" />
+                    <ToggleButton
+                        android:id="@+id/amo_tb_Friday"
+                        android:layout_width="@dimen/toggle_button_width"
+                        android:layout_height="wrap_content"
+                        android:textOn="@string/toggle_button_friday"
+                        android:textOff="@string/toggle_button_friday"
+                        android:textColor="@color/toggle_button_text"
+                        android:background="@drawable/toggle_button_background"
+                        android:textSize="@dimen/title_font_size" />
+                    <ToggleButton
+                        android:id="@+id/amo_tb_Saturday"
+                        android:layout_width="@dimen/toggle_button_width"
+                        android:layout_height="wrap_content"
+                        android:textOn="@string/toggle_button_saturday"
+                        android:textOff="@string/toggle_button_saturday"
+                        android:textColor="@color/toggle_button_text"
+                        android:background="@drawable/toggle_button_background"
+                        android:textSize="@dimen/title_font_size" />
+                    <ToggleButton
+                        android:id="@+id/amo_tb_Sunday"
+                        android:layout_width="@dimen/toggle_button_width"
+                        android:layout_height="wrap_content"
+                        android:textOn="@string/toggle_button_sunday"
+                        android:textOff="@string/toggle_button_sunday"
+                        android:textColor="@color/toggle_button_text"
+                        android:background="@drawable/toggle_button_background"
+                        android:textSize="@dimen/title_font_size" />
+                </LinearLayout>
             </LinearLayout>
-            
+
             <View style="@style/HorizontalDivider" />
             <!-- Description Field-->
             <LinearLayout
@@ -122,7 +186,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/ami_description_field_title"/>
                 <EditText
-                    android:id="@+id/ami_description_field"
+                    android:id="@+id/amo_description_field"
                     style="@style/TextViewSubtitleStylePadded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -131,6 +195,49 @@
                     android:lines="2"
                     android:background="@null"/>
             </LinearLayout>
+            <View style="@style/HorizontalDivider" />
+
+            <!-- Item Section -->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/default_bottom_padding">
+
+                <TextView
+                    style="@style/TextViewTitleStylePadded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/amo_includes_string" />
+
+
+                <it.polito.mad.team12.restaurantmanager.menu.MyListView
+                    android:id="@+id/amo_listview"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:paddingLeft="@dimen/default_left_padding"
+                    android:paddingRight="@dimen/default_right_padding"
+					android:paddingBottom="@dimen/default_bottom_padding" />
+
+                <View style="@style/HorizontalDivider"
+                     android:paddingTop="@dimen/default_top_padding"
+                     android:paddingBottom="@dimen/default_bottom_padding"/>
+
+				<Spinner
+					android:id="@+id/amo_spinner"
+					android:layout_width="fill_parent"
+					android:layout_height="100dp" />
+					
+				<Button
+                    android:id="@+id/amo_new_item_button"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/amo_add_new_item"
+                    android:drawableLeft="@drawable/ic_add_black_24dp"
+                    android:textSize="@dimen/subtitle_font_size" />
+            </LinearLayout>
+
             <View style="@style/HorizontalDivider" />
             <!-- Price Field -->
             <LinearLayout
@@ -143,7 +250,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/ami_price_field_title"/>
                 <EditText
-                    android:id="@+id/ami_price_field"
+                    android:id="@+id/amo_price_field"
                     style="@style/TextViewSubtitleStylePadded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -151,7 +258,7 @@
                     android:hint="@string/ami_price_field_hint"
                     android:background="@null"/>
                 <TextView
-                    android:id="@+id/ami_currency_symbol"
+                    android:id="@+id/amo_currency_symbol"
                     style="@style/TextViewSubtitleStylePadded"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -172,7 +279,7 @@
                     android:text="@string/ami_gluten_free_title"/>
 
                 <CheckBox
-                    android:id="@+id/ami_checkbox_gluten_free"
+                    android:id="@+id/amo_checkbox_gluten_free"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="onCheckboxClicked"
@@ -192,7 +299,7 @@
                     android:text="@string/ami_vegan_title"/>
 
                 <CheckBox
-                    android:id="@+id/ami_checkbox_vegan"
+                    android:id="@+id/amo_checkbox_vegan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="onCheckboxClicked"
@@ -212,7 +319,7 @@
                     android:text="@string/ami_vegetarian_title"/>
 
                 <CheckBox
-                    android:id="@+id/ami_checkbox_vegetarian"
+                    android:id="@+id/amo_checkbox_vegetarian"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="onCheckboxClicked"

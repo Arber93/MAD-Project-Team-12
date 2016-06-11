@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.polito.mad.team12.restaurantmanager.menu.ShowCategoriesFragment;
 import it.polito.mad.team12.restaurantmanager.review.*;
 
 /**
@@ -110,7 +111,7 @@ public class CustomerRestaurantActivityMain extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new CustomerRestaurantDetailsFragment(), Details);
-        adapter.addFragment(ShowMenuFragment.newInstance(name), Menu);
+        adapter.addFragment(ShowCategoriesFragment.newInstance(name), Menu);
         adapter.addFragment(new ReviewsInsertFragment(), Reviews);
         viewPager.setAdapter(adapter);
     }

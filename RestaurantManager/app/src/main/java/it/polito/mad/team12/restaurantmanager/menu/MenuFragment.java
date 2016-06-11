@@ -1,4 +1,4 @@
-package it.polito.mad.team12.restaurantmanager;
+package it.polito.mad.team12.restaurantmanager.menu;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,8 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.firebase.client.Firebase;
-import com.google.gson.Gson;
+import it.polito.mad.team12.restaurantmanager.R;
+import it.polito.mad.team12.restaurantmanager.Utility;
 
 
 public class MenuFragment extends Fragment {
@@ -32,7 +32,7 @@ public class MenuFragment extends Fragment {
 
     private static final int ADD_NEW_ITEM = 1;
 
-    private static final String RESTAURANT_ID = "RestID";
+    private static final String RESTAURANT_ID = "American Graffiti Via Lagrange 58";
 
     private ViewPager viewPager;
     private MenuTabsPagerAdapter pagerAdapter;
@@ -47,8 +47,6 @@ public class MenuFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-
-        Firebase.setAndroidContext(getActivity().getApplicationContext());
     }
 
     @Override
@@ -84,33 +82,15 @@ public class MenuFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.mt_add_new_item:
-                // TODO start the activity that adds an item for result
                 Intent intent = new Intent(getActivity(), AddMenuItemActivity.class);
-                startActivityForResult(intent, ADD_NEW_ITEM);
+                Bundle bundle = new Bundle();
+                bundle.putString(Utility.RESTAURANT_ID_KEY, RESTAURANT_ID);
+                bundle.putBoolean(Utility.EDIT_MODE_KEY, false);
+                intent.putExtras(bundle);
+                startActivity(intent);
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == AppCompatActivity.RESULT_OK) {
-            if (requestCode == ADD_NEW_ITEM) {
-                String receivedData;
-
-                if ((receivedData = data.getExtras().getString(AddMenuItemActivity.MENU_ITEM_DATA)) != null) {
-                    Gson gson = new Gson();
-                    RestaurantMenuItem menuItem = gson.fromJson(receivedData, RestaurantMenuItem.class);
-                    /*if(menuItems.add(menuItem)) {   // if the item has no naming conflict with other items
-                        availableList.add(menuItem);
-                        Collections.sort(availableList);
-                        ((MenuTabFragment) getChildFragmentManager().findFragmentByTag(getFragmentPagerAdapterTag(viewPager.getId(), AVAILABLE_TAB_POSITION))).notifyDataSetChanged();
-                    }*/
-                }
-            }
-        }
     }
 
     class MenuTabsPagerAdapter extends FragmentPagerAdapter {

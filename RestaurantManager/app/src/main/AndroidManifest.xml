@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="it.polito.mad.team12.restaurantmanager" >
+    package="it.polito.mad.team12.restaurantmanager">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_GPS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -15,21 +13,13 @@
         android:required="false" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name="it.polito.mad.team12.restaurantmanager.MyApplication">
-        <activity android:name="it.polito.mad.team12.restaurantmanager.MainActivity">
-        </activity>
-        <activity
-            android:name="it.polito.mad.team12.restaurantmanager.ReservationsActivity"
-            android:label="@string/title_activity_reservations"
-            android:parentActivityName="it.polito.mad.team12.restaurantmanager.MainActivity" />
-        <activity android:name="it.polito.mad.team12.restaurantmanager.AddMenuItemActivity" />
-        <activity android:name="it.polito.mad.team12.restaurantmanager.CustomerMainActivity">
-
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,23 +27,36 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="it.polito.mad.team12.restaurantmanager.FoodCategoryActivity"
-            android:label="FoodCategoryActivity" >
+            android:name=".ReservationsActivity"
+            android:label="@string/title_activity_reservations"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".menu.AddMenuItemActivity" />
+        <activity android:name=".CustomerMainActivity">
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
         </activity>
         <activity
-            android:name="it.polito.mad.team12.restaurantmanager.ReservationActivity"
-            android:label="ReservationActivity" >
-        </activity>
+            android:name=".FoodCategoryActivity"
+            android:label="FoodCategoryActivity" />
         <activity
-            android:name="it.polito.mad.team12.restaurantmanager.ConfirmReservationActivity"
-            android:label="ConfirmReservationActivity" >
-        </activity>
-   <activity         
-android:name="it.polito.mad.team12.restaurantmanager.ShowItemDetailsActivity"
+            android:name=".ReservationActivity"
+            android:label="ReservationActivity" />
+        <activity
+            android:name=".ConfirmReservationActivity"
+            android:label="ConfirmReservationActivity" />
+        <activity
+            android:name=".menu.ShowItemDetailsActivity"
             android:label="@string/title_activity_show_item_details"
             android:theme="@style/AppTheme" />
-        <activity android:name="it.polito.mad.team12.restaurantmanager.ShowOfferDetailsActivity"></activity>
-        <activity android:name="it.polito.mad.team12.restaurantmanager.CustomerRestaurantActivityMain"></activity>
+        <activity android:name=".menu.ShowOfferDetailsActivity" />
+        <activity android:name=".CustomerRestaurantActivityMain" />
+        <activity android:name=".menu.ShowMenuActivity" />
+        <activity android:name=".menu.ShowOffersActivity" />
+        <activity
+            android:name=".menu.AddMenuOfferActivity"
+            android:label="@string/title_activity_add_menu_offer"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

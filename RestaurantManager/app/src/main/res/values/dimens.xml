@@ -34,4 +34,10 @@
     <dimen name="dialog_item_text_size">16sp</dimen>
     <dimen name="horizontal_divider_bottom_padding">8dp</dimen>
     <dimen name="horizontal_divider_top_padding">8dp</dimen>
+
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="toggle_button_padding">8dp</dimen>
+    <dimen name="toggle_button_margin">2dp</dimen>
+    <dimen name="toggle_button_width">40dp</dimen>
+    <dimen name="default_list_item_padding">14dp</dimen>
 </resources>

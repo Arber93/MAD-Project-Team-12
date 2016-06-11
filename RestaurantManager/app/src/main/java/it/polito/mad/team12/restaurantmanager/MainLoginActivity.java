@@ -137,6 +137,7 @@ public class MainLoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onAuthenticationError(FirebaseError firebaseError) {
+                        progressDialog.cancel();
 
                         AlertDialog.Builder builder1 = new AlertDialog.Builder(MainLoginActivity.this);
                         builder1.setMessage(getResources().getString(R.string.failedlogin));
@@ -150,6 +151,7 @@ public class MainLoginActivity extends AppCompatActivity {
                                         startActivity(intent);
                                         dialog.cancel();
                                     }
+
                                 });
 
                         builder1.setNegativeButton(
@@ -157,6 +159,7 @@ public class MainLoginActivity extends AppCompatActivity {
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         dialog.cancel();
+
                                     }
                                 });
 

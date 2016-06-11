@@ -178,7 +178,10 @@ public class DetailsFlipperImagesEdit  extends DialogFragment implements View.On
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(getContext());
 
-        String restaurant11= "Tutto PizzaCorso Duca Degli Abruzzi 19";
+
+        MainActivity act = (MainActivity) getActivity();
+        String restaurant11 = act.retrieveRestID(); // I RETRIEVE THE INFO OF THE RESTAURANT FROM HERE
+
 
         // CHECK FOR PHOTOS AS WELL
         mPhotosRef = new Firebase("https://popping-inferno-6667.firebaseio.com/photos");

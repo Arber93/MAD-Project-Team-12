@@ -33,10 +33,11 @@ public class ReservationsActivity extends AppCompatActivity {
         PENDING = getResources().getString(R.string.pending);
         ACCEPTED = getResources().getString(R.string.accepted);
         DENIED = getResources().getString(R.string.denied);
-        COMPLETED = getResources().getString(R.string.completed);
+        COMPLETED = getResources().getString(R.string.completed_e);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

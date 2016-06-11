@@ -4,7 +4,7 @@
     <item
         android:id="@+id/rd_make_reservation"
         android:title="@string/rd_make_reservation_string"
-        android:icon="@drawable/ic_make_reservation"
+        android:icon="@drawable/ic_make_new_reservation"
         app:showAsAction="ifRoom"
         />
 </menu>

@@ -2,20 +2,26 @@ package it.polito.mad.team12.restaurantmanager;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.Firebase;
@@ -40,6 +46,9 @@ import java.util.LinkedList;
 public class CustomerMainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
+    private DrawerLayout mDrawer;
+    private NavigationView nvDrawer;
+    private ActionBarDrawerToggle drawerToggle;
     Spinner spinnerCategories, spinnerSortFilter;
     ArrayAdapter<CharSequence> catAd, sortAd;
     private Double latitude, longitude;
@@ -49,11 +58,15 @@ public class CustomerMainActivity extends AppCompatActivity implements GoogleApi
     private RecyclerView recyclerRestaur;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
+    SharedPreferences pref;
+    SharedPreferences.Editor editor;
     Firebase mRef = new Firebase("https://popping-inferno-6667.firebaseio.com/restaurants");
     Firebase geoRef = new Firebase("https://popping-inferno-6667.firebaseio.com/geofire");
     private RestaurantDetails resDet;
     private LinkedHashMap<String,RestaurantDetails> Geodets = new LinkedHashMap<String,RestaurantDetails>();
     private LinkedList<RestaurantDetails> linkedGeo = new LinkedList<RestaurantDetails>();
+    private String nameOfUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +84,15 @@ public class CustomerMainActivity extends AppCompatActivity implements GoogleApi
         // Set a Toolbar to replace the ActionBar.
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        mDrawer = (DrawerLayout) findViewById(R.id.drawer_customer_layout);
+        drawerToggle = setupDrawerToggle();
+        mDrawer.addDrawerListener(drawerToggle);
+
+        nvDrawer = (NavigationView) findViewById(R.id.nvCView);
+        // Setup drawer view
+        setupDrawerContent(nvDrawer);
 
         spinnerCategories = (Spinner) findViewById(R.id.customer_spinner_foodcategory);
         spinnerSortFilter = (Spinner) findViewById(R.id.customer_spinner_sortingfilters);
@@ -747,6 +769,53 @@ public class CustomerMainActivity extends AppCompatActivity implements GoogleApi
 
     }
 
+
+    private ActionBarDrawerToggle setupDrawerToggle() {
+        return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open,  R.string.drawer_close);
+    }
+
+    private void setupDrawerContent(NavigationView navigationView) {
+        pref = getSharedPreferences("testapp", MODE_PRIVATE);
+        nameOfUser = pref.getString("nameU",null);
+
+
+        View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header);
+        TextView customerName;
+        TextView profileLogout;
+        profileLogout = (TextView) headerLayout.findViewById(R.id.ic_drawer_logout);
+        customerName = (TextView) headerLayout.findViewById(R.id.ic_drawer_name);
+
+        customerName.setText(nameOfUser);
+
+        profileLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
+
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        //   selectDrawerItem(menuItem);
+                        return true;
+                    }
+                });
+    }
+
+
+    public void logout(){
+        pref = getSharedPreferences("testapp", MODE_PRIVATE);
+        System.out.println("I HAVE LOGGED OUT!! ");
+        editor = pref.edit();
+        editor.putString("loggedin","false");
+        editor.commit();
+        Intent i = new Intent(this, MainLoginActivity.class);
+        startActivity(i);
+        finish();
+    }
+
     void instanciateAdapter(LinkedHashMap<String, RestaurantDetails> call){
         myGeoFirebaseAdapter adapterG = new myGeoFirebaseAdapter(getApplicationContext(),linkedGeo);
 
@@ -867,6 +936,11 @@ public class CustomerMainActivity extends AppCompatActivity implements GoogleApi
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    @Override
+    public void onBackPressed(){
 
     }
 

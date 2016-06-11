@@ -79,7 +79,10 @@ public class EditPhoneDetails extends DialogFragment implements View.OnClickList
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(getContext());
 
-        String restaurant11= "Tutto PizzaCorso Duca Degli Abruzzi 19";
+
+        MainActivity act = (MainActivity) getActivity();
+        String restaurant11 = act.retrieveRestID(); // I RETRIEVE THE INFO OF THE RESTAURANT FROM HERE
+
         mRootRef = new Firebase("https://popping-inferno-6667.firebaseio.com/restaurants");   //ROOT of Firebase Restaurants
         restaurant = mRootRef.child(restaurant11);      //access the specified restaurant
     }

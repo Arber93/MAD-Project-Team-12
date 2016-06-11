@@ -19,6 +19,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -57,6 +58,44 @@
             android:name=".menu.AddMenuOfferActivity"
             android:label="@string/title_activity_add_menu_offer"
             android:theme="@style/AppTheme" />
+=======
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".ReservationsActivity"
+            android:label="@string/title_activity_reservations"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".AddMenuItemActivity" />
+        <activity android:name=".CustomerMainActivity">
+        </activity>
+        <activity
+            android:name=".FoodCategoryActivity"
+            android:label="FoodCategoryActivity" />
+        <activity
+            android:name=".ReservationActivity"
+            android:label="ReservationActivity" />
+        <activity
+            android:name=".ConfirmReservationActivity"
+            android:label="ConfirmReservationActivity" />
+        <activity
+            android:name=".ShowItemDetailsActivity"
+            android:label="@string/title_activity_show_item_details"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ShowOfferDetailsActivity" />
+        <activity android:name=".CustomerRestaurantActivityMain" />
+        <activity android:name=".MainLoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainSignupActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAYvFSYNcsj6LYpNkup1Q3nkHsLz13-iZY"/>
+
+>>>>>>> origin/master
     </application>
 
 </manifest>

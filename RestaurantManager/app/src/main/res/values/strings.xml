@@ -10,17 +10,26 @@
     <string name="accepted">ACCEPTED</string>
     <string name="denied">DENIED</string>
     <string name="accept">ACCEPT</string>
+    <string name="completed_e">COMPLETED</string>
     <string name="deny">DENY</string>
+    <string name="complete">COMPLETE</string>
 
     <string name="title_activity_reservations">Reservations</string>
     <string name="btn_reservations">Reservations</string>
 
-    <string name="reservation_id">"ID: "</string>
+    <string name="reservation_id">"reservation ID: "</string>
     <string name="customer_name">"Customer Name: "</string>
     <string name="customer_phone_number">"Customer Phone Number: "</string>
     <string name="ordered_items">"Ordered items: "</string>
     <string name="additional_notes">"Additional notes: "</string>
-    <string name="time_date_reservation">Time and Date: </string>
+    <string name="sender_id">"sender ID : "</string>
+    <string name="time_date_reservation">"Time and Date: "</string>
+    <string name="dialog_message_accept">Do you really want to accept this reservation?</string>
+    <string name="dialog_title_accept">ACCEPT?</string>
+    <string name="dialog_message_deny">Do you really want to deny this reservation?</string>
+    <string name="dialog_message_complete">Do you really want to complete this reservation?</string>
+    <string name="dialog_title_deny">DENY?</string>
+    <string name="dialog_title_complete">COMPLETE?</string>
     <string name="reservations">Reservations</string>
     <string name="details">Details</string>
     <string name="menu">Menu</string>
@@ -130,10 +139,12 @@
     </string-array>
 
 
+
     <string name="dialog_message_accept">Do you really want to accept this reservation?</string>
     <string name="dialog_title_accept">ACCEPT?</string>
     <string name="dialog_message_deny">Do you really want to deny this reservation?</string>
     <string name="dialog_title_deny">DENY?</string>
+
     <string name="ok">OK</string>
     <string name="back">BACK</string>
 
@@ -201,5 +212,29 @@
     <string name="amo_includes_string">Includes</string>
     <string name="amo_add_new_item">Add Item</string>
     <string name="amo_item_number_warning">You need to provide at least 1 item</string>
+
+    <string name="noaccount">No account yet? Create one!</string>
+    <string name="alreadyaccount">Already a member? Login</string>
+    <string name="createaccount">Create Account</string>
+    <string name="authenticating">Authenticating...</string>
+    <string name="creatingaccount">Creating Account...</string>
+
+    <string name="myreservations">My Reservations</string>
+    <string name="myreviews">My Reviews</string>
+    <string name="failedlogin">Login failed.</string>
+    <string name="retry">Retry</string>
+    <string name="signup">Sign Up</string>
+    <string name="name">Name</string>
+    <string name="streetn">Address</string>
+    <string name="restname">Restaurant Name</string>
+
+    <string name="signupsimple">Signup as customer</string>
+    <string name="signupmanager">Own a Restaurant? Signup as Manager</string>
+    <string name="errorsignup">Please fill in all required fields</string>
+    <string name="signupwrong">Email already registered!</string>
+    <string name="signupsuccess">Successfully Signed up! Now you can Login</string>
+    <string name="gotologin">Go to Login</string>
+    <string name="selectcategory">Please insert a category for your restaurant</string>
+
 
 </resources>

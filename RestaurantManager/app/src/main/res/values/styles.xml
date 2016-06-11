@@ -87,7 +87,10 @@
         <item name="android:maxHeight">12dip</item>
     </style>
 
-    <style name="ToolbarStyle">
 
+    <style name="ToolbarStyle"></style>
+
+    <style name="myDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
     </style>
 </resources>

@@ -47,7 +47,10 @@ public class FoodCategoryActivity extends AppCompatActivity {
         //rootRef = new Firebase("https://blistering-inferno-3678.firebaseio.com");
         Bundle b = getIntent().getExtras();
         restaurantID = b.getString("restaurantID");
+
+		
         rootRef = Utility.getMenuItemsFrom(restaurantID, true);
+
         category = b.getString("category");
         Log.v("RESTAURANT ID", restaurantID);
         Log.v("CATEGORY", category);
@@ -59,19 +62,18 @@ public class FoodCategoryActivity extends AppCompatActivity {
         Firebase categoryRef = menuRef.child(category);*/
         Query query = rootRef.orderByChild("category").equalTo(category);
 
-        FirebaseRecyclerAdapter<ItemData, MyViewHolder> adapter = new
-                FirebaseRecyclerAdapter<ItemData, MyViewHolder>(ItemData.class,R.layout.item_temp_reservation, MyViewHolder.class, query) {
+        FirebaseRecyclerAdapter<ReservationItem, MyViewHolder> adapter = new
+                FirebaseRecyclerAdapter<ReservationItem, MyViewHolder>(ReservationItem.class,R.layout.item_temp_reservation, MyViewHolder.class, query) {
                     @Override
-                    protected void populateViewHolder(MyViewHolder myViewHolder, ItemData item, int i) {
+                    protected void populateViewHolder(MyViewHolder myViewHolder, ReservationItem item, int i) {
                         //get the name of the current item
                         String currentItem = item.getName();
-                        // check if the item was already selected and the screen was rotated
-                        if (savedInstanceState != null){
-                            myViewHolder.quantity.setText(savedInstanceState.getString(currentItem,null));
-                        } else if (sharedPreferences.getString(currentItem,null) != null){
+                        if (sharedPreferences.getString(currentItem,null) != null){
                             myViewHolder.quantity.setText(sharedPreferences.getString(currentItem,null));
+                            selectedItems.put(currentItem, sharedPreferences.getString(currentItem,null));
                         } else {
                             myViewHolder.quantity.setText("0");
+                            selectedItems.put(currentItem, "0");
                         }
                         // set the name of the item
                         myViewHolder.name.setText(currentItem);
@@ -145,6 +147,7 @@ public class FoodCategoryActivity extends AppCompatActivity {
             Toast.makeText(this, getResources().getString(R.string.data_success), Toast.LENGTH_SHORT).show();
             finish();
         }
+        selectedItems.clear();
     }
     // delete the temporary items from the hashmap
     public void cancelData(View view){

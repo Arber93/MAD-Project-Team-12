@@ -2,6 +2,7 @@ package it.polito.mad.team12.restaurantmanager;
 import java.util.Map;
 
 public class Reservation {
+    private String reservationID;
     private Map<String,String> items;
     private String dateTime;
     private String notes;
@@ -11,7 +12,8 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(Map<String, String> items, String dateTime, String notes, String senderID, String receiverID) {
+    public Reservation(String reservationID, Map<String, String> items, String dateTime, String notes, String senderID, String receiverID) {
+        this.reservationID = reservationID;
         this.items = items;
         this.dateTime = dateTime;
         this.notes = notes;
@@ -59,5 +61,12 @@ public class Reservation {
         this.receiverID = receiverID;
     }
 
+    public String getReservationID() {
+        return reservationID;
+    }
+
+    public void setReservationID(String reservationID) {
+        this.reservationID = reservationID;
+    }
 }
 

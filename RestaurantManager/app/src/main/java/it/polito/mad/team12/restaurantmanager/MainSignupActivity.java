@@ -269,7 +269,7 @@ public class MainSignupActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(MainSignupActivity.this,
                 ProgressDialog.THEME_HOLO_DARK);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage(getResources().getString(R.string.authenticating));
+        progressDialog.setMessage(getResources().getString(R.string.creatingaccount));
         progressDialog.show();
 
         mRef.createUser(email.getText().toString(),password.getText().toString(), new Firebase.ValueResultHandler<Map<String, Object>>(){
@@ -325,7 +325,7 @@ public class MainSignupActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(MainSignupActivity.this,
                 ProgressDialog.THEME_HOLO_DARK);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage(getResources().getString(R.string.authenticating));
+        progressDialog.setMessage(getResources().getString(R.string.creatingaccount));
         progressDialog.show();
 
 

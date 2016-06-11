@@ -1,38 +1,50 @@
 package it.polito.mad.team12.restaurantmanager;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
+
+import com.firebase.client.Firebase;
+import com.firebase.ui.FirebaseRecyclerAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Map;
 
 public class PendingReservationsFragment extends Fragment {
 
-    public static final String JSON_RESERVATIONS = "JSONReservations";
+    Firebase rootRef;
+    Firebase pendingRef;
+    RecyclerView recyclerView;
+    private String restaurantID;
     private String RESERVATION_ID;
-    private String CUSTOMER_NAME;
+    private String SENDER_ID;
     private String ORDERED_ITEMS;
     private String TIME_DATE;
     private String ADDITIONAL_NOTES;
-    private String jsonPending;
-    private String jsonAccepted;
-    private String jsonDenied;
+    private String current_sender_id;
+    private StringBuffer current_ordered_items;
+    private StringBuffer timestamp_long;
+    private String current_time_date;
+    private String current_notes;
 
-    private SharedPreferences sharedPreferences;
-
-    ExpandableListAdapter expAdapter;
-    ExpandableListView expandList;
-    private ArrayList<ReservationHeader> expListItems;
 
     public PendingReservationsFragment() {
         // Required empty public constructor
@@ -42,36 +54,15 @@ public class PendingReservationsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        sharedPreferences = this.getActivity().getSharedPreferences(JSON_RESERVATIONS, Context.MODE_PRIVATE);
-        jsonPending = sharedPreferences.getString("pending", null);
-        jsonAccepted = sharedPreferences.getString("accepted", null);
-        jsonDenied = sharedPreferences.getString("denied", null);
-
-        if (jsonPending == null){
-            jsonPending = "{\"Reservations\":[{\"reservation_id\":\"1\",\"customer_name\":\"Mario Rossi\", \"customer_phone_number\":\"333 1111111\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"4\",\"customer_name\":\"Mario Neri\", \"customer_phone_number\":\"333 2222222\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"7\",\"customer_name\":\"Mario Bianchi\", \"customer_phone_number\":\"333 3333333\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"10\",\"customer_name\":\"Mario Verdi\", \"customer_phone_number\":\"333 4444444\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"}]}";
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("pending", jsonPending);
-            editor.commit();
-        }
-        if (jsonAccepted == null){
-            jsonAccepted = "{\"Reservations\":[{\"reservation_id\":\"2\",\"customer_name\":\"Marco Rossi\", \"customer_phone_number\":\"333 1111111\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"5\",\"customer_name\":\"Mario Neri\", \"customer_phone_number\":\"333 2222222\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"8\",\"customer_name\":\"Mario Bianchi\", \"customer_phone_number\":\"333 3333333\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"11\",\"customer_name\":\"Mario Verdi\", \"customer_phone_number\":\"333 4444444\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"}]}";
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("accepted", jsonAccepted);
-            editor.commit();
-        }
-        if (jsonDenied == null){
-            jsonDenied = "{\"Reservations\":[{\"reservation_id\":\"3\",\"customer_name\":\"Matteo Rossi\", \"customer_phone_number\":\"333 1111111\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"6\",\"customer_name\":\"Mario Neri\", \"customer_phone_number\":\"333 2222222\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"9\",\"customer_name\":\"Mario Bianchi\", \"customer_phone_number\":\"333 3333333\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"},{\"reservation_id\":\"12\",\"customer_name\":\"Mario Verdi\", \"customer_phone_number\":\"333 4444444\", \"ordered_items\":\"margherita 2x, coca cola 1x\", \"time_date\":\"1460322117\", \"additional_notes\":\"niente\"}]}";
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("denied", jsonDenied);
-            editor.commit();
-        }
-
         RESERVATION_ID = getString(R.string.reservation_id);
-        CUSTOMER_NAME = getString(R.string.customer_name);
+        SENDER_ID = getString(R.string.sender_id);
         ORDERED_ITEMS = getString(R.string.ordered_items);
         TIME_DATE = getString(R.string.time_date_reservation);
         ADDITIONAL_NOTES = getString(R.string.additional_notes);
-
+        //TODO get the restaurantID and use it for the Firebase query
+        restaurantID = "restaurantID";
+        current_ordered_items = new StringBuffer("");
+        timestamp_long = new StringBuffer("");
     }
 
     @Override
@@ -85,106 +76,156 @@ public class PendingReservationsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_pending_reservations, container, false);
 
-        // get the listview
-        expandList = (ExpandableListView) view.findViewById(R.id.lvExp);
-        expListItems = setListData();
-        expAdapter = new ExpandableListAdapter(getActivity(), expListItems, R.layout.fragment_pending_reservations);
-        expandList.setAdapter(expAdapter);
+        rootRef = new Firebase(Utility.FIREBASE_ROOT);
+        Firebase reservationsRef = rootRef.child("reservations");
+        Firebase restaurantRef = reservationsRef.child(restaurantID);
+        pendingRef = restaurantRef.child("pending");
 
-        // Listview Group click listener
-        expandList.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+        // recyclerView setup
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-            @Override
-            public boolean onGroupClick(ExpandableListView parent, View v,
-                                        int groupPosition, long id) {
-                return false;
-            }
-        });
+        FirebaseRecyclerAdapter<Reservation, MyViewHolder> adapter = new
+                FirebaseRecyclerAdapter<Reservation, MyViewHolder>(Reservation.class,R.layout.item_reservation, MyViewHolder.class, pendingRef) {
+                    @Override
+                    protected void populateViewHolder(MyViewHolder myViewHolder, Reservation reservation, int i) {
 
-        // Listview Group expanded listener
-        expandList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+                        //pass the details to the viewHolder for later use
+                        myViewHolder.res = reservation;
 
-            @Override
-            public void onGroupExpand(int groupPosition) {
-            }
-        });
+                        //timestamp conversion
+                        SimpleDateFormat sf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                        timestamp_long.setLength(0);
+                        timestamp_long.append(reservation.getDateTime());
+                        timestamp_long.append("000");
+                        Date date = new Date(Long.parseLong(timestamp_long.toString()));
+                        //list of items
+                        current_ordered_items.setLength(0);
+                        current_ordered_items.append(ORDERED_ITEMS);
+                        current_ordered_items.append(" \n");
+                        for (Map.Entry entry : reservation.getItems().entrySet()){
+                            current_ordered_items.append("- ");
+                            current_ordered_items.append(entry.getKey());
+                            current_ordered_items.append(" x");
+                            current_ordered_items.append(entry.getValue());
+                            current_ordered_items.append(" \n");
+                        }
 
-        // Listview Group collapsed listener
-        expandList.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-
-            @Override
-            public void onGroupCollapse(int groupPosition) {
-
-            }
-        });
-
-        // Listview on child click listener
-        expandList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-                return false;
-            }
-        });
+                        //explanation + data
+                        current_sender_id = SENDER_ID + reservation.getSenderID() + "\n";
+                        current_time_date= TIME_DATE + sf.format(date) + "\n";
+                        current_notes = ADDITIONAL_NOTES + reservation.getNotes() + "\n";
+//                        Log.v("current notes", current_notes);
+//                        Log.v("current items", current_ordered_items.toString());
+//                        Log.v("current time", current_time_date);
+//                        Log.v("current senderID", current_sender_id);
+//                        Log.v("current reservationID", current_reservation_id);
+                        myViewHolder.tvSenderId.setText(current_sender_id);
+                        myViewHolder.tvItems.setText(current_ordered_items);
+                        myViewHolder.tvTimeDate.setText(current_time_date);
+                        myViewHolder.tvNotes.setText(current_notes);
+                    }
+                };
+        recyclerView.setAdapter(adapter);
 
         return view;
     }
 
+    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-    public ArrayList<ReservationHeader> setListData() {
+        AlertDialog.Builder builder;
 
-        // get the updated list
-        jsonPending = sharedPreferences.getString("pending", null);
-        Log.d("ADebugTag", "*****************Pending***************: " + jsonPending);
-        ArrayList<ReservationHeader> list = new ArrayList<ReservationHeader>();
-        ArrayList<ReservationDetails> ch_list;
-        JSONArray reservationsArray = null;
+        TextView tvSenderId;
+        TextView tvItems;
+        TextView tvTimeDate;
+        TextView tvNotes;
+        Button b_accept;
+        Button b_deny;
+        Button b_complete;
+        Firebase rootRef = new Firebase(Utility.FIREBASE_ROOT);
+        Firebase reservationsRef = rootRef.child("reservations");
+        Firebase pendingRef = reservationsRef.child("pending");
+        Firebase acceptedRef = reservationsRef.child("accepted");
+        Firebase deniedRef = reservationsRef.child("denied");
+        Reservation res;
 
-        try {
-            JSONObject root = new JSONObject(jsonPending); //jsonPending is a string
-            reservationsArray = root.getJSONArray("Reservations");
-        } catch (JSONException e) {
-            e.printStackTrace();
+        public MyViewHolder(View v){
+            super(v);
+            tvSenderId = (TextView)v.findViewById(R.id.senderId);
+            tvItems = (TextView)v.findViewById(R.id.items);
+            tvItems = (TextView)v.findViewById(R.id.items);
+            tvTimeDate = (TextView)v.findViewById(R.id.timeDate);
+            tvNotes = (TextView)v.findViewById(R.id.notes);
+            b_accept = (Button)v.findViewById(R.id.b_accept);
+            b_deny = (Button)v.findViewById(R.id.b_deny);
+            b_complete= (Button)v.findViewById(R.id.b_complete);
+            b_complete.setVisibility(View.GONE);
+            b_accept.setOnClickListener(this);
+            b_deny.setOnClickListener(this);
+            builder = new AlertDialog.Builder(tvItems.getContext());
         }
 
-        for (int i = 0; i < reservationsArray.length(); i++) {
-            String current_id = null;
-            String current_name = null;
-            String current_items = null;
-            String current_td= null;
-            String current_notes = null;
-            try {
-                JSONObject reservation = reservationsArray.getJSONObject(i);
-                current_id = RESERVATION_ID + reservation.getString("reservation_id");
-                current_name = CUSTOMER_NAME + reservation.getString("customer_name");
-                current_td = TIME_DATE + reservation.getString("time_date");
-                current_notes = ADDITIONAL_NOTES + reservation.getString("additional_notes");
-                current_items = ORDERED_ITEMS + reservation.getString("ordered_items");
 
-            } catch (JSONException e) {
-                e.printStackTrace();
+        @Override
+        public void onClick(View v) {
+//            Log.v("reservation---->", res.getItems().toString());
+
+            if (v.getId() == b_accept.getId()){
+                builder.setMessage(R.string.dialog_message_accept).setTitle(R.string.dialog_title_accept);
+                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User clicked OK button
+
+                        //remove the reservation from pending
+                        pendingRef.child(res.getReservationID()).setValue(null);
+
+                        //move this pending reservation to accepted
+                        Firebase newRef = acceptedRef.push();
+                        String reservationId = newRef.getKey();
+                        res.setReservationID(reservationId);
+                        newRef.setValue(res);
+
+                    }
+                });
+                builder.setNegativeButton(R.string.back, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+            } else {
+                // b_denied has been clicked
+                builder.setMessage(R.string.dialog_message_deny).setTitle(R.string.dialog_title_deny);
+                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User clicked OK button
+
+                        //remove the reservation from pending
+                        pendingRef.child(res.getReservationID()).setValue(null);
+
+                        //move this pending reservation to denied
+                        Firebase newRef = deniedRef.push();
+                        String reservationId = newRef.getKey();
+                        res.setReservationID(reservationId);
+                        newRef.setValue(res);
+                    }
+                });
+                builder.setNegativeButton(R.string.back, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+
             }
-
-            ReservationHeader h = new ReservationHeader();
-            h.setHeader(current_id);
-
-            ch_list = new ArrayList<ReservationDetails>();
-
-            ReservationDetails d = new ReservationDetails();
-            d.setCustomerName(current_name);
-            d.setOrderedItems(current_items);
-            d.setTimeDate(current_td);
-            d.setNotes(current_notes);
-
-            ch_list.add(d);
-
-            h.setDetails(ch_list);
-            list.add(h);
-
         }
-
-        return list;
     }
 }
 

@@ -23,10 +23,10 @@ import java.util.Map;
 /**
  * Created by Pal on 08-May-16.
  */
-public class ConfirmReservationActivity extends AppCompatActivity implements DatePickerFragment.DatePickerFragmentListener, TimePickerFragment.TimePickerFragmentListener {
+public class ConfirmReservationActivity extends AppCompatActivity implements TimePickerFragment.TimePickerFragmentListener {
     public static final String CART_ITEMS = "CartItems";
     SharedPreferences spItems;
-    SharedPreferences spDateTime;
+    SharedPreferences spTime;
     int year, month, day, hour, minute;
     Map<String,String> mapItems;
     String restaurantID;
@@ -47,24 +47,17 @@ public class ConfirmReservationActivity extends AppCompatActivity implements Dat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_reservation);
 
-        // get the date from SP or the default one
-        spDateTime = getSharedPreferences("ReservationDateTime", Context.MODE_PRIVATE);
-        if (spDateTime.getString("Year", null) != null){
-            year = Integer.parseInt(spDateTime.getString("Year", null));
-            month = Integer.parseInt(spDateTime.getString("Month", null));
-            day = Integer.parseInt(spDateTime.getString("Day", null));
-        } else {
-            final Calendar c = Calendar.getInstance();
-            year = c.get(Calendar.YEAR);
-            month = c.get(Calendar.MONTH) + 1;
-            day = c.get(Calendar.DAY_OF_MONTH);
-        }
+        // get the date of today
+        final Calendar c = Calendar.getInstance();
+        year = c.get(Calendar.YEAR);
+        month = c.get(Calendar.MONTH) + 1;
+        day = c.get(Calendar.DAY_OF_MONTH);
         // get the time from SP or the default one
-        if (spDateTime.getString("Hour", null) != null){
-            hour = Integer.parseInt(spDateTime.getString("Hour", null));
-            minute = Integer.parseInt(spDateTime.getString("Minute", null));
+        spTime = getSharedPreferences("ReservationTime", Context.MODE_PRIVATE);
+        if (spTime.getString("Hour", null) != null){
+            hour = Integer.parseInt(spTime.getString("Hour", null));
+            minute = Integer.parseInt(spTime.getString("Minute", null));
         } else {
-            final Calendar c = Calendar.getInstance();
             hour = c.get(Calendar.HOUR_OF_DAY);
             minute = c.get(Calendar.MINUTE);
         }
@@ -94,16 +87,20 @@ public class ConfirmReservationActivity extends AppCompatActivity implements Dat
         spItems = getSharedPreferences(CART_ITEMS, Context.MODE_PRIVATE);
         mapItems = (Map<String,String>) spItems.getAll();
 
-        SimpleItemAdapter adapter = new SimpleItemAdapter(mapItems);
+        SimpleItemAdapter adapter = new SimpleItemAdapter(mapItems, this);
         listView.setAdapter(adapter);
 
-        rootRef = new Firebase("https://popping-inferno-6667.firebaseio.com");
-        // FirebaseRecyclerAdapter setup
+        rootRef = new Firebase(Utility.FIREBASE_ROOT);
         Firebase reservationsRef = rootRef.child("reservations");
-        pendingRef = reservationsRef.child("pending");
+        Firebase restaurantRef = reservationsRef.child(restaurantID);
+        pendingRef = restaurantRef.child("pending");
     }
 
     public void sendReservation(View v){
+        // get the updated SP
+        spItems = getSharedPreferences(CART_ITEMS, Context.MODE_PRIVATE);
+        mapItems = (Map<String,String>) spItems.getAll();
+
         // at least one item must be selected
         if (!mapItems.isEmpty()){
             String notes = etNotes.getText().toString();
@@ -132,15 +129,19 @@ public class ConfirmReservationActivity extends AppCompatActivity implements Dat
 
             if (longTsReservation > (longTsCurrent + acceptTime)){
                 String stringTsReservation = String.valueOf(longTsReservation);
-                Reservation reservation = new Reservation(mapItems, stringTsReservation, notes, senderID, receiverID);
-                pendingRef.push().setValue(reservation);
+                //reservationId generation
+                Firebase newPendingRef = pendingRef.push();
+                String reservationId = newPendingRef.getKey();
+
+                Reservation reservation = new Reservation(reservationId, mapItems, stringTsReservation, notes, senderID, receiverID);
+                newPendingRef.setValue(reservation);
                 Toast.makeText(this, getResources().getString(R.string.reservation_sent), Toast.LENGTH_SHORT).show();
 
                 //clear the Reservation's data
                 SharedPreferences.Editor editorItems = spItems.edit();
                 editorItems.clear();
                 editorItems.commit();
-                SharedPreferences.Editor editorDateTime= spDateTime.edit();
+                SharedPreferences.Editor editorDateTime= spTime.edit();
                 editorDateTime.clear();
                 editorDateTime.commit();
 
@@ -158,29 +159,14 @@ public class ConfirmReservationActivity extends AppCompatActivity implements Dat
         TimePickerFragment fragment = TimePickerFragment.newInstance(this);
         fragment.show(getSupportFragmentManager(), "timePicker");
     }
-    public void selectDate(View v){
-        DatePickerFragment fragment = DatePickerFragment.newInstance(this);
-        fragment.show(getSupportFragmentManager(), "datePicker");
-    }
 
-    @Override
-    public void onDateSet(String date) {
-        //update TextView
-        dateText = getString(R.string.date) + date;
-        tvDate.setText(dateText);
-        //update SP
-        year = Integer.parseInt(spDateTime.getString("Year", null));
-        month = Integer.parseInt(spDateTime.getString("Month", null));
-        day = Integer.parseInt(spDateTime.getString("Day", null));
-
-    }
     @Override
     public void onTimeSet(String time) {
         //update Textview
         timeText = getString(R.string.time) + time;
         tvTime.setText(timeText);
         //update SP
-        hour = Integer.parseInt(spDateTime.getString("Hour", null));
-        minute = Integer.parseInt(spDateTime.getString("Minute", null));
+        hour = Integer.parseInt(spTime.getString("Hour", null));
+        minute = Integer.parseInt(spTime.getString("Minute", null));
     }
 }

@@ -57,21 +57,27 @@
     <string name="pending">IN ATTESA</string>
     <string name="accepted">ACCETTATE</string>
     <string name="denied">RIFIUTATE</string>
+    <string name="completed_e">COMPLETATE</string>
+
     <string name="deny">RIFIUTA</string>
+    <string name="complete">COMPLETA</string>
 
     <string name="title_activity_reservations">Prenotazioni</string>
 
-    <string name="reservation_id">"ID: "</string>
+    <string name="reservation_id">"ID prenotazione: "</string>
     <string name="customer_name">"Nome Cliente: "</string>
     <string name="customer_phone_number">"Telefono Cliente: "</string>
-    <string name="ordered_items">"Ordine: "</string>
+    <string name="ordered_items">"Ordinazione: "</string>
     <string name="additional_notes">"Note aggiuntive: "</string>
-    <string name="time_date_reservation">Ora e Giorno: </string>
+    <string name="time_date_reservation">"Ora e Giorno: "</string>
+    <string name="sender_id">"ID cliente: "</string>
 
     <string name="dialog_message_accept">Sei sicuro di voler accettare questa prenotazione?</string>
     <string name="dialog_title_accept">ACCETTI?</string>
     <string name="dialog_message_deny">Sei sicuro di voler rifiutare questa prenotazione?</string>
+    <string name="dialog_message_complete">Sei sicuro di voler completare questa prenotazione?</string>
     <string name="dialog_title_deny">RIFIUTI?</string>
+    <string name="dialog_title_complete">COMPLETA?</string>
     <string name="ok">OK</string>
     <string name="back">INDIETRO</string>
     <string name="submit">invia</string>
@@ -89,7 +95,7 @@
     <string name="reservation_sent">Prenotazione inviata</string>
     <string name="data_canceled">Dati rimossi</string>
     <string name="temp_data_canceled">Dati temporanei rimossi</string>
-    <string name="notes_hint">Inserisci qui ulteriori note per il ristoranre</string>
+    <string name="notes_hint">Inserisci qui ulteriori note per il ristorante</string>
     <string name="select_time">Seleziona l\'ora</string>
     <string name="select_date">Seleziona il giorno</string>
     <string name="modifications_not_saved">Modifiche non salvate</string>
@@ -168,6 +174,7 @@
     <string name="createaccount">Crea Un Nuovo Account</string>
 
     <string name="authenticating">LogIn in corso...</string>
+    <string name="creatingaccount">Creazione Account...</string>
 
     <string name="myreservations">Le mie Prenotazioni</string>
     <string name="myreviews">Le mie Recensioni</string>

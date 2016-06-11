@@ -5,25 +5,33 @@
     android:layout_height="match_parent"
     tools:context="it.polito.mad.team12.restaurantmanager.MainLoginActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TEMPORARY TEXT VIEW \nFor the purpose of testing, if you don&apos;t want to sign up for a new account you can use these accounts respectively:  \nmanager \nemail: manager1@gmail.com \npassword: manager1  \ncustomer \nemail: customer1@gmail.com \npassword: customer1"
+        android:id="@+id/temporary_guidelines"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:layout_below="@id/temporary_guidelines">
+
+
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="56dp"
+            android:paddingTop="46dp"
             android:paddingLeft="24dp"
             android:paddingRight="24dp">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="72dp"
-                android:layout_marginBottom="24dp"
-                android:layout_gravity="center_horizontal" />
+
+
 
             <!-- Email Label -->
             <android.support.design.widget.TextInputLayout

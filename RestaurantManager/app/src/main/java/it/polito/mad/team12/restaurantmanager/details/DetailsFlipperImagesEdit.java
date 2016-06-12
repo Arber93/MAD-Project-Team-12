@@ -1,4 +1,4 @@
-package it.polito.mad.team12.restaurantmanager;
+package it.polito.mad.team12.restaurantmanager.details;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -39,6 +39,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.Map;
+
+import it.polito.mad.team12.restaurantmanager.MainActivity;
+import it.polito.mad.team12.restaurantmanager.R;
+import it.polito.mad.team12.restaurantmanager.Utility;
 
 
 /**

@@ -14,6 +14,8 @@ import com.firebase.ui.FirebaseRecyclerAdapter;
 
 import java.util.Locale;
 
+import it.polito.mad.team12.restaurantmanager.details.RestaurantDetails;
+
 /**
  * Created by Andrea on 05/05/2016.
  */

@@ -14,6 +14,8 @@ import android.widget.TextView;
 import java.util.LinkedList;
 import java.util.Locale;
 
+import it.polito.mad.team12.restaurantmanager.details.RestaurantDetails;
+
 /**
  * Created by Andrea on 07/05/2016.
  */

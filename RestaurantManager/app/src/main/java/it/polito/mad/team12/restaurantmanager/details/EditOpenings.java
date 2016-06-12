@@ -1,4 +1,4 @@
-package it.polito.mad.team12.restaurantmanager;
+package it.polito.mad.team12.restaurantmanager.details;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -30,6 +30,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
+
+import it.polito.mad.team12.restaurantmanager.MainActivity;
+import it.polito.mad.team12.restaurantmanager.R;
+import it.polito.mad.team12.restaurantmanager.Utility;
 
 
 public class EditOpenings extends DialogFragment implements View.OnClickListener{

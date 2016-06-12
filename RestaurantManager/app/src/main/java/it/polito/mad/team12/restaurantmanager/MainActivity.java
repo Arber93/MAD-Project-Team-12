@@ -3,7 +3,6 @@ package it.polito.mad.team12.restaurantmanager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -16,16 +15,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.client.Firebase;
 
+import it.polito.mad.team12.restaurantmanager.details.DetailsFragment;
 import it.polito.mad.team12.restaurantmanager.menu.MenuFragment;
 import it.polito.mad.team12.restaurantmanager.menu.OffersFragment;
 import it.polito.mad.team12.restaurantmanager.review.ReviewUtility;
 import it.polito.mad.team12.restaurantmanager.review.ReviewsFragment;
-import it.polito.mad.team12.restaurantmanager.review.ReviewsInsertFragment;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawer;

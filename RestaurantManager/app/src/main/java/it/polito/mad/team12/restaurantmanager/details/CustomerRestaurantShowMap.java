@@ -1,4 +1,4 @@
-package it.polito.mad.team12.restaurantmanager;
+package it.polito.mad.team12.restaurantmanager.details;
 
 import android.Manifest;
 import android.app.Dialog;
@@ -38,6 +38,9 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Map;
+
+import it.polito.mad.team12.restaurantmanager.CustomerRestaurantActivityMain;
+import it.polito.mad.team12.restaurantmanager.R;
 
 /**
  * Created by Andrea on 08/05/2016.

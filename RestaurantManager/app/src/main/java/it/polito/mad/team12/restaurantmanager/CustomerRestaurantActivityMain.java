@@ -20,6 +20,7 @@ import com.firebase.client.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.polito.mad.team12.restaurantmanager.details.CustomerRestaurantDetailsFragment;
 import it.polito.mad.team12.restaurantmanager.menu.ShowCategoriesFragment;
 import it.polito.mad.team12.restaurantmanager.review.*;
 

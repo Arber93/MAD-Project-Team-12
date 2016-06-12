@@ -1,4 +1,4 @@
-package it.polito.mad.team12.restaurantmanager;
+package it.polito.mad.team12.restaurantmanager.details;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -28,6 +28,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+
+import it.polito.mad.team12.restaurantmanager.MainActivity;
+import it.polito.mad.team12.restaurantmanager.R;
+import it.polito.mad.team12.restaurantmanager.Utility;
 
 /**
  * Created by Andrea on 08/05/2016.

@@ -801,17 +801,17 @@ public class CustomerMainActivity extends AppCompatActivity implements GoogleApi
             }
         });
 
-        navigationView.setNavigationItemSelectedListener(
+        /*navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        //      selectDrawerItem(menuItem);
+                        selectDrawerItem(menuItem);
                         return true;
                     }
-                });
+                });*/
     }
 
-    public void selectDrawerItem(MenuItem menuItem) {
+    /*public void selectDrawerItem(MenuItem menuItem) {
         // Create a new fragment and specify the fragment to show based on nav item clicked
         Fragment fragment = null;
         Class fragmentClass = null;
@@ -834,7 +834,7 @@ public class CustomerMainActivity extends AppCompatActivity implements GoogleApi
         setTitle(menuItem.getTitle());
         // Close the navigation drawer
         mDrawer.closeDrawers();
-    }
+    }*/
 
 
     public void logout(){

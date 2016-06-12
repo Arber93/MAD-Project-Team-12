@@ -34,6 +34,7 @@ import java.util.Currency;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import it.polito.mad.team12.restaurantmanager.R;
 import it.polito.mad.team12.restaurantmanager.Utility;
@@ -231,7 +232,7 @@ public class AddMenuOfferActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_add_new_item, menu);
+        getMenuInflater().inflate(R.menu.menu_add_new_offer, menu);
         return true;
     }
 
@@ -388,7 +389,9 @@ public class AddMenuOfferActivity extends AppCompatActivity {
     }
 
     public void notifyDataLoaded() {
-        spinnerAdapter.removeValues(listAdapter.getValues());
+        if(listAdapter.getValues() != null) {
+            spinnerAdapter.removeValues(listAdapter.getValues());
+        }
         spinnerAdapter.notifyDataSetChanged();
     }
 
@@ -397,7 +400,11 @@ public class AddMenuOfferActivity extends AppCompatActivity {
         private List<String> values;
 
         public SpinnerAdapter(Context context, List<String> values) {
-            this.values = values;
+            if(values == null) {
+                this.values = new CopyOnWriteArrayList<>();
+            } else {
+                this.values = values;
+            }
             this.context = context;
         }
 
@@ -433,7 +440,9 @@ public class AddMenuOfferActivity extends AppCompatActivity {
 
             if(values != null) {
                 ctv.setText(values.get(position));
-                ctv.setPadding(0, (int) (getResources().getDimension(R.dimen.default_top_padding)/2) , 0, (int) (getResources().getDimension(R.dimen.default_bottom_padding)/2));
+                ctv.setPadding((int) getResources().getDimension(R.dimen.default_left_padding),
+                               (int) (getResources().getDimension(R.dimen.default_top_padding)/2),
+                            0, (int) (getResources().getDimension(R.dimen.default_bottom_padding)/2));
             }
 
             return convertView;
@@ -451,23 +460,21 @@ public class AddMenuOfferActivity extends AppCompatActivity {
 
         public ItemAdapter(Context context, List<String> values, List<String> spinnerItems) {
             this.context = context;
-            this.values = values;
+            if(values == null) {
+                this.values = new LinkedList<>();
+            } else {
+                this.values = values;
+            }
             this.spinnerItems = spinnerItems;
         }
 
         @Override
         public int getCount() {
-            if(values == null) {
-                return 0;
-            }
             return values.size();
         }
 
         @Override
         public Object getItem(int position) {
-            if(values == null) {
-                return null;
-            }
             return values.get(position);
         }
 

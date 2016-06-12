@@ -1,8 +1,10 @@
 package it.polito.mad.team12.restaurantmanager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -79,13 +81,20 @@ public class CustomerRestaurantDetailsFragment extends Fragment {
         takemethere.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Double latitude = ((CustomerRestaurantActivityMain)getActivity()).retrieveLat();
+                Double longitude = ((CustomerRestaurantActivityMain)getActivity()).retrieveLon();
 
-                FragmentManager manager = getFragmentManager();
+                Uri gmmIntent = Uri.parse("google.navigation:q=" + latitude.toString() + "," + longitude.toString() + "&mode=w");
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntent);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
+
+                /*FragmentManager manager = getFragmentManager();
                 FragmentTransaction transaction;
 
                 transaction = manager.beginTransaction();
 
-                showing.show(transaction, "Dialog");
+                showing.show(transaction, "Dialog");*/
 
             }
         });

@@ -13,16 +13,19 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class SimpleItemAdapter extends BaseAdapter {
     Context context;
     private final ArrayList mData;
     SharedPreferences sharedPreferences;
+    private String restaurantID;
 
-    public SimpleItemAdapter(Map<String,String> map, Context context) {
+    public SimpleItemAdapter(Map<String, String> map, Context context, String restaurantID) {
         mData = new ArrayList();
         mData.addAll(map.entrySet());
         this.context = context;
+        this.restaurantID = restaurantID;
     }
 
     @Override
@@ -46,7 +49,7 @@ public class SimpleItemAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_final_reservation, parent, false);
         }
 
-        sharedPreferences = context.getSharedPreferences("CartItems", Context.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences(restaurantID, Context.MODE_PRIVATE);
 
         final Map.Entry<String,String> item = getItem(position);
 
@@ -56,7 +59,7 @@ public class SimpleItemAdapter extends BaseAdapter {
         Log.v("ITEM VALUE", item.getValue());
 
         String key = item.getKey();
-        key = key.replace(Utility.OFFER_KEY_PREFIX, "");
+        key = key.replaceFirst(Pattern.quote(Utility.OFFER_KEY_PREFIX), "");
 
         name.setText(key);
         quantity.setText(item.getValue());

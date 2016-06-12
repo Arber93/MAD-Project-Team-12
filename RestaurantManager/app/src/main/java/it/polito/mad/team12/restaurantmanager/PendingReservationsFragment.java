@@ -70,6 +70,9 @@ public class PendingReservationsFragment extends Fragment {
         //TODO get the restaurantID and use it for the Firebase query
         //restaurantID = getArguments().getString(Utility.RESTAURANT_ID_KEY);
         restaurantID = ((ReservationsActivity)getActivity()).getRestaurantID();
+        if(restaurantID == null && savedInstanceState != null) {
+            restaurantID = savedInstanceState.getString(Utility.RESTAURANT_ID_KEY, null);
+        }
         current_ordered_items = new StringBuffer("");
         timestamp_long = new StringBuffer("");
     }
@@ -236,5 +239,13 @@ public class PendingReservationsFragment extends Fragment {
             }
         }
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(Utility.RESTAURANT_ID_KEY, restaurantID);
+    }
+
+
 }
 

@@ -1,14 +1,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <!--
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_my_reservations"
-            android:icon="@drawable/ic_drawer_reservations"
-            android:title="@string/myreservations" />
-        <item
-            android:id="@+id/nav_my_reviews"
-            android:icon="@drawable/ic_drawer_reviews"
-            android:title="@string/myreviews" />
-    </group>
-    -->
+        <group android:checkableBehavior="single">
+
+            <item
+                android:id="@+id/nav_my_reservations"
+                android:icon="@drawable/ic_drawer_reservations"
+                android:title="@string/myreservations" />
+
+            <item
+                android:id="@+id/nav_my_reviews"
+                android:icon="@drawable/ic_drawer_reviews"
+                android:title="@string/myreviews" />
+        </group>
+     -->
+
 </menu>

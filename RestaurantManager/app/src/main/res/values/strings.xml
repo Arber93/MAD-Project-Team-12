@@ -192,10 +192,10 @@
     <string name="show_offers_title">Offers</string>
 
     <string name="item_added_first_time">Item added to the active reservation</string>
-    <string name="item_added_successive_times">Item quantity incremented in the active reservation</string>
+    <string name="item_added_successive_times">Item quantity incremented by one</string>
     <string name="ami_category_field_title">Category</string>
     <string name="restaurant_offers_title">Restaurant Offers</string>
-    <string name="title_activity_add_menu_offer">AddMenuOfferActivity</string>
+    <string name="title_activity_add_menu_offer" translatable="false">AddMenuOfferActivity</string>
     <string name="amo_menu_edit_offer_title">Edit Offer</string>
     <string name="amo_menu_new_offer_title">New Offer</string>
     <string name="amo_offered_on_field_title">Offered On</string>
@@ -208,7 +208,7 @@
     <string name="toggle_button_sunday">S</string>
     <string name="amo_includes_string">Includes</string>
     <string name="amo_add_new_item">Add Item</string>
-    <string name="amo_item_number_warning">You need to provide at least 1 item</string>
+    <string name="amo_item_number_warning">You need to provide at least one item</string>
 
     <string name="noaccount">No account yet? Create one!</string>
     <string name="alreadyaccount">Already a member? Login</string>

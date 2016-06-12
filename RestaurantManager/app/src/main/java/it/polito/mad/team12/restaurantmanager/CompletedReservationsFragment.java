@@ -68,6 +68,9 @@ public class CompletedReservationsFragment extends Fragment {
         //TODO get the restaurantID and use it for the Firebase query
         //restaurantID = getArguments().getString(Utility.RESTAURANT_ID_KEY);
         restaurantID = ((ReservationsActivity)getActivity()).getRestaurantID();
+        if(restaurantID == null && savedInstanceState != null) {
+            restaurantID = savedInstanceState.getString(Utility.RESTAURANT_ID_KEY, null);
+        }
         current_ordered_items = new StringBuffer("");
         timestamp_long = new StringBuffer("");
     }
@@ -167,6 +170,12 @@ public class CompletedReservationsFragment extends Fragment {
             b_complete.setVisibility(View.GONE);
             builder = new AlertDialog.Builder(tvItems.getContext());
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(Utility.RESTAURANT_ID_KEY, restaurantID);
     }
 }
 

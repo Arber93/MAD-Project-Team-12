@@ -24,7 +24,6 @@ import java.util.Map;
  * Created by Pal on 08-May-16.
  */
 public class ConfirmReservationActivity extends AppCompatActivity implements TimePickerFragment.TimePickerFragmentListener {
-    public static final String CART_ITEMS = "CartItems";
     SharedPreferences spItems;
     SharedPreferences spTime;
     int year, month, day, hour, minute;
@@ -84,10 +83,10 @@ public class ConfirmReservationActivity extends AppCompatActivity implements Tim
         timeText = getString(R.string.time) + time;
         tvDate.setText(dateText);
         tvTime.setText(timeText);
-        spItems = getSharedPreferences(CART_ITEMS, Context.MODE_PRIVATE);
+        spItems = getSharedPreferences(restaurantID, Context.MODE_PRIVATE);
         mapItems = (Map<String,String>) spItems.getAll();
 
-        SimpleItemAdapter adapter = new SimpleItemAdapter(mapItems, this);
+        SimpleItemAdapter adapter = new SimpleItemAdapter(mapItems, this, restaurantID);
         listView.setAdapter(adapter);
 
         rootRef = new Firebase(Utility.FIREBASE_ROOT);
@@ -98,15 +97,15 @@ public class ConfirmReservationActivity extends AppCompatActivity implements Tim
 
     public void sendReservation(View v){
         // get the updated SP
-        spItems = getSharedPreferences(CART_ITEMS, Context.MODE_PRIVATE);
+        spItems = getSharedPreferences(restaurantID, Context.MODE_PRIVATE);
         mapItems = (Map<String,String>) spItems.getAll();
 
         // at least one item must be selected
         if (!mapItems.isEmpty()){
             String notes = etNotes.getText().toString();
             //TODO senderID, receiverID
-            String senderID = "senderID1";
-            String receiverID = "receiverID1";
+            String senderID = getSharedPreferences("testapp", MODE_PRIVATE).getString("userUID", "senderID1");
+            String receiverID = restaurantID;
 
             // get the Reservation's timestamp
             String str_date = year + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + "00";

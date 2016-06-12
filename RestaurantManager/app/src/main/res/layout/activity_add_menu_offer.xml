@@ -226,7 +226,9 @@
 				<Spinner
 					android:id="@+id/amo_spinner"
 					android:layout_width="fill_parent"
-					android:layout_height="100dp" />
+					android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/default_top_padding"
+                    android:paddingBottom="@dimen/default_bottom_padding"/>
 					
 				<Button
                     android:id="@+id/amo_new_item_button"

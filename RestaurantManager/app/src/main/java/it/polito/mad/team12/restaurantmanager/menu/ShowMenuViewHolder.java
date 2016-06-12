@@ -70,7 +70,7 @@ public class ShowMenuViewHolder extends RecyclerView.ViewHolder {
     public void setListeners() {
         this.item.setOnClickListener(new ItemClickListener(restaurantName, itemData, context));
         this.imgPlus.setOnClickListener(new View.OnClickListener() {
-            SharedPreferences sharedPreferences = context.getSharedPreferences(Utility.CART_ITEMS, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences = context.getSharedPreferences(restaurantName, Context.MODE_PRIVATE);
 
             @Override
             public void onClick(View v) {

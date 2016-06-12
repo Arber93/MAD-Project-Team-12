@@ -191,5 +191,25 @@
     <string name="signupsuccess">Registrazione effettuata con successo! Ora puoi fare il Login</string>
     <string name="gotologin">Vai al Login</string>
     <string name="selectcategory">Perfavore inserire una categoria corretta</string>
+    <string name="ami_category_field_title">Categoria</string>
+    <string name="offers">Offerte</string>
+    <string name="restaurant_offers_title">Offerte del Ristorante</string>
+    <string name="show_offers_title">Offerte</string>
+    <string name="toggle_button_friday">V</string>
+    <string name="toggle_button_monday">L</string>
+    <string name="toggle_button_saturday">S</string>
+    <string name="toggle_button_sunday">D</string>
+    <string name="toggle_button_thursday">G</string>
+    <string name="toggle_button_tuesday">M</string>
+    <string name="toggle_button_wednesday">M</string>
+    <string name="desserts">Dolci</string>
+    <string name="amo_add_new_item">Aggiungi Articolo</string>
+    <string name="amo_includes_string">Contiene</string>
+    <string name="amo_item_number_warning">Devi aggiungere almeno un articolo</string>
+    <string name="amo_menu_edit_offer_title">Modifica Offerta</string>
+    <string name="amo_menu_new_offer_title">Aggiungi Offerta</string>
+    <string name="amo_offered_on_field_title">Offerto Di</string>
+    <string name="item_added_first_time">L\'articolo e stato aggiunto nella prenotazione attiva</string>
+    <string name="item_added_successive_times">La quantita dell\'articolo e stato aumentata di uno </string>
 
 </resources>

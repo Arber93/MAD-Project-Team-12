@@ -47,20 +47,19 @@
             </LinearLayout>
 
             <LinearLayout
+                style="@style/CardViewText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_weight="1">
 
                 <ImageView
-                    style="@style/CardViewText"
                     android:id="@+id/mt_first_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center" />
 
                 <ImageView
-                    style="@style/CardViewText"
                     android:id="@+id/mt_second_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -72,7 +71,6 @@
                     android:layout_weight="1"></View>
 
                 <ImageView
-                    style="@style/CardViewText"
                     android:id="@+id/mt_plus_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

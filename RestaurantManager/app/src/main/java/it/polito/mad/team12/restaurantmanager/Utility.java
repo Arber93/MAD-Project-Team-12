@@ -36,6 +36,7 @@ public final class Utility {
     public static final String IMAGE_EXTENSION = ".jpg";
     public static final String FIREBASE_ROOT = "https://restaurant-manager.firebaseio.com/";
     public static final String FIREBASE_RESTAURANTS = FIREBASE_ROOT + "/restaurants";
+    public static final String FIREBASE_USERS = FIREBASE_ROOT + "/users";
     public static final String FIREBASE_GEOFIRE = FIREBASE_ROOT + "/geofire";
     public static final String FIREBASE_REVIEWS = FIREBASE_ROOT + "/reviews";
     public static final String FIREBASE_MENUS = FIREBASE_ROOT + "/menus/";
@@ -48,8 +49,7 @@ public final class Utility {
     public static final int TAKE_PHOTO = 1;
     public static final int BROWSE_GALLERY = 2;
 
-    public static final String CART_ITEMS = "CartItems";
-    public static final String OFFER_KEY_PREFIX = "$$$ ";
+    public static final String OFFER_KEY_PREFIX = "(Offer) ";
     public final static String CATEGORY_ID_KEY = "category id";
     public final static String RESTAURANT_ID_KEY = "restaurant ID";
     public static final String ITEM_DATA_KEY = "item data";
@@ -117,6 +117,11 @@ public final class Utility {
 
     public static Firebase getFirebaseReviewsRef() {
         Firebase path = new Firebase(FIREBASE_REVIEWS);
+        return path;
+    }
+
+    public static Firebase getFirebaseUsersRef() {
+        Firebase path = new Firebase(FIREBASE_USERS);
         return path;
     }
 

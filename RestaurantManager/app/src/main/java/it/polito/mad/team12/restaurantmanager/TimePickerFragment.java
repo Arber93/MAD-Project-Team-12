@@ -49,7 +49,7 @@ public  class TimePickerFragment extends DialogFragment
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        spDateTime = this.getActivity().getSharedPreferences("ReservationDateTime", Context.MODE_PRIVATE);
+        spDateTime = this.getActivity().getSharedPreferences("ReservationTime", Context.MODE_PRIVATE);
 
         if (spDateTime.getString("Hour", null) != null){
             hour = Integer.parseInt(spDateTime.getString("Hour", null));

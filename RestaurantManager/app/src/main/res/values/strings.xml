@@ -30,6 +30,7 @@
     <string name="details">Details</string>
     <string name="menu">Menu</string>
     <string name="reviews">Reviews</string>
+    <string name="review_info_user">Your reviews</string>
 
     <string name="menu_available_tab_title">Available</string>
     <string name="menu_unavailable_tab_title">Unavailable</string>

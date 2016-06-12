@@ -49,6 +49,8 @@ public class CustomerRestaurantActivityMain extends AppCompatActivity {
 
         Intent intent= getIntent();
         this.name= intent.getExtras().getString("restName");
+        ReviewUtility.loadReviews(this.name);
+        ReviewUtility.loadRestaurant(this.name);
 
 
         mLocRef = Utility.getFirebaseGeofireRef();   //ROOT of Firebase Restaurants

@@ -101,7 +101,7 @@ public class DetailsLogoEdit extends DialogFragment implements View.OnClickListe
         String restaurant11 = act.retrieveRestID(); // I RETRIEVE THE INFO OF THE RESTAURANT FROM HERE
 
         // CHECK FOR PHOTOS AS WELL
-        mRootRef = new Firebase("https://popping-inferno-6667.firebaseio.com/restaurants");
+        mRootRef = Utility.getFirebaseRestaurantsRef();
         restaurant = mRootRef.child(restaurant11);
 
 

@@ -48,13 +48,13 @@ public class ShowMenuViewHolder extends RecyclerView.ViewHolder {
         itemPrice.setText(item.getPrice().toString() + " " + italianCurrency.getSymbol());
 
         if(item.isVegan()) {
-            imgFirst.setImageResource(R.drawable.ic_vegup);
+            imgFirst.setImageResource(R.drawable.ic_veganup);
+            imgSecond.setImageResource(R.drawable.ic_noglutenup);
         } else if (item.isVegetarian()) {
             imgFirst.setImageResource(R.drawable.ic_vegup);
-        }
-
-        if(item.isGlutenFree()) {
             imgSecond.setImageResource(R.drawable.ic_noglutenup);
+        } else if(item.isGlutenFree()) {
+            imgFirst.setImageResource(R.drawable.ic_noglutenup);
         }
 
         if(!item.getHasImage()) {

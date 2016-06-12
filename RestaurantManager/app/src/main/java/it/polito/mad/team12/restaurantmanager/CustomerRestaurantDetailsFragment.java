@@ -99,10 +99,10 @@ public class CustomerRestaurantDetailsFragment extends Fragment {
         CustomerRestaurantActivityMain act = (CustomerRestaurantActivityMain) getActivity();
         name = act.retrieveRestInfo(); // I RETRIEVE THE INFO OF THE RESTAURANT FROM HERE
 
-        mRootRef = new Firebase("https://popping-inferno-6667.firebaseio.com/restaurants");   //ROOT of Firebase Restaurants
+        mRootRef = Utility.getFirebaseRestaurantsRef();   //ROOT of Firebase Restaurants
         restaurant = mRootRef.child(name);      //access the specified restaurant
 
-        mPhotosRef = new Firebase("https://popping-inferno-6667.firebaseio.com/photos");
+        mPhotosRef = Utility.getFirebasePhotosRef();
         photos = mPhotosRef.child(name);
 
 

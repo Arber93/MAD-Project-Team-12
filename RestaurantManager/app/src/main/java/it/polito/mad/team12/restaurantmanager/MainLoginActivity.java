@@ -35,7 +35,7 @@ public class MainLoginActivity extends AppCompatActivity {
     private EditText email,password;
     private Button loginbutton;
     private static final int REQUEST_SIGNUP = 0;
-    Firebase mRef = new Firebase("https://popping-inferno-6667.firebaseio.com");
+    Firebase mRef = Utility.getFirebaseRoot();
     String potentialRestaurant;
     String userName, userUID;
     SharedPreferences pref;

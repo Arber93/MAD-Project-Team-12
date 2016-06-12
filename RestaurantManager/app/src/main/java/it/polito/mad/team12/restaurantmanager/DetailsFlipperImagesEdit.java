@@ -184,7 +184,7 @@ public class DetailsFlipperImagesEdit  extends DialogFragment implements View.On
 
 
         // CHECK FOR PHOTOS AS WELL
-        mPhotosRef = new Firebase("https://popping-inferno-6667.firebaseio.com/photos");
+        mPhotosRef = Utility.getFirebasePhotosRef();
         photos = mPhotosRef.child(restaurant11);
 
 

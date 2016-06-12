@@ -40,7 +40,7 @@ public class MainSignupActivity extends AppCompatActivity {
     private EditText email,password,name,resname;
     private Button signupbutton;
     private RadioButton simple,manager;
-    Firebase mRef = new Firebase("https://popping-inferno-6667.firebaseio.com");
+    Firebase mRef = Utility.getFirebaseRoot();
     String potentialRestaurant;
     String userName, userUID;
     SharedPreferences pref;
@@ -52,7 +52,7 @@ public class MainSignupActivity extends AppCompatActivity {
     private String categoryIT="";
     ArrayAdapter<CharSequence> catAd;
     private TextInputLayout lt;
-    Firebase geoRef = new Firebase("https://popping-inferno-6667.firebaseio.com/geofire");
+    Firebase geoRef = Utility.getFirebaseGeofireRef();
     private GeoFire geoFire;
     private String restreet;
     private LatLng respos;

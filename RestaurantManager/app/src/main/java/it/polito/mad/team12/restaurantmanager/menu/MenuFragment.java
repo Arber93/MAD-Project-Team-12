@@ -27,26 +27,29 @@ public class MenuFragment extends Fragment {
      * reservations containing them to be made from customers.
      */
 
-    private static final int AVAILABLE_TAB_POSITION = 0;
-    private static final int UNAVAILABLE_TAB_POSITION = 1;
-
-    private static final int ADD_NEW_ITEM = 1;
-
-    private static final String RESTAURANT_ID = "American Graffiti Via Lagrange 58";
-
     private ViewPager viewPager;
     private MenuTabsPagerAdapter pagerAdapter;
     private TabLayout tabLayout;
+    private String restaurantID;
 
 
     public MenuFragment() {
         // Required empty public constructor
     }
 
+    public static MenuFragment newInstance(String restaurantID) {
+        MenuFragment fragment = new MenuFragment();
+        Bundle args = new Bundle();
+        args.putString(Utility.RESTAURANT_ID_KEY, restaurantID);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        this.restaurantID = getArguments().getString(Utility.RESTAURANT_ID_KEY);
     }
 
     @Override
@@ -84,7 +87,7 @@ public class MenuFragment extends Fragment {
             case R.id.mt_add_new_item:
                 Intent intent = new Intent(getActivity(), AddMenuItemActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString(Utility.RESTAURANT_ID_KEY, RESTAURANT_ID);
+                bundle.putString(Utility.RESTAURANT_ID_KEY, restaurantID);
                 bundle.putBoolean(Utility.EDIT_MODE_KEY, false);
                 intent.putExtras(bundle);
                 startActivity(intent);
@@ -110,10 +113,10 @@ public class MenuFragment extends Fragment {
 
             switch(position){
                 case 0:
-                    result = MenuTabFragment.newInstance(true);
+                    result = MenuTabFragment.newInstance(true, restaurantID);
                     break;
                 case 1:
-                    result = MenuTabFragment.newInstance(false);
+                    result = MenuTabFragment.newInstance(false, restaurantID);
                     break;
                 default:
                     result = null;

@@ -33,11 +33,19 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle drawerToggle;
     private Toolbar toolbar;
 
+    private static final String LAST_FRAGMENT = "last fragment";
+
+    private static final String DETAILS = "details";
+    private static final String MENU = "menu";
+    private static final String OFFERS = "offers";
+    private static final String REVIEWS = "reviews";
+
     private String restaurantID;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     private String nameOfUser;
-	
+    private String currentFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,14 +76,54 @@ public class MainActivity extends AppCompatActivity {
         // Setup drawer view
         setupDrawerContent(nvDrawer);
 
-
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction;
 
-        transaction = manager.beginTransaction();
-        transaction.replace(R.id.flContent, new OffersFragment());
-        transaction.commit();
+        if(savedInstanceState == null) {
+            transaction = manager.beginTransaction();
+            transaction.replace(R.id.flContent, DetailsFragment.newInstance(restaurantID));
+            transaction.commit();
+        } else {
+            currentFragment = savedInstanceState.getString(LAST_FRAGMENT);
+            restaurantID = savedInstanceState.getString(Utility.RESTAURANT_ID_KEY);
+            returnToCurrentFragment();
+        }
 
+    }
+
+    private void returnToCurrentFragment() {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction;
+
+        if(currentFragment == null) {
+            transaction = manager.beginTransaction();
+            currentFragment = DETAILS;
+            transaction.replace(R.id.flContent, DetailsFragment.newInstance(restaurantID));
+            transaction.commit();
+        } else {
+            switch (currentFragment) {
+                case DETAILS:
+                    transaction = manager.beginTransaction();
+                    transaction.replace(R.id.flContent, DetailsFragment.newInstance(restaurantID));
+                    transaction.commit();
+                    break;
+                case MENU:
+                    transaction = manager.beginTransaction();
+                    transaction.replace(R.id.flContent, MenuFragment.newInstance(restaurantID));
+                    transaction.commit();
+                    break;
+                case OFFERS:
+                    transaction = manager.beginTransaction();
+                    transaction.replace(R.id.flContent, OffersFragment.newInstance(restaurantID));
+                    transaction.commit();
+                    break;
+                case REVIEWS:
+                    transaction = manager.beginTransaction();
+                    transaction.replace(R.id.flContent, new ReviewsFragment());
+                    transaction.commit();
+                    break;
+            }
+        }
     }
 
     private ActionBarDrawerToggle setupDrawerToggle() {
@@ -122,34 +170,37 @@ public class MainActivity extends AppCompatActivity {
         boolean activity_started = false;
         switch(menuItem.getItemId()) {
             case R.id.nav_reservations_activity:
-                startActivity(new Intent(MainActivity.this, ReservationsActivity.class));
+                Intent intent = new Intent(this, ReservationsActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString(Utility.RESTAURANT_ID_KEY, restaurantID);
+                intent.putExtras(extras);
+                startActivity(intent);
                 activity_started = true; // I don't know of the try-catch block is executed anyway
                 break;
-            //TODO list here all the other cases with fragments
             case R.id.nav_details_fragment:
                 transaction = manager.beginTransaction();
-                transaction.replace(R.id.flContent, new DetailsFragment());
+                currentFragment = DETAILS;
+                transaction.replace(R.id.flContent, DetailsFragment.newInstance(restaurantID));
                 transaction.commit();
                 break;
             case R.id.nav_menu_fragment:
                 transaction = manager.beginTransaction();
-                transaction.replace(R.id.flContent, new MenuFragment());
+                currentFragment = MENU;
+                transaction.replace(R.id.flContent, MenuFragment.newInstance(restaurantID));
+                transaction.commit();
+                break;
+            case R.id.nav_offers_fragment:
+                transaction = manager.beginTransaction();
+                currentFragment = OFFERS;
+                transaction.replace(R.id.flContent, OffersFragment.newInstance(restaurantID));
                 transaction.commit();
                 break;
             case R.id.nav_review_fragment:
-                Fragment reviewsFragment = new ReviewsFragment();
                 transaction = manager.beginTransaction();
-                transaction.replace(R.id.flContent, reviewsFragment);
+                currentFragment = REVIEWS;
+                transaction.replace(R.id.flContent, new ReviewsFragment());
                 transaction.commit();
                 break;
-            case R.id.nav_review_fragment_insert:
-                Fragment reviewsFragmentInsert = new ReviewsInsertFragment();
-                transaction = manager.beginTransaction();
-                transaction.replace(R.id.flContent, reviewsFragmentInsert);
-                transaction.commit();
-                break;
-            default:
-                //fragmentClass = DefaultFragment.class;
         }
 
         if (!activity_started) {
@@ -222,4 +273,17 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(LAST_FRAGMENT, currentFragment);
+        outState.putString(Utility.RESTAURANT_ID_KEY, restaurantID);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        currentFragment = savedInstanceState.getString(LAST_FRAGMENT);
+        restaurantID = savedInstanceState.getString(Utility.RESTAURANT_ID_KEY);
+    }
 }

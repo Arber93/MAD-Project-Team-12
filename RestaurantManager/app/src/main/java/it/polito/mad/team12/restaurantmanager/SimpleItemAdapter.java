@@ -54,7 +54,11 @@ public class SimpleItemAdapter extends BaseAdapter {
         TextView quantity = (TextView) convertView.findViewById(R.id.quantity);
         Button btn_remove = (Button) convertView.findViewById(R.id.btn_remove);
         Log.v("ITEM VALUE", item.getValue());
-        name.setText(item.getKey());
+
+        String key = item.getKey();
+        key = key.replace(Utility.OFFER_KEY_PREFIX, "");
+
+        name.setText(key);
         quantity.setText(item.getValue());
 
         btn_remove.setOnClickListener(

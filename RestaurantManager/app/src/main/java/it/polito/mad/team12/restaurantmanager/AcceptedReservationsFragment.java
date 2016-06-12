@@ -50,6 +50,14 @@ public class AcceptedReservationsFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static AcceptedReservationsFragment newInstance(String restaurantID) {
+        AcceptedReservationsFragment fragment = new AcceptedReservationsFragment();
+        Bundle args = new Bundle();
+        args.putString(Utility.RESTAURANT_ID_KEY, restaurantID);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +68,8 @@ public class AcceptedReservationsFragment extends Fragment {
         TIME_DATE = getString(R.string.time_date_reservation);
         ADDITIONAL_NOTES = getString(R.string.additional_notes);
         //TODO get the restaurantID and use it for the Firebase query
-        restaurantID = "restaurantID";
+        //restaurantID = getArguments().getString(Utility.RESTAURANT_ID_KEY);
+        restaurantID = ((ReservationsActivity)getActivity()).getRestaurantID();
         current_ordered_items = new StringBuffer("");
         timestamp_long = new StringBuffer("");
     }

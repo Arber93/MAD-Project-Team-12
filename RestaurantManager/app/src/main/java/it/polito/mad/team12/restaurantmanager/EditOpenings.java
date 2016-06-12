@@ -212,7 +212,7 @@ public class EditOpenings extends DialogFragment implements View.OnClickListener
         MainActivity act = (MainActivity) getActivity();
         String restaurant11 = act.retrieveRestID(); // I RETRIEVE THE INFO OF THE RESTAURANT FROM HERE
 
-        mRootRef = new Firebase("https://popping-inferno-6667.firebaseio.com/restaurants");   //ROOT of Firebase Restaurants
+        mRootRef = Utility.getFirebaseRestaurantsRef();   //ROOT of Firebase Restaurants
         restaurant = mRootRef.child(restaurant11);      //access the specified restaurant
     }
 

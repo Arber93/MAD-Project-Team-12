@@ -60,8 +60,8 @@ public class CustomerMainActivity extends AppCompatActivity implements GoogleApi
     Location mLastLocation;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
-    Firebase mRef = new Firebase("https://popping-inferno-6667.firebaseio.com/restaurants");
-    Firebase geoRef = new Firebase("https://popping-inferno-6667.firebaseio.com/geofire");
+    Firebase mRef = Utility.getFirebaseRestaurantsRef();
+    Firebase geoRef = Utility.getFirebaseGeofireRef();
     private RestaurantDetails resDet;
     private LinkedHashMap<String,RestaurantDetails> Geodets = new LinkedHashMap<String,RestaurantDetails>();
     private LinkedList<RestaurantDetails> linkedGeo = new LinkedList<RestaurantDetails>();

@@ -81,7 +81,7 @@ public class DetailsFragment extends Fragment implements View.OnClickListener, G
     private Firebase mRootRef, restaurant, mPhotosRef, photos;
     ImageView image1,image2,image3,image4;
     ImageView reslogo;
-    Firebase geoRef = new Firebase("https://popping-inferno-6667.firebaseio.com/geofire");
+    Firebase geoRef = Utility.getFirebaseGeofireRef();
     private GeoFire geoFire;
 
 
@@ -89,18 +89,25 @@ public class DetailsFragment extends Fragment implements View.OnClickListener, G
         // Required empty public constructor
     }
 
+    public static DetailsFragment newInstance(String restaurantID) {
+        DetailsFragment fragment = new DetailsFragment();
+        Bundle args = new Bundle();
+        args.putString(Utility.RESTAURANT_ID_KEY, restaurantID);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(getContext());
 
-        MainActivity acT = (MainActivity) getActivity();
-        String restaurant11= acT.retrieveRestID();
+        String restaurant11= getArguments().getString(Utility.RESTAURANT_ID_KEY);
 
-        mRootRef= new Firebase("https://popping-inferno-6667.firebaseio.com/restaurants");   //ROOT of Firebase Restaurants
+        mRootRef= Utility.getFirebaseRestaurantsRef();   //ROOT of Firebase Restaurants
         restaurant= mRootRef.child(restaurant11);      //access the specified restaurant
 
-        mPhotosRef = new Firebase("https://popping-inferno-6667.firebaseio.com/photos");
+        mPhotosRef = Utility.getFirebasePhotosRef();
         photos = mPhotosRef.child(restaurant11);
 
         image1= new ImageView(getContext());
@@ -586,6 +593,4 @@ public class DetailsFragment extends Fragment implements View.OnClickListener, G
 
         //loadDataFromJsonFile();
     }
-
-
 }

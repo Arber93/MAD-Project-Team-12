@@ -27,17 +27,25 @@ public class OffersFragment extends Fragment {
 
     private String restaurantID;
     private ContextMenuRecyclerView recyclerView;
-    private static final String RESTAURANT_ID = "American Graffiti Via Lagrange 58";
     private OffersRecyclerAdapter adapter;
 
     public OffersFragment() {
         // Required empty public constructor
     }
 
+    public static OffersFragment newInstance(String restaurantID) {
+        OffersFragment fragment = new OffersFragment();
+        Bundle args = new Bundle();
+        args.putString(Utility.RESTAURANT_ID_KEY, restaurantID);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        this.restaurantID = getArguments().getString(Utility.RESTAURANT_ID_KEY);
     }
 
     @Override
@@ -57,7 +65,7 @@ public class OffersFragment extends Fragment {
 
     private void setUpRecyclerView(View container) {
         recyclerView = (ContextMenuRecyclerView) container.findViewById(R.id.offers_recycler_view);
-        Query query = Utility.getMenuOffersFrom(RESTAURANT_ID).orderByKey();
+        Query query = Utility.getMenuOffersFrom(restaurantID).orderByKey();
         adapter = new OffersRecyclerAdapter(OfferData.class, R.layout.item_menu, OffersViewHolder.class, query);
         recyclerView.setAdapter(adapter);
 
@@ -81,7 +89,7 @@ public class OffersFragment extends Fragment {
         @Override
         protected void populateViewHolder(OffersViewHolder offersViewHolder, OfferData offerData, int position) {
             offersViewHolder.setData(offerData, position);
-            offersViewHolder.passRestaurantID(RESTAURANT_ID);
+            offersViewHolder.passRestaurantID(restaurantID);
             offersViewHolder.passContext(getActivity());
             offersViewHolder.setListeners();
         }
@@ -107,7 +115,7 @@ public class OffersFragment extends Fragment {
             case R.id.offers_add_new_item:
                 Intent intent = new Intent(getActivity(), AddMenuOfferActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString(Utility.RESTAURANT_ID_KEY, RESTAURANT_ID);
+                bundle.putString(Utility.RESTAURANT_ID_KEY, restaurantID);
                 bundle.putBoolean(Utility.EDIT_MODE_KEY, false);
                 intent.putExtras(bundle);
                 startActivity(intent);

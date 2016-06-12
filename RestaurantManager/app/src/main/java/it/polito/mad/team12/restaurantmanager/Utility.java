@@ -36,9 +36,10 @@ public final class Utility {
     public static final String IMAGE_EXTENSION = ".jpg";
     public static final String FIREBASE_ROOT = "https://restaurant-manager.firebaseio.com/";
     public static final String FIREBASE_RESTAURANTS = FIREBASE_ROOT + "/restaurants";
+    public static final String FIREBASE_GEOFIRE = FIREBASE_ROOT + "/geofire";
+    public static final String FIREBASE_REVIEWS = FIREBASE_ROOT + "/reviews";
     public static final String FIREBASE_MENUS = FIREBASE_ROOT + "/menus/";
     public static final String FIREBASE_PHOTOS = FIREBASE_ROOT + "/photos/";
-    public static final String FIREBASE_MENU_PATH = "/menu";
     public static final String FIREBASE_MENU_AVAILABLE_ITEMS_PATH = "/available/";
     public static final String FIREBASE_MENU_UNAVAILABLE_ITEMS_PATH = "/unavailable/";
     public static final String FIREBASE_MENU_ITEMS_PATH = "/items/";
@@ -112,6 +113,26 @@ public final class Utility {
 
     public static Firebase getFirebaseRoot() {
         return root;
+    }
+
+    public static Firebase getFirebaseReviewsRef() {
+        Firebase path = new Firebase(FIREBASE_REVIEWS);
+        return path;
+    }
+
+    public static Firebase getFirebaseRestaurantsRef() {
+        Firebase path = new Firebase(FIREBASE_RESTAURANTS);
+        return path;
+    }
+
+    public static Firebase getFirebaseGeofireRef() {
+        Firebase path = new Firebase(FIREBASE_GEOFIRE);
+        return path;
+    }
+
+    public static Firebase getFirebasePhotosRef() {
+        Firebase path = new Firebase(FIREBASE_PHOTOS);
+        return path;
     }
 
     public static Firebase getMenuItemsFrom(String restaurantID, boolean availability) {

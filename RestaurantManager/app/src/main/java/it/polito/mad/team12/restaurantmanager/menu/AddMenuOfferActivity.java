@@ -9,14 +9,11 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -30,10 +27,8 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
-import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.Currency;
 import java.util.LinkedList;
@@ -438,6 +433,7 @@ public class AddMenuOfferActivity extends AppCompatActivity {
 
             if(values != null) {
                 ctv.setText(values.get(position));
+                ctv.setPadding(0, (int) (getResources().getDimension(R.dimen.default_top_padding)/2) , 0, (int) (getResources().getDimension(R.dimen.default_bottom_padding)/2));
             }
 
             return convertView;

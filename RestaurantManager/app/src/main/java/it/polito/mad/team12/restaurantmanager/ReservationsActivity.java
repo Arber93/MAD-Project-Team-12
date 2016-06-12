@@ -1,5 +1,6 @@
 package it.polito.mad.team12.restaurantmanager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -24,11 +25,20 @@ public class ReservationsActivity extends AppCompatActivity {
     Toolbar toolbar;
     TabLayout tabLayout;
     private ViewPager viewPager;
+    private String restaurantID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservations);
+
+        Intent intent = getIntent();
+
+        if(intent.getExtras().containsKey(Utility.RESTAURANT_ID_KEY)) {
+            restaurantID = intent.getExtras().getString(Utility.RESTAURANT_ID_KEY);
+        } else if (savedInstanceState != null && savedInstanceState.containsKey(Utility.RESTAURANT_ID_KEY)) {
+            restaurantID = savedInstanceState.getString(Utility.RESTAURANT_ID_KEY);
+        }
 
         PENDING = getResources().getString(R.string.pending);
         ACCEPTED = getResources().getString(R.string.accepted);
@@ -73,6 +83,10 @@ public class ReservationsActivity extends AppCompatActivity {
                     }};
         viewPager.addOnPageChangeListener(myOnPageChangeListener);
 
+    }
+
+    public String getRestaurantID() {
+        return restaurantID;
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -126,5 +140,17 @@ public class ReservationsActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(Utility.RESTAURANT_ID_KEY, restaurantID);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        restaurantID = savedInstanceState.getString(Utility.RESTAURANT_ID_KEY);
     }
 }

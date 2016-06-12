@@ -51,7 +51,7 @@ public class CustomerRestaurantActivityMain extends AppCompatActivity {
         this.name= intent.getExtras().getString("restName");
 
 
-        mLocRef = new Firebase("https://popping-inferno-6667.firebaseio.com/geofire");   //ROOT of Firebase Restaurants
+        mLocRef = Utility.getFirebaseGeofireRef();   //ROOT of Firebase Restaurants
         restLoc = mLocRef.child(name).child("l");      //access the specified restaurant
 
 
@@ -120,10 +120,10 @@ public class CustomerRestaurantActivityMain extends AppCompatActivity {
 
         switch(item.getItemId()) {
             case R.id.rd_make_reservation:
-                Intent intent = new Intent(this, ReservationActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("restaurantID", name);
-                intent.putExtras(bundle);
+                Intent intent = new Intent(this, ConfirmReservationActivity.class);
+                Bundle b = new Bundle();
+                b.putString("restaurantID", name);
+                intent.putExtras(b);
                 startActivity(intent);
                 break;
             default:

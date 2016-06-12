@@ -49,13 +49,13 @@ public class ShowOffersViewHolder extends RecyclerView.ViewHolder {
         imgPlus.setEnabled(offerData.isAvailable());
 
         if(offerData.isVegan()) {
-            imgFirst.setImageResource(R.drawable.ic_vegup);
+            imgFirst.setImageResource(R.drawable.ic_veganup);
+            imgSecond.setImageResource(R.drawable.ic_noglutenup);
         } else if (offerData.isVegetarian()) {
             imgFirst.setImageResource(R.drawable.ic_vegup);
-        }
-
-        if(offerData.isGlutenFree()) {
             imgSecond.setImageResource(R.drawable.ic_noglutenup);
+        } else if(offerData.isGlutenFree()) {
+            imgFirst.setImageResource(R.drawable.ic_noglutenup);
         }
 
         if(!offerData.getHasImage()) {

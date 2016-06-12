@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 
 import it.polito.mad.team12.restaurantmanager.Restaurant;
+import it.polito.mad.team12.restaurantmanager.Utility;
 
 /**
  * Created by Antonio on 10/04/16.
@@ -50,7 +51,7 @@ public class ReviewUtility {
 
     public static void loadReviews(final String restaurantID){
 
-        Firebase myFirebaseRef = new Firebase("https://popping-inferno-6667.firebaseio.com/reviews");
+        Firebase myFirebaseRef = Utility.getFirebaseReviewsRef();
 
         myFirebaseRef.child("reviews").orderByChild("restaurantID").equalTo(restaurantID).addChildEventListener(new ChildEventListener() {
             @Override
@@ -88,7 +89,7 @@ public class ReviewUtility {
 
     public static void loadRestaurant(final String restaurantID){
 
-        Firebase myFirebaseRef = new Firebase("https://popping-inferno-6667.firebaseio.com/reviews");
+        Firebase myFirebaseRef = Utility.getFirebaseReviewsRef();
 
         myFirebaseRef.child("Restaurant").addValueEventListener(new ValueEventListener() {
             @Override

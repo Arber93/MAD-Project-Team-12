@@ -22,6 +22,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import it.polito.mad.team12.restaurantmanager.R;
+import it.polito.mad.team12.restaurantmanager.Utility;
 
 /**
  * Created by Antonio on 09/05/16.
@@ -93,7 +94,7 @@ public class ReviewDialogInsert extends DialogFragment {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy", Locale.ITALIAN);
                 r.setDataReview(sdf.format(new Date(System.currentTimeMillis())));
 
-                Firebase fb = new Firebase("https://popping-inferno-6667.firebaseio.com/");
+                Firebase fb = Utility.getFirebaseRoot();
                 r.setReviewID(fb.child("reviews").push().getKey());
                 fb.child("reviews/"+r.getReviewID()).setValue(r);
                 oReviewDialogInsert.dismiss();

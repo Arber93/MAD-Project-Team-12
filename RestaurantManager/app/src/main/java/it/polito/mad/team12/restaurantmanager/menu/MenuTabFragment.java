@@ -27,22 +27,22 @@ import it.polito.mad.team12.restaurantmanager.Utility;
 
 public class MenuTabFragment extends Fragment {
     private static final String AVAILABLE_ARG = "AVAILABLE_ARG";
-    private static final int EDIT_MENU_ITEM = 1;
 
     private boolean available;
     private ContextMenuRecyclerView recyclerView;
     private MenuTabFragment.MenuTabRecyclerAdapter adapter;
-    private static final String RESTAURANT_ID = "American Graffiti Via Lagrange 58";
+    private String restaurantID;
 
 
     public MenuTabFragment() {
         // Required empty public constructor
     }
 
-    public static MenuTabFragment newInstance(boolean available) {
+    public static MenuTabFragment newInstance(boolean available, String restaurantID) {
         MenuTabFragment fragment = new MenuTabFragment();
         Bundle args = new Bundle();
         args.putBoolean(AVAILABLE_ARG, available);
+        args.putString(Utility.RESTAURANT_ID_KEY, restaurantID);
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,6 +51,7 @@ public class MenuTabFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.available = getArguments().getBoolean(AVAILABLE_ARG);
+        this.restaurantID = getArguments().getString(Utility.RESTAURANT_ID_KEY);
     }
 
     @Override
@@ -63,7 +64,7 @@ public class MenuTabFragment extends Fragment {
 
     private void setUpRecyclerView(View container) {
         recyclerView = (ContextMenuRecyclerView) container.findViewById(R.id.mt_recycler_view);
-        Query query = Utility.getMenuItemsFrom(RESTAURANT_ID, available).orderByKey();
+        Query query = Utility.getMenuItemsFrom(restaurantID, available).orderByKey();
         adapter = new MenuTabRecyclerAdapter(ItemData.class, R.layout.item_menu, MenuTabViewHolder.class, query);
         recyclerView.setAdapter(adapter);
 
@@ -87,7 +88,7 @@ public class MenuTabFragment extends Fragment {
         @Override
         protected void populateViewHolder(MenuTabViewHolder menuTabViewHolder, ItemData itemData, int position) {
             menuTabViewHolder.setData(itemData, position);
-            menuTabViewHolder.passRestaurantID(RESTAURANT_ID);
+            menuTabViewHolder.passRestaurantID(restaurantID);
             menuTabViewHolder.passContext(getActivity());
             menuTabViewHolder.setListeners();
         }
